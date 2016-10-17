@@ -1,0 +1,36 @@
+<h1 style="text-align: center">
+    {{ selected }} Orders
+</h1>
+<div class="ig-form-group">
+  <input class="ig-form-group__input--search" [placeholder]="'Search ' +  selected.toLowerCase() + ' orders'" [(ngModel)]="search_val"/>
+</div>
+
+    <ig-tab-bar alignment="bottom" (selectTab)="changeLabel($event)">
+
+      <ig-tab label="Active" icon="library_music" >
+        <ig-list>
+          <ig-list-item igRipple="#bada55" igRippleTarget=".ig-list__item" *ngFor="let order of orders | filter: fOptions">
+            <div (click)="goto(order)">
+              <h6>{{ order.number }}</h6>
+              <h5>{{ order.date }}</h5>
+            </div>
+          </ig-list-item>
+        </ig-list>
+      </ig-tab>
+
+      <ig-tab label="Archived" icon="library_books">
+        <ig-list>
+          <ig-list-item igRipple="#bada55" igRippleTarget=".ig-list__item" *ngFor="let order of canceled_orders | filter: fOptions">
+            <div (click)="goto(order)">
+              <h6>{{ order.number }}</h6>
+              <h5>{{ order.date }}</h5>
+            </div>
+          </ig-list-item>
+        </ig-list>
+      </ig-tab>
+
+    </ig-tab-bar>
+
+<div style="position: fixed; bottom: 10%; right: 10%; z-index: 900;" >
+  <span igButton="fab" igButtonBackground="#bada55" routerLink="/new"><i class="material-icons">add</i></span>
+</div>

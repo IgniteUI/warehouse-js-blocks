@@ -1,0 +1,18 @@
+<form (ngSubmit)="onSubmit()" #orderForm="ngForm">
+    <h2>Create a new order</h2>
+    <div class="ig-form-group">
+        <input type="text" igInput name="orderNumber" [(ngModel)]="order.number" required>
+        <label igLabel>Order Number</label>
+    </div>
+    <h3>Items</h3>
+    <p *ngFor="let item of items">
+        <ig-checkbox name="item{{item.id}}" [(ngModel)]="item.completed">{{ item.description }}</ig-checkbox>
+        <span igButton="fab" (click)="removeItem($event, item.id)"></span>
+    </p>
+    <div class="ig-form-group">
+        <input type="text" igInput name="todoItem" (keydown.enter)="addItem($event); $event.preventDefault();">
+        <label igLabel>Add item</label>
+    </div>
+
+    <button type="submit" [disabled]="!orderForm.form.valid">Create</button>
+</form>
