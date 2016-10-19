@@ -68,7 +68,7 @@
 .list-item-container {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
 }
 
 .list-item__fl,
@@ -86,11 +86,12 @@
 }
 
 .lines {
+    flex-grow: 2;
     justify-content: flex-start;
     margin-left: 16px;
-    flex-grow: 2;
 }
 
 .circle {
+    flex-grow: 1;
     fill: gray;
 }
