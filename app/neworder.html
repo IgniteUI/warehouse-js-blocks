@@ -1,18 +1,22 @@
-<form (ngSubmit)="onSubmit()" #orderForm="ngForm">
-    <h2>Create a new order</h2>
-    <div class="ig-form-group">
-        <input type="text" igInput name="orderNumber" [(ngModel)]="order.number" required>
-        <label igLabel>Order Number</label>
-    </div>
-    <h3>Items</h3>
-    <p *ngFor="let item of items">
-        <ig-checkbox name="item{{item.id}}" [(ngModel)]="item.completed">{{ item.description }}</ig-checkbox>
-        <span igButton="fab" (click)="removeItem($event, item.id)"></span>
-    </p>
-    <div class="ig-form-group">
-        <input type="text" igInput name="todoItem" (keydown.enter)="addItem($event); $event.preventDefault();">
-        <label igLabel>Add item</label>
-    </div>
+<div class="temp-navbar">
+	<h4 class="temp-navbar__title temp-navbar__title--inner">Create order</h4>
+</div>
+<div class="inner-content">
+	<form (ngSubmit)="onSubmit()" #orderForm="ngForm">
+		<div class="ig-form-group">
+			<input type="text" igInput name="orderNumber" [(ngModel)]="order.number" required>
+			<label igLabel>Order Number</label>
+		</div>
+		<h5>Items</h5>
+		<div *ngFor="let item of items" class="new-order-item">
+			<ig-checkbox name="item{{item.id}}" [(ngModel)]="item.completed">{{ item.description }}</ig-checkbox>
+			<span igButton="raised" igButtonBackground="red" class="new-order-item__btn-del" (click)="removeItem($event, item.id)">delete</span>
+		</div>
+		<div class="ig-form-group">
+			<input type="text" igInput name="todoItem" (keydown.enter)="addItem($event); $event.preventDefault();">
+			<label igLabel>Add item</label>
+		</div>
 
-    <button type="submit" [disabled]="!orderForm.form.valid">Create</button>
-</form>
+		<button igButton="raised" type="submit" [disabled]="!orderForm.form.valid">Create</button>
+	</form>
+</div>

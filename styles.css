@@ -1,2 +1,96 @@
 @import "node_modules/zero-blocks/fonts/material-icons.css";
 @import "node_modules/zero-blocks/zero-blocks.material.css";
+
+
+.temp-navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    background-color: #0375be;
+    color: #fff;
+    height: 56px;
+    padding: 20px 16px;
+    box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
+            0px 4px 5px 0px rgba(0, 0, 0, 0.14),
+            0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+    z-index: 4;
+}
+
+.temp-navbar__title {
+    font-size: 1.125em;
+}
+
+.temp-navbar__title--inner {
+    padding-left: 56px;
+}
+
+.content {
+    margin-top: 72px;
+}
+
+.sb-container {
+    padding: 0 16px;
+}
+
+.inner-content {
+    padding: 16px;
+}
+
+.fab-container {
+    position: fixed;
+    bottom: 12%;
+    right: 16px;
+    z-index: 24;
+}
+
+.button-group {
+    display: flex;
+    justify-content: space-around;
+    padding: 16px 0;
+}
+
+.new-order-item {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    padding-bottom: 10px;
+    justify-content: space-between;
+}
+.ig-list__item {
+    min-height: 72px;
+}
+
+
+.list-item-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.list-item__fl,
+.list-item__sl {
+    margin: 0;
+}
+
+.list-item__fl {
+    font-size: 16px;
+}
+
+.list-item__sl {
+    font-size: 14px;
+    color: gray;
+}
+
+.lines {
+    justify-content: flex-start;
+    margin-left: 16px;
+    flex-grow: 2;
+}
+
+.circle {
+    fill: gray;
+}
