@@ -1,20 +1,28 @@
 <ig-navbar title="Order" icon="arrow_back"></ig-navbar>
+
 <div class="inner-content">
-	<div *ngIf="order">
-		<h6 [style.color]="order.canceled ? 'red' : 'black'">Order {{ order.number }}</h6>
-		<p>Created {{ order.date }}</p>
-		<div *ngIf="order.items">
+	<div class="order-detail" *ngIf="order">
+		
+		<p class="order-detail__prefix">order #</p>
+		<h6 class="order-datail__number" [style.color]="order.canceled ? 'red' : 'black'">{{ order.number }}</h6>
+		<p class="order-detail__date">Created {{ order.date }}</p>
+
+		<div class="order-detail_cbxgroup" *ngIf="order.items">
 			<div style="margin-top: 10px;" *ngFor="let item of order.items">
 				<ig-checkbox [(ngModel)]="item.completed">{{ item.description }}</ig-checkbox>
 			</div>
 		</div>
+		
 		<div class="button-group">
-			<span igButton="raised" igButtonBackground="#bada55" [disabled]="!order.canBeCompleted && !order.canceled" igRipple="white">
-                <i class="material-icons">done</i>
+			<span igButton="raised" igButtonBackground="white" igButtonColor="red" (click)="cancelOrder(order.id)" igRipple="white">
+                <!--<i class="material-icons">delete</i>-->
+				Cancel Order
             </span>
-			<span igButton="raised" igButtonBackground="red" (click)="cancelOrder(order.id)" igRipple="white">
-                <i class="material-icons">delete</i>
+			<span igButton="raised" igButtonBackground [disabled]="!order.canBeCompleted && !order.canceled" igRipple="white">
+                <!--<i class="material-icons">done</i>-->
+				Complete Order
             </span>
 		</div>
+	
 	</div>
 </div>

@@ -23,8 +23,11 @@
 
 .button-group {
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-end;
     padding: 16px 0;
+}
+.button-group [igButton] ~ [igButton] {
+    margin-left: 8px;
 }
 
 .new-order-item {
@@ -47,9 +50,19 @@
     flex-wrap: nowrap;
 }
 
+.order-detail__date,
+.order-datail__number,
+.order-detail__prefix,
+.list-item__prefix,
 .list-item__fl,
 .list-item__sl {
     margin: 0;
+}
+
+.list-item__prefix {
+    color: lightgray;
+    font-size: 12px;
+    
 }
 
 .list-item__fl {
@@ -73,4 +86,18 @@
     min-width: 40px;
     margin-right: 16px;
     fill: gray;
+}
+
+.order-detail__prefix,
+.order-detail__date {
+    color: gray;
+}
+
+.order-datail__number {
+    font-size: 24px;
+    line-height: 24px;
+}
+
+.order-detail_cbxgroup {
+    margin: 40px 0;
 }
