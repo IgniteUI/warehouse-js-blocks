@@ -1,31 +1,6 @@
 @import "node_modules/zero-blocks/fonts/material-icons.css";
 @import "node_modules/zero-blocks/zero-blocks.material.css";
 
-
-.temp-navbar {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    background-color: #0375be;
-    color: #fff;
-    height: 56px;
-    padding: 20px 16px;
-    box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
-            0px 4px 5px 0px rgba(0, 0, 0, 0.14),
-            0px 1px 10px 0px rgba(0, 0, 0, 0.12);
-    z-index: 4;
-}
-
-.temp-navbar__title {
-    font-size: 1.125em;
-}
-
-.temp-navbar__title--inner {
-    padding-left: 56px;
-}
-
 .content {
     margin-top: 72px;
 }
