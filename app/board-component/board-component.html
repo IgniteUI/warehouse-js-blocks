@@ -23,6 +23,7 @@
 							</g>
 						</svg>
 						<div class="lines">
+							<p class="list-item__prefix">order #</p>							
 							<h6 class="list-item__fl">{{ order.number }}</h6>
 							<h5 class="list-item__sl">{{ order.date }}</h5>
 						</div>
@@ -33,9 +34,11 @@
 
 		<ig-tab label="Archived" icon="library_books">
 			<ig-list>
+				<ig-list-header>Completed</ig-list-header>
 				<ig-list-item igRipple igRippleTarget=".ig-list__item" *ngFor="let order of canceled_orders | filter: fOptions">
 					<div class="list-item-container" (click)="goto(order)">
 						<div class="lines">
+							<p class="list-item__prefix">order #</p>
 							<h6 class="list-item__fl">{{ order.number }}</h6>
 							<h5 class="list-item__sl">{{ order.date }}</h5>
 						</div>
