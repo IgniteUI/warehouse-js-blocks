@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { IgRippleModule, ButtonModule, ListModule } from "../node_modules/zero-blocks/main";
-import { IgInput, FilterOptions } from "../node_modules/zero-blocks/main";
-import { OrderService } from "./order.component";
-import { Order } from "./order";
+import { IgRippleModule, ButtonModule, ListModule } from "../../node_modules/zero-blocks/main";
+import { IgInput, FilterOptions } from "../../node_modules/zero-blocks/main";
+import { OrderService } from "../order-service/order-service";
+import { Order } from "../order-service/order";
 
 
 @Component({
     selector: 'board',
     moduleId: module.id,
-    templateUrl: 'board.html',
+    templateUrl: 'board-component.html',
     providers: [OrderService]
 })
 export class BoardComponent implements OnInit {

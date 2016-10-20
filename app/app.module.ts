@@ -5,9 +5,11 @@ import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { OrderDetailComponent, OrderService } from "./order.component";
-import { BoardComponent } from "./board";
-import { NewOrderComponent } from "./neworder";
+import { OrderService } from "./order-service/order-service";
+import { BoardComponent } from "./board-component/board-component";
+import { OrderDetailComponent } from "./order-component/order-component";
+import { NewOrderComponent } from "./neworder-component/neworder-component";
+import { ScanComponent } from "./scan-component/scan-component";
 
 import { IgRippleModule, ButtonModule, TabBarModule, CheckboxModule } from "../node_modules/zero-blocks/main";
 import { IgInput, ListModule, IgLayout, FilterModule, NavbarModule } from "../node_modules/zero-blocks/main";
@@ -18,6 +20,7 @@ import { IgInput, ListModule, IgLayout, FilterModule, NavbarModule } from "../no
     BoardComponent,
     OrderDetailComponent,
     NewOrderComponent,
+    ScanComponent,
     IgInput
   ],
   imports: [
@@ -44,6 +47,10 @@ import { IgInput, ListModule, IgLayout, FilterModule, NavbarModule } from "../no
       {
         path: 'new',
         component: NewOrderComponent
+      },
+      {
+        path: 'scan',
+        component: ScanComponent
       }
     ])
   ],
