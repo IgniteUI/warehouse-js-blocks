@@ -1,7 +1,8 @@
-<div class="temp-navbar">
+<!--<div class="temp-navbar">
 	<h4 class="temp-navbar__title">{{ selected }} Orders</h4>
-</div>
+</div>-->
 
+<ig-navbar title="{{selected}} Orders"></ig-navbar>
 <div class="content">
 	<div class="sb-container">
 		<div class="ig-form-group">
@@ -25,10 +26,10 @@
 								<use id="Oval" stroke="#0375BE" mask="url(#mask-2)" stroke-width="6" fill="#FFFFFF" xlink:href="#path-1"></use>
 							</g>
 						</svg>
-            <div class="lines">
-                <h6 class="list-item__fl">{{ order.number }}</h6>
-                <h5 class="list-item__sl">{{ order.date }}</h5>
-            </div>
+						<div class="lines">
+							<h6 class="list-item__fl">{{ order.number }}</h6>
+							<h5 class="list-item__sl">{{ order.date }}</h5>
+						</div>
 					</div>
 				</ig-list-item>
 			</ig-list>
@@ -38,8 +39,10 @@
 			<ig-list>
 				<ig-list-item igRipple igRippleTarget=".ig-list__item" *ngFor="let order of canceled_orders | filter: fOptions">
 					<div class="list-item-container" (click)="goto(order)">
-						<h6 class="list-item__fl">{{ order.number }}</h6>
-						<h5 class="list-item__sl">{{ order.date }}</h5>
+						<div class="lines">
+							<h6 class="list-item__fl">{{ order.number }}</h6>
+							<h5 class="list-item__sl">{{ order.date }}</h5>
+						</div>
 					</div>
 				</ig-list-item>
 			</ig-list>

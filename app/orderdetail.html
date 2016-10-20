@@ -1,7 +1,4 @@
-<div class="temp-navbar">
-	<h4 class="temp-navbar__title temp-navbar__title--inner">Order</h4>
-</div>
-
+<ig-navbar title="Order" icon="arrow_back"></ig-navbar>
 <div class="inner-content">
 	<div *ngIf="order">
 		<h6 [style.color]="order.canceled ? 'red' : 'black'">Order {{ order.number }}</h6>

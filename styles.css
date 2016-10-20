@@ -35,12 +35,13 @@
 }
 
 .inner-content {
+    margin-top: 72px;
     padding: 16px;
 }
 
 .fab-container {
     position: fixed;
-    bottom: 12%;
+    bottom: 86px;
     right: 16px;
     z-index: 24;
 }
@@ -78,20 +79,23 @@
 
 .list-item__fl {
     font-size: 16px;
+    flex-grow: 1;
 }
 
 .list-item__sl {
+    flex-grow: 1;
     font-size: 14px;
     color: gray;
 }
 
 .lines {
+    display: flex;
+    flex-direction: column;
     flex-grow: 2;
-    justify-content: flex-start;
-    margin-left: 16px;
 }
 
 .circle {
-    flex-grow: 1;
+    min-width: 40px;
+    margin-right: 16px;
     fill: gray;
 }

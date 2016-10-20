@@ -10,8 +10,7 @@ import { BoardComponent } from "./board";
 import { NewOrderComponent } from "./neworder";
 
 import { IgRippleModule, ButtonModule, TabBarModule, CheckboxModule } from "../node_modules/zero-blocks/main";
-import { IgInput, ListModule, IgLayout, FilterModule } from "../node_modules/zero-blocks/main";
-
+import { IgInput, ListModule, IgLayout, FilterModule, NavbarModule } from "../node_modules/zero-blocks/main";
 
 @NgModule({
   declarations: [
@@ -32,6 +31,7 @@ import { IgInput, ListModule, IgLayout, FilterModule } from "../node_modules/zer
     FilterModule,
     TabBarModule,
     CheckboxModule,
+    NavbarModule,
     RouterModule.forRoot([
       {
         path: '',
