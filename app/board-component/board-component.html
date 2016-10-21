@@ -1,29 +1,44 @@
+<!--Navbar Component Start-->
 <ig-navbar title="{{selected}} Orders"></ig-navbar>
+<!--Navbar Component End-->
+
+<!--FAB Start-->
+<div class="fab-wrapper">
+	<span igButton="fab" igRipple="white" routerLink="/new"><i class="material-icons">add</i></span>
+</div>
+<!--FAB End-->
+
+<!--Main Content-->
 <div class="content">
-	<div class="sb-container">
+
+	<!--Searchbar Start-->
+	<div class="searchbar">
 		<div class="ig-form-group">
 			<input class="ig-form-group__input--search" [placeholder]="'Search ' +  selected.toLowerCase() + ' orders'" [(ngModel)]="search_val"
 			/>
+			<label igLabel>
+				<i class="material-icons">search</i>
+				</label> 
+			<span class="ig-form-group__clear--hidden">
+				<i class="material-icons">clear</i>
+			</span>
 		</div>
 	</div>
+	<!--Searchbar End-->
+
+	<!--Tabbar Component Start-->
 	<ig-tab-bar alignment="bottom" (selectTab)="changeLabel($event)">
+
+		<!--First Tab Start-->
 		<ig-tab label="Active" icon="bookmark">
 			<ig-list>
 				<ig-list-item igRipple="rgba(#0375be" igRippleTarget=".ig-list__item" *ngFor="let order of orders | filter: fOptions">
-					<div class="list-item-container" (click)="goto(order)">
-						<svg class="circle" width="40px" height="40px" viewBox="0 0 40 40">
-							<defs>
-								<circle id="path-1" cx="20" cy="20" r="20" fill="#0375BE"></circle>
-								<mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="40" height="40" fill="white">
-									<use xlink:href="#path-1"></use>
-								</mask>
-							</defs>
-							<g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-								<use id="Oval" stroke="#0375BE" mask="url(#mask-2)" stroke-width="6" fill="#FFFFFF" xlink:href="#path-1"></use>
-							</g>
-						</svg>
+					<div class="list-item-wrapper" (click)="goto(order)">
+						<div class="circle">
+							<i class="material-icons">shopping_basket</i>
+						</div>
 						<div class="lines">
-							<p class="list-item__prefix">order #</p>							
+							<p class="list-item__prefix">Order #</p>
 							<h6 class="list-item__fl">{{ order.number }}</h6>
 							<h5 class="list-item__sl">{{ order.date }}</h5>
 						</div>
@@ -31,12 +46,17 @@
 				</ig-list-item>
 			</ig-list>
 		</ig-tab>
+		<!--First Tab End-->
 
-		<ig-tab label="Archived" icon="library_books">
+		<!--Second Tab Start-->
+		<ig-tab label="Archived" icon="archive">
 			<ig-list>
 				<ig-list-header>Completed</ig-list-header>
 				<ig-list-item igRipple igRippleTarget=".ig-list__item" *ngFor="let order of canceled_orders | filter: fOptions">
-					<div class="list-item-container" (click)="goto(order)">
+					<div class="list-item-wrapper" (click)="goto(order)">
+						<div class="circle--done">
+							<i class="material-icons">done</i>
+						</div>
 						<div class="lines">
 							<p class="list-item__prefix">order #</p>
 							<h6 class="list-item__fl">{{ order.number }}</h6>
@@ -46,10 +66,10 @@
 				</ig-list-item>
 			</ig-list>
 		</ig-tab>
+		<!--Second Tab End-->
 
 	</ig-tab-bar>
+	<!--Tabbar Component End-->
+	
 </div>
-
-<div class="fab-container">
-	<span igButton="fab" igRipple="white" routerLink="/new"><i class="material-icons">add</i></span>
-</div>
+<!--Main Content End-->

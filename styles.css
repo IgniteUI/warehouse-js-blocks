@@ -1,11 +1,21 @@
 @import "node_modules/zero-blocks/fonts/material-icons.css";
 @import "node_modules/zero-blocks/zero-blocks.material.css";
 
+.ig-list {
+    margin-bottom: 64px;
+}
+
+.splashscreen {
+    position: relative;
+    max-width: 100%;
+    max-height: 100%;
+}
+
 .content {
     margin-top: 72px;
 }
 
-.sb-container {
+.searchbar {
     padding: 0 16px;
 }
 
@@ -14,9 +24,9 @@
     padding: 16px;
 }
 
-.fab-container {
+.fab-wrapper {
     position: fixed;
-    bottom: 86px;
+    bottom: 72px;
     right: 16px;
     z-index: 24;
 }
@@ -26,7 +36,8 @@
     justify-content: flex-end;
     padding: 16px 0;
 }
-.button-group [igButton] ~ [igButton] {
+
+.button-group [igButton]~[igButton] {
     margin-left: 8px;
 }
 
@@ -39,12 +50,12 @@
     padding-bottom: 10px;
     justify-content: space-between;
 }
+
 .ig-list__item {
     min-height: 72px;
 }
 
-
-.list-item-container {
+.list-item-wrapper {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
@@ -60,9 +71,8 @@
 }
 
 .list-item__prefix {
-    color: lightgray;
+    color: gray;
     font-size: 12px;
-    
 }
 
 .list-item__fl {
@@ -82,11 +92,23 @@
     flex-grow: 2;
 }
 
-.circle {
-    min-width: 40px;
+.circle,
+.circle--done {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #0375BE;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    color: #fff;
     margin-right: 16px;
-    fill: gray;
 }
+
+.circle--done {
+    background: #666666;
+}
+
 
 .order-detail__prefix,
 .order-detail__date {
@@ -100,4 +122,46 @@
 
 .order-detail_cbxgroup {
     margin: 40px 0;
+}
+
+.loader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.spinner {
+    animation: rotator 1.4s linear infinite;
+}
+
+@keyframes rotator {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(270deg);
+    }
+}
+
+.path {
+    stroke: #0375BE;
+    stroke-dasharray: 187;
+    stroke-dashoffset: 0;
+    transform-origin: center;
+    animation: dash 1.4s ease-in-out infinite;
+}
+
+@keyframes dash {
+    0% {
+        stroke-dashoffset: 187;
+    }
+    50% {
+        stroke-dashoffset: 46.75;
+        transform: rotate(135deg);
+    }
+    100% {
+        stroke-dashoffset: 187;
+        transform: rotate(450deg);
+    }
 }

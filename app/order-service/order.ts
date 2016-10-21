@@ -1,11 +1,11 @@
 function uuid4() {
     let uuid = '', ii;
-    for (ii = 0; ii < 32; ii++) {
+    for (ii = 0; ii < 8; ii++) {
         switch (ii) {
-        case 8:
+        case 4:
         case 20:
             uuid += '-';
-            uuid += (Math.random() * 16 | 0).toString(16);
+            uuid += (Math.random() * 16 | 0).toString(8);
             break;
         case 12:
             uuid += '-';
@@ -13,10 +13,10 @@ function uuid4() {
             break;
         case 16:
             uuid += '-';
-            uuid += (Math.random() * 4 | 8).toString(16);
+            uuid += (Math.random() * 4 | 8).toString(8);
             break;
         default:
-            uuid += (Math.random() * 16 | 0).toString(16);
+            uuid += (Math.random() * 16 | 0).toString(8);
         }
     }
     return uuid;
@@ -70,7 +70,7 @@ function populate() {
     for (let i = 0; i < 15; i++) {
         let order = createOrder(i);
         for (let j = 0; j < 3; j++) {
-            order.items.push(createItem(j, `Do the needful ${j}`));
+            order.items.push(createItem(j, `Order Item ${j + 1}`));
         }
         ORDERS.push(order);
     }

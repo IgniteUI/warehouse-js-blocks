@@ -6,13 +6,13 @@
 			<label igLabel>Order Number</label>
 		</div>
 
-		<div *ngIf="!isScanned">
-			<span igButton="raised" type="submit" [disabled]="!orderForm.form.valid">Add Order</span>
-			<span igButton="raised" routerLink="/scan">Scan Barcode</span>
+		<div class="button-group" *ngIf="!isScanned">
+			<button igButton="raised" type="submit" [disabled]="!orderForm.form.valid">Add Order</button>
+			<button igButton="raised" routerLink="/scan">Scan Barcode</button>
 		</div>
-		<div *ngIf="isScanned">
-			<span igButton="raised" type="submit">Confirm</span>
-			<span igButton="raised" (click)="cancel($event)">Cancel</span>
+		<div class="button-group" *ngIf="isScanned">
+			<button igButton="raised" type="submit">Confirm</button>
+			<button igButton="raised" (click)="cancel($event)">Cancel</button>
 		</div>
 	</form>
 </div>
