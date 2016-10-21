@@ -44,34 +44,3 @@ export class OrderService {
     }
 }
 
-@Component({
-    selector: 'order-detail',
-    moduleId: module.id,
-    templateUrl: 'orderdetail.html'
-})
-export class OrderDetailComponent implements OnInit {
-
-    order: Order;
-
-    constructor(
-        private orderService: OrderService,
-        private route: ActivatedRoute,
-        private location: Location
-    ) {}
-
-    ngOnInit() {
-        this.route.params.forEach((params: Params) => {
-            let id = +params['id'];
-            this.orderService.getOrder(id)
-                .then(order => this.order = order)
-        });
-    }
-
-    cancelOrder(id: number) {
-        this.orderService.setCancel(id);
-    }
-
-    // canBeCompleted() {
-    //     return this.order.canBeCompleted;
-    // }
-}
