@@ -5,7 +5,7 @@
 		
 		<p class="order-detail__prefix">Order #</p>
 		<h6 class="order-datail__number" [style.color]="order.canceled ? 'red' : 'black'">{{ order.number }}</h6>
-		<p class="order-detail__date">Date {{ order.date }}</p>
+		<p class="order-detail__date">{{ order.date }}</p>
 
 		<div class="order-detail_cbxgroup" *ngIf="order.items">
 			<div style="margin-top: 10px;" *ngFor="let item of order.items">
