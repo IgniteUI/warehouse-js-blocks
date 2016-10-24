@@ -51,7 +51,7 @@
 		<!--Second Tab Start-->
 		<ig-tab label="Archived" icon="archive">
 			<ig-list>
-				<ig-list-header>Complete</ig-list-header>
+				<ig-list-header>Completed</ig-list-header>
 				<ig-list-item igRipple igRippleTarget=".ig-list__item" *ngFor="let order of completed_orders | filter: fOptions">
 					<div class="list-item-wrapper" (click)="goto(order)">
 						<div class="circle--done">
@@ -70,7 +70,7 @@
 				<ig-list-item igRipple igRippleTarget=".ig-list__item" *ngFor="let order of canceled_orders | filter: fOptions">
 					<div class="list-item-wrapper" (click)="goto(order)">
 						<div class="circle--canceled">
-							<i class="material-icons">remove</i>
+							<i class="material-icons">close</i>
 						</div>
 						<div class="lines">
 							<p class="list-item__prefix">Order #</p>
