@@ -28,7 +28,7 @@ function createItem(lastId, text): Item {
 
 function createOrder(id): Order {
     return new Order(`${id}`, uuid4(), new Date().toDateString(),
-        [], Math.floor(Math.random() * 7) % 2 == 0);
+        [], false, false);
 }
 
 export class Item {
@@ -48,14 +48,16 @@ export class Order {
     number: string;
     date: string;
     items: Item[] = [];
+    completed: boolean = false;
     canceled: boolean = false;
 
-    constructor(id: string, number: string, date: string, items: Item[], canceled: boolean) {
+    constructor(id: string, number: string, date: string, items: Item[], canceled: boolean, completed: boolean) {
         this.id = id;
         this.number = number;
         this.date = date;
         this.items = items;
         this.canceled = canceled;
+        this.completed = completed;
     }
 
     get canBeCompleted() {

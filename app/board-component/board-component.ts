@@ -16,6 +16,7 @@ export class BoardComponent implements OnInit {
 
     orders: Order[];
     canceled_orders: Order[];
+    completed_orders: Order[];
     search_val: string;
     selected: string = 'Active';
 
@@ -41,6 +42,11 @@ export class BoardComponent implements OnInit {
             .then(orders => this.canceled_orders = orders);
     }
 
+    getCompletedOrders() {
+        this.orderService.getCompletedOrders()
+            .then(orders => this.completed_orders = orders);
+    }
+
     goto(order: Order) {
         let link = ['/detail', order.id];
         setTimeout(() => {
@@ -54,6 +60,7 @@ export class BoardComponent implements OnInit {
 
     ngOnInit() {
         this.getOrders();
+        this.getCompletedOrders();
         this.getCanceledOrders();
     }
 }

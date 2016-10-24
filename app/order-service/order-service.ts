@@ -7,7 +7,13 @@ import { Order, ORDERS } from "./order";
 export class OrderService {
 
     getOrders(): Promise<Order[]> {
-        let orders = ORDERS.filter(order => order.canceled == false);
+        let orders = ORDERS.filter((order) => {
+            if(order.canceled == false && order.completed == false) {
+                return true;
+            } else {
+                return false;
+            }
+        });
         return Promise.resolve(orders);
     }
 
@@ -18,6 +24,11 @@ export class OrderService {
     getCanceledOrders(): Promise<Order[]> {
         let canceled = ORDERS.filter(order => order.canceled == true);
         return Promise.resolve(canceled);
+    }
+
+    getCompletedOrders(): Promise<Order[]> {
+        let completed = ORDERS.filter(order => order.completed == true);
+        return Promise.resolve(completed);
     }
 
     getOrdersAsync(): Promise<Order[]> {
@@ -34,6 +45,10 @@ export class OrderService {
 
     setCancel(id: number) {
         this._getOrder(id).then(order => order.canceled = true);
+    }
+
+    setComplete(id: number) {
+        this._getOrder(id).then(order => order.completed = true);
     }
 
     createOrder(order: Order) {

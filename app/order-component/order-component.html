@@ -17,7 +17,7 @@
 			<span igButton="raised" igButtonBackground="white" igButtonColor="red" (click)="cancelOrder(order.id)" igRipple>
 				Cancel
             </span>
-			<span igButton="raised" igButtonBackground [disabled]="!order.canBeCompleted && !order.canceled" igRipple="white">
+			<span igButton="raised" igButtonBackground [disabled]="!order.canBeCompleted && !order.canceled" (click)="completeOrder(order.id)" igRipple="white">
 				Complete
             </span>
 		</div>
