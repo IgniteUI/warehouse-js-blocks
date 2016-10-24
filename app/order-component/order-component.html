@@ -15,10 +15,10 @@
 		
 		<div class="button-group">
 			<span igButton="raised" igButtonBackground="white" igButtonColor="red" (click)="cancelOrder(order.id)" igRipple>
-				Cancel Order
+				Cancel
             </span>
 			<span igButton="raised" igButtonBackground [disabled]="!order.canBeCompleted && !order.canceled" igRipple="white">
-				Complete Order
+				Complete
             </span>
 		</div>
 	

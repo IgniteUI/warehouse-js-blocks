@@ -1,3 +1,8 @@
-<div routerLink="/new" [queryParams]="{ isScanned: true}">
-    Image should be here
+<ig-navbar title="Scan" icon="arrow_back"></ig-navbar>
+
+<div class="inner-content--center" routerLink="/new" [queryParams]="{ isScanned: true}">
+    <img class="barcode-image" src="../app/images/scan-picture.png" alt="barcode image" >
+    <span igButton="fab" class="capture-barcode">
+        <i class="material-icons">crop_free</i>
+    </span>
 </div>

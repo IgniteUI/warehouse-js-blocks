@@ -19,9 +19,18 @@
     padding: 1px 16px;
 }
 
-.inner-content {
+.inner-content,
+.inner-content--center {
+    display: flex;
+    flex-flow: column;
+    width: 100%;
+    height: calc(100% - 56px);
     margin-top: 56px;
     padding: 16px;
+}
+
+.inner-content--center {
+    justify-content: center;
 }
 
 .fab-wrapper {
@@ -35,6 +44,7 @@
     display: flex;
     justify-content: flex-end;
     padding: 16px 0;
+    align-self: flex-end;
 }
 
 .button-group [igButton]~[igButton] {
@@ -133,6 +143,18 @@
 
 .spinner {
     animation: rotator 1.4s linear infinite;
+}
+.barcode-image {
+    width: 70%;
+    max-width: 500px;
+    align-self: center;
+    margin: 60px 0;
+    pointer-events: none;
+}
+
+.capture-barcode {
+    margin: 24px 0;
+    align-self: center;
 }
 
 @keyframes rotator {

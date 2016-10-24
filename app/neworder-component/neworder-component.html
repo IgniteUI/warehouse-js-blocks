@@ -11,8 +11,8 @@
 			<button igButton="raised" routerLink="/scan">Scan Barcode</button>
 		</div>
 		<div class="button-group" *ngIf="isScanned">
+			<button igButton="raised" igButtonBackground="white" igButtonColor="red" (click)="cancel($event)">Cancel</button>
 			<button igButton="raised" type="submit">Confirm</button>
-			<button igButton="raised" (click)="cancel($event)">Cancel</button>
 		</div>
 	</form>
 </div>
