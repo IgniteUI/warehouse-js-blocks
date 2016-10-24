@@ -26,9 +26,14 @@ function createItem(lastId, text): Item {
     return new Item(`${lastId++}`, text, false);
 }
 
-function createOrder(id): Order {
+function createOrder(id:number, fresh: boolean): Order {
+    if(fresh) {
+        return new Order(`${id}`, uuid4(), new Date().toDateString(),
+        [], false, false);    
+    } else {
     return new Order(`${id}`, uuid4(), new Date().toDateString(),
-        [], false, false);
+        [], id % 2 == 0, id % 2 !=0);
+    }
 }
 
 export class Item {
@@ -69,8 +74,14 @@ export let ORDERS = [];
 
 function populate() {
     let ORDERS = [];
+
     for (let i = 0; i < 15; i++) {
-        let order = createOrder(i);
+        let order;
+        if(i % 3 == 0) {
+            order = createOrder(i, true);
+        } else {
+            order = createOrder(i, false);
+        }
         for (let j = 0; j < 3; j++) {
             order.items.push(createItem(j, `Order Item ${j + 1}`));
         }
