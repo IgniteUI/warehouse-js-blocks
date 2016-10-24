@@ -23,7 +23,7 @@ export class NewOrderComponent implements OnInit {
         private route: ActivatedRoute) {}
 
     ngOnInit() {
-        this.order = new Order('', '', '', [], false);
+        this.order = new Order('', '', '', [], false, false);
         this.sub = this.route
             .queryParams
             .subscribe(params => {
