@@ -14,10 +14,10 @@
 		</div>
 		
 		<div class="button-group">
-			<span igButton="raised" igButtonBackground="white" igButtonColor="red" (click)="cancelOrder(order.id)" igRipple>
+			<span igButton="raised" igButtonBackground="white" igButtonColor="red" igRipple routerLink="/" (click)="cancelOrder(order.id)">
 				Cancel
             </span>
-			<span igButton="raised" igButtonBackground [disabled]="!order.canBeCompleted && !order.canceled" (click)="completeOrder(order.id)" igRipple="white">
+			<span igButton="raised" igRipple routerLink="/" [disabled]="!order.canBeCompleted && !order.canceled" (click)="completeOrder(order.id)" igRipple="white">
 				Complete
             </span>
 		</div>
