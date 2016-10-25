@@ -10,21 +10,26 @@
 
 		<div class="order-detail_cbxgroup" *ngIf="order.items">
 			<div style="margin-top: 10px;" *ngFor="let item of order.items">
-				<ig-checkbox [(ngModel)]="item.completed">{{ item.description }}</ig-checkbox>
+				<ig-checkbox [disabled]="order.completed || order.canceled" [checked]="order.completed" [(ngModel)]="item.completed">{{ item.description }}</ig-checkbox>
 			</div>
 		</div>
-		<div class="button-group" [ngSwitch]="order.canceled">
-			<span *ngSwitchCase="true" igButton="raised" igButtonBackground="red" igButtonColor="white" (click)="deleteOrder(order.id)" igRipple>
+
+		<div class="button-group" *ngIf="order.canceled || order.completed">
+			<span *ngIf="order.canceled" igButton="raised" igButtonBackground="red" igButtonColor="white" (click)="deleteOrder(order.id)" igRipple>
 				Delete
 			</span>
-			<div *ngSwitchCase="false">
-				<span igButton="raised" igButtonBackground="white" igButtonColor="red" (click)="cancelOrder(order.id)" igRipple>
-					Cancel
-            	</span>
-				<span *ngIf="!order.canceled" igButton="raised" igButtonBackground (click)="completeOrder(order.id)" [disabled]="!order.canBeCompleted && !order.canceled" igRipple="white">
-					Complete
-            	</span>
-			</div>
+
+			<span *ngIf="order.completed" igButton="raised" igButtonBackground="red" igButtonColor="white" (click)="deleteOrder(order.id)" igRipple>
+				Delete
+			</span>
+		</div>
+		<div class="button-group" *ngIf="!order.canceled && !order.completed">
+			<span igButton="raised" igButtonBackground="white" igButtonColor="red" (click)="cancelOrder(order.id)" igRipple>
+				Cancel
+			</span>
+			<span *ngIf="!order.canceled" igButton="raised" igButtonBackground (click)="completeOrder(order.id)" [disabled]="!order.canBeCompleted && !order.canceled" igRipple="white">
+				Complete
+			</span>
 		</div>
 
 	</div>

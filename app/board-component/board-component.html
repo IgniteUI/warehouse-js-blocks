@@ -14,7 +14,7 @@
 	<!--Searchbar Start-->
 	<div class="searchbar">
 		<div class="ig-form-group">
-			<input class="ig-form-group__input--search" (focus)="toggle($event)" (blur)="toggle($event)" [placeholder]="'Search ' +  selected.toLowerCase() + ' orders'" [(ngModel)]="search_val"
+			<input class="ig-form-group__input--search" [placeholder]="'Search ' +  selected.toLowerCase() + ' orders'" [(ngModel)]="search_val"
 			/>
 			<label igLabel>
 				<i class="material-icons">search</i>
