@@ -46,7 +46,7 @@ export let ORDERS = [];
 function populate() {
     let ORDERS = [];
 
-    for (let i = 0; i < 20; i++) {
+    for (let i = 0; i < 24; i++) {
 
         let sample = choice(MOCK);
         let order = new Order(
@@ -55,15 +55,16 @@ function populate() {
             sample.company,
             sample.date,
             [],
-            Math.floor(Math.random() * 7) % 2 == 0,
+            Math.floor(Math.random() * 7 + 1) % 2 == 0,
             false
         );
 
         for (let j = 0; j < sample.product.length; j++) {
             order.items.push(new Item(j, sample.product[j], false));
         }
-        if (i % 3 == 0) {
+        if (i % 6 == 0) {
             order.completed = true;
+            order.canceled = false;
             order.items.forEach(item => item.completed = true);
         }
         ORDERS.push(order);
