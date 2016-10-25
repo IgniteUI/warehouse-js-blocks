@@ -1,14 +1,17 @@
+<!--Navbar Component Start-->
 <ig-navbar title="Order" icon="arrow_back"></ig-navbar>
+<!--Navbar Component End-->
 
-<div class="inner-content">
+<!--Main Content Start -->
+<div class="content">
+
 	<div class="order-detail" *ngIf="order">
-
 		<p class="order-detail__prefix">Order #</p>
 		<h6 class="order-datail__number" [style.color]="order.canceled ? 'red' : 'black'">{{ order.number }}</h6>
-		<p>{{ order.company }}</p>
 		<p class="order-detail__date">{{ order.date }}</p>
+		<p class="order-detail__company">{{ order.company }}</p>
 
-		<div class="order-detail_cbxgroup" *ngIf="order.items">
+		<div class="order-detail__cbxgroup" *ngIf="order.items">
 			<div style="margin-top: 10px;" *ngFor="let item of order.items">
 				<ig-checkbox [disabled]="order.completed || order.canceled" [checked]="order.completed" [(ngModel)]="item.completed">{{ item.description }}</ig-checkbox>
 			</div>
@@ -23,6 +26,7 @@
 				Delete
 			</span>
 		</div>
+		
 		<div class="button-group" *ngIf="!order.canceled && !order.completed">
 			<span igButton="raised" igButtonBackground="white" igButtonColor="red" (click)="cancelOrder(order.id)" igRipple>
 				Cancel
@@ -34,3 +38,4 @@
 
 	</div>
 </div>
+<!--Main Content End-->

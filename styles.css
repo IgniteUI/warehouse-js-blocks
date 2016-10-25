@@ -1,56 +1,28 @@
 @import "node_modules/zero-blocks/fonts/material-icons.css";
 @import "node_modules/zero-blocks/zero-blocks.material.css";
 
-.ig-tab-inner {
-    margin-bottom: 56px;
+/* App Loading Container */
+.loader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
 }
 
-/*.ig-tab-bar-inner__menu {
-    background: #0375BE;
-}
-.ig-tab-bar-inner__menu-item,
-.ig-tab-bar-inner__menu-item--selected .tab-icon, .tab-label {
-    color: #fff !important;
-}*/
-
-.splashscreen {
-    position: relative;
-    max-width: 100%;
-    max-height: 100%;
-}
-
-.top-container {
-    width: 100%;
+/*Main App Layout*/
+.navbar-wrapper {
     position: fixed;
+    width: 100%;
+    height: 124px;
     top: 0;
+    background: #fff;
     z-index: 4;
-    height: 120px;
-    background: white;
-}
-
-.content {
-    margin-top: 120px;
-    padding-top: 16px;
 }
 
 .searchbar {
     position: relative;
     padding: 0 16px;
-    margin-top: 72px;
-}
-
-.inner-content,
-.inner-content--center {
-    display: flex;
-    flex-flow: column;
-    width: 100%;
-    height: calc(100% - 56px);
-    margin-top: 56px;
-    padding: 16px;
-}
-
-.inner-content--center {
-    justify-content: center;
+    margin-top: 76px;
 }
 
 .fab-wrapper {
@@ -60,90 +32,70 @@
     z-index: 24;
 }
 
-.button-group {
+.content,
+.content--main,
+.content--np,
+.content--centered {
     display: flex;
-    justify-content: flex-end;
-    padding: 16px 0;
-    align-self: flex-end;
+    flex-flow: column;
+    flex-basis: 100%;
+    height: calc(100% - 56px);
+    margin-top: 56px;
+    padding: 16px;
 }
 
-.button-group [igButton]~[igButton] {
-    margin-left: 8px;
+.content--main {
+    margin-top: 136px;
 }
 
-.new-order-item {
-    position: relative;
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    align-items: center;
-    padding-bottom: 10px;
-    justify-content: space-between;
+.content--np {
+    padding: 0;
 }
 
-.ig-list__item {
-    min-height: 72px;
+.content--center {
+    justify-content: center;
 }
 
-.list-item-wrapper {
+.item-wrapper {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
 }
 
-.order-detail__date,
-.order-datail__number,
-.order-detail__prefix,
-.list-item__prefix,
-.list-item__fl,
-.list-item__sl {
-    margin: 0;
+.item-icon {
+    margin-right: 16px;
 }
 
-.list-item__prefix {
-    color: gray;
-    font-size: 12px;
-}
-
-.list-item__fl {
-    font-size: 16px;
-    flex-grow: 1;
-}
-
-.list-item__sl {
-    flex-grow: 1;
-    font-size: 14px;
-    color: gray;
-}
-
-.lines {
+.item-info {
     display: flex;
     flex-direction: column;
     flex-grow: 2;
 }
 
-.circle,
-.circle--done,
-.circle--canceled {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #FBB13C;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    color: #fff;
-    margin-right: 16px;
+.item-info__prefix {
+    color: gray;
+    font-size: 12px;
 }
 
-.circle--done {
-    background: #3C4;
+.item-info__fl {
+    font-size: 16px;
+    flex-grow: 1;
 }
 
-.circle--canceled {
-    background: #FF6978;
+.item-info__sl {
+    flex-grow: 1;
+    font-size: 14px;
+    color: gray;
 }
 
+.order-detail__date,
+.order-datail__number,
+.order-detail__prefix,
+.item-info__prefix,
+.item-info__fl,
+.item-info__sl {
+    margin: 0;
+}
 
 .order-detail__prefix,
 .order-detail__date {
@@ -155,31 +107,49 @@
     line-height: 24px;
 }
 
-.order-detail_cbxgroup {
+.order-detail__cbxgroup {
     margin: 40px 0;
 }
 
-.loader {
+/*Button Group - TODO: Implemented as component*/
+.button-group {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
+    justify-content: flex-end;
+    padding: 16px 0;
+    align-self: flex-end;
 }
 
-.spinner {
-    animation: rotator 1.4s linear infinite;
+.button-group [igButton]~[igButton] {
+    margin-left: 8px;
 }
+
+/*Barcode Placeholder and image*/
 .barcode-image {
     width: 70%;
     max-width: 500px;
     align-self: center;
     margin: 60px 0;
-    pointer-events: none;
 }
 
 .capture-barcode {
     margin: 24px 0;
     align-self: center;
+}
+
+/*Modify ig-tab-inner to account for bottom navigation*/
+.ig-tab-inner {
+    margin-bottom: 56px;
+}
+
+.splashscreen {
+    position: relative;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+/*Spinner animation*/
+.spinner {
+    animation: rotator 1.4s linear infinite;
 }
 
 @keyframes rotator {
