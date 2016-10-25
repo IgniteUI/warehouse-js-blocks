@@ -78,6 +78,21 @@
 					</div>
 				</ig-list-item>
 			</ig-list>
+			<ig-list>
+				<ig-list-header>Canceled</ig-list-header>
+				<ig-list-item igRipple igRippleTarget=".ig-list__item" *ngFor="let order of canceled_orders | filter: fOptions">
+					<div class="list-item-wrapper" (click)="goto(order)">
+						<div class="circle--canceled">
+							<i class="material-icons">close</i>
+						</div>
+						<div class="lines">
+							<p class="list-item__prefix">Order #</p>
+							<h6 class="list-item__fl">{{ order.number }}</h6>
+							<h5 class="list-item__sl">{{ order.date }}</h5>
+						</div>
+					</div>
+				</ig-list-item>
+			</ig-list>
 		</ig-tab>
 		<!--Second Tab End-->
 

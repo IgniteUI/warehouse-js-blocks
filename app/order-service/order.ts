@@ -22,15 +22,17 @@ export class Order {
     company: string;
     date: string;
     items: Item[] = [];
+    completed: boolean = false;
     canceled: boolean = false;
 
-    constructor(id: number, number: string, company:string, date: string, items: Item[], canceled: boolean) {
+    constructor(id: string, number: string, date: string, items: Item[], canceled: boolean, completed: boolean) {
         this.id = id;
         this.number = number;
         this.company = company;
         this.date = date;
         this.items = items;
         this.canceled = canceled;
+        this.completed = completed;
     }
 
     get canBeCompleted() {

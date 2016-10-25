@@ -1,9 +1,17 @@
 @import "node_modules/zero-blocks/fonts/material-icons.css";
 @import "node_modules/zero-blocks/zero-blocks.material.css";
 
-.ig-list {
+.ig-tab-inner {
     margin-bottom: 56px;
 }
+
+/*.ig-tab-bar-inner__menu {
+    background: #0375BE;
+}
+.ig-tab-bar-inner__menu-item,
+.ig-tab-bar-inner__menu-item--selected .tab-icon, .tab-label {
+    color: #fff !important;
+}*/
 
 .splashscreen {
     position: relative;
@@ -103,11 +111,12 @@
 }
 
 .circle,
-.circle--done {
+.circle--done,
+.circle--canceled {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #0375BE;
+    background: #FBB13C;
     width: 40px;
     height: 40px;
     border-radius: 50%;
@@ -116,7 +125,11 @@
 }
 
 .circle--done {
-    background: #666666;
+    background: #3C4;
+}
+
+.circle--canceled {
+    background: #FF6978;
 }
 
 
