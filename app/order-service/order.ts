@@ -1,42 +1,15 @@
-function uuid4() {
-    let uuid = '', ii;
-    for (ii = 0; ii < 8; ii++) {
-        switch (ii) {
-        case 4:
-        case 20:
-            uuid += '-';
-            uuid += (Math.random() * 16 | 0).toString(8);
-            break;
-        case 12:
-            uuid += '-';
-            uuid += '4';
-            break;
-        case 16:
-            uuid += '-';
-            uuid += (Math.random() * 4 | 8).toString(8);
-            break;
-        default:
-            uuid += (Math.random() * 16 | 0).toString(8);
-        }
-    }
-    return uuid;
-}
+import { MOCK } from "./mock";
 
-function createItem(lastId, text): Item {
-    return new Item(`${lastId++}`, text, false);
-}
-
-function createOrder(id): Order {
-    return new Order(`${id}`, uuid4(), new Date().toDateString(),
-        [], Math.floor(Math.random() * 7) % 2 == 0);
+function choice(arrData) {
+    return arrData[Math.floor(Math.random() * arrData.length)];
 }
 
 export class Item {
-    id: string;
+    id: number;
     description: string;
     completed: boolean;
 
-    constructor(id: string, description: string, completed: boolean) {
+    constructor(id: number, description: string, completed: boolean) {
         this.id = id;
         this.description = description;
         this.completed = completed;
@@ -44,15 +17,17 @@ export class Item {
 }
 
 export class Order {
-    id: string;
+    id: number;
     number: string;
+    company: string;
     date: string;
     items: Item[] = [];
     canceled: boolean = false;
 
-    constructor(id: string, number: string, date: string, items: Item[], canceled: boolean) {
+    constructor(id: number, number: string, company:string, date: string, items: Item[], canceled: boolean) {
         this.id = id;
         this.number = number;
+        this.company = company;
         this.date = date;
         this.items = items;
         this.canceled = canceled;
@@ -65,12 +40,24 @@ export class Order {
 
 export let ORDERS = [];
 
+
 function populate() {
     let ORDERS = [];
+
     for (let i = 0; i < 15; i++) {
-        let order = createOrder(i);
-        for (let j = 0; j < 3; j++) {
-            order.items.push(createItem(j, `Order Item ${j + 1}`));
+
+        let sample = choice(MOCK);
+        let order = new Order(
+            i,
+            sample.number,
+            sample.company,
+            sample.date,
+            [],
+            Math.floor(Math.random() * 7) % 2 == 0
+        );
+
+        for (let j = 0; j < sample.product.length; j++) {
+            order.items.push(new Item(j, sample.product[j], false));
         }
         ORDERS.push(order);
     }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute, Params } from "@angular/router";
+import { ActivatedRoute, Params, Router } from "@angular/router";
 import { Location } from "@angular/common";
 
 import { Order } from "../order-service/order";
@@ -17,6 +17,7 @@ export class OrderDetailComponent implements OnInit {
     constructor(
         private orderService: OrderService,
         private route: ActivatedRoute,
+        private router: Router,
         private location: Location
     ) {}
 
@@ -30,6 +31,16 @@ export class OrderDetailComponent implements OnInit {
 
     cancelOrder(id: number) {
         this.orderService.setCancel(id);
+        this.router.navigate(['/']);
     }
 
+    completeOrder(id: number) {
+        this.orderService.setCompleted(id);
+        this.router.navigate(['/']);
+    }
+
+    deleteOrder(id: number) {
+        this.orderService.deleteOrder(id);
+        this.router.navigate(['/']);
+    }
 }

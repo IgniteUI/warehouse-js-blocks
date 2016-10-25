@@ -2,9 +2,10 @@
 
 <div class="inner-content">
 	<div class="order-detail" *ngIf="order">
-		
+
 		<p class="order-detail__prefix">Order #</p>
 		<h6 class="order-datail__number" [style.color]="order.canceled ? 'red' : 'black'">{{ order.number }}</h6>
+		<p>{{ order.company }}</p>
 		<p class="order-detail__date">{{ order.date }}</p>
 
 		<div class="order-detail_cbxgroup" *ngIf="order.items">
@@ -12,15 +13,19 @@
 				<ig-checkbox [(ngModel)]="item.completed">{{ item.description }}</ig-checkbox>
 			</div>
 		</div>
-		
-		<div class="button-group">
-			<span igButton="raised" igButtonBackground="white" igButtonColor="red" (click)="cancelOrder(order.id)" igRipple>
-				Cancel
-            </span>
-			<span igButton="raised" igButtonBackground [disabled]="!order.canBeCompleted && !order.canceled" igRipple="white">
-				Complete
-            </span>
+		<div class="button-group" [ngSwitch]="order.canceled">
+			<span *ngSwitchCase="true" igButton="raised" igButtonBackground="red" igButtonColor="white" (click)="deleteOrder(order.id)" igRipple>
+				Delete
+			</span>
+			<div *ngSwitchCase="false">
+				<span igButton="raised" igButtonBackground="white" igButtonColor="red" (click)="cancelOrder(order.id)" igRipple>
+					Cancel
+            	</span>
+				<span *ngIf="!order.canceled" igButton="raised" igButtonBackground (click)="completeOrder(order.id)" [disabled]="!order.canBeCompleted && !order.canceled" igRipple="white">
+					Complete
+            	</span>
+			</div>
 		</div>
-	
+
 	</div>
 </div>

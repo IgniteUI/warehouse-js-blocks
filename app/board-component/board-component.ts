@@ -10,12 +10,12 @@ import { Order } from "../order-service/order";
     selector: 'board',
     moduleId: module.id,
     templateUrl: 'board-component.html',
-    providers: [OrderService]
 })
 export class BoardComponent implements OnInit {
 
     orders: Order[];
     canceled_orders: Order[];
+    completed_orders: Order[];
     search_val: string;
     selected: string = 'Active';
 
@@ -31,6 +31,10 @@ export class BoardComponent implements OnInit {
         return fo;
     }
 
+    toggle(event: Event) {
+
+    }
+
     getOrders() {
         this.orderService.getOrdersAsync()
             .then(orders => this.orders = orders);
@@ -39,6 +43,11 @@ export class BoardComponent implements OnInit {
     getCanceledOrders() {
         this.orderService.getCanceledOrders()
             .then(orders => this.canceled_orders = orders);
+    }
+
+    getCompletedOrders() {
+        this.orderService.getCompletedOrders()
+            .then(orders => this.completed_orders = orders);
     }
 
     goto(order: Order) {
@@ -54,6 +63,7 @@ export class BoardComponent implements OnInit {
 
     ngOnInit() {
         this.getOrders();
+        this.getCompletedOrders();
         this.getCanceledOrders();
     }
 }

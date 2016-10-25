@@ -14,11 +14,11 @@
 	<!--Searchbar Start-->
 	<div class="searchbar">
 		<div class="ig-form-group">
-			<input class="ig-form-group__input--search" [placeholder]="'Search ' +  selected.toLowerCase() + ' orders'" [(ngModel)]="search_val"
+			<input class="ig-form-group__input--search" (focus)="toggle($event)" (blur)="toggle($event)" [placeholder]="'Search ' +  selected.toLowerCase() + ' orders'" [(ngModel)]="search_val"
 			/>
 			<label igLabel>
 				<i class="material-icons">search</i>
-				</label> 
+				</label>
 			<span class="ig-form-group__clear--hidden">
 				<i class="material-icons">clear</i>
 			</span>
@@ -52,6 +52,19 @@
 		<ig-tab label="Archived" icon="archive">
 			<ig-list>
 				<ig-list-header>Completed</ig-list-header>
+				<ig-list-item igRipple igRippleTarget=".ig-list__item" *ngFor="let order of completed_orders | filter: fOptions">
+					<div class="list-item-wrapper" (click)="goto(order)">
+						<div class="circle--done">
+							<i class="material-icons">done</i>
+						</div>
+						<div class="lines">
+							<p class="list-item__prefix">Order #</p>
+							<h6 class="list-item__fl">{{ order.number }}</h6>
+							<h5 class="list-item__sl">{{ order.date }}</h5>
+						</div>
+					</div>
+				</ig-list-item>
+				<ig-list-header>Canceled</ig-list-header>
 				<ig-list-item igRipple igRippleTarget=".ig-list__item" *ngFor="let order of canceled_orders | filter: fOptions">
 					<div class="list-item-wrapper" (click)="goto(order)">
 						<div class="circle--done">
@@ -70,6 +83,6 @@
 
 	</ig-tab-bar>
 	<!--Tabbar Component End-->
-	
+
 </div>
 <!--Main Content End-->

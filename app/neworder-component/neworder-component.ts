@@ -9,7 +9,6 @@ import { Order, Item } from "../order-service/order";
     selector: 'new-order',
     moduleId: module.id,
     templateUrl: 'neworder-component.html',
-    providers: [OrderService]
 })
 export class NewOrderComponent implements OnInit {
     items: Item[] = [];

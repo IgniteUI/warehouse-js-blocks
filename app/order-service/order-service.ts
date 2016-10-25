@@ -7,7 +7,7 @@ import { Order, ORDERS } from "./order";
 export class OrderService {
 
     getOrders(): Promise<Order[]> {
-        let orders = ORDERS.filter(order => order.canceled == false);
+        let orders = ORDERS.filter(order => order && order.canceled == false);
         return Promise.resolve(orders);
     }
 
@@ -16,8 +16,13 @@ export class OrderService {
     }
 
     getCanceledOrders(): Promise<Order[]> {
-        let canceled = ORDERS.filter(order => order.canceled == true);
+        let canceled = ORDERS.filter(order => order && order.canceled == true);
         return Promise.resolve(canceled);
+    }
+
+    getCompletedOrders(): Promise<Order[]> {
+        let completed = ORDERS.filter(order => (order && !order.canceled && order.canBeCompleted));
+        return Promise.resolve(completed);
     }
 
     getOrdersAsync(): Promise<Order[]> {
@@ -36,10 +41,19 @@ export class OrderService {
         this._getOrder(id).then(order => order.canceled = true);
     }
 
+    setCompleted(id: number) {
+        this._getOrder(id).then(order => order.items.forEach(item => item.completed = true));
+    }
+
     createOrder(order: Order) {
-        order.id = ORDERS.length.toString();
+        order.id = ORDERS.length;
         order.date = new Date().toDateString();
         ORDERS.push(order);
+        return Promise.resolve(true);
+    }
+
+    deleteOrder(id: number) {
+        ORDERS[id] = null;
         return Promise.resolve(true);
     }
 }
