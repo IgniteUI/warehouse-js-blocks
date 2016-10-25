@@ -1,7 +1,8 @@
 import { Component, Injectable, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Params} from '@angular/router';
 import { Location } from '@angular/common';
-import { Order, ORDERS } from "./order";
+import { Order, ORDERS, choice, Item } from "./order";
+import { MOCK } from "./mock";
 
 @Injectable()
 export class OrderService {
@@ -21,7 +22,7 @@ export class OrderService {
     }
 
     getCompletedOrders(): Promise<Order[]> {
-        let completed = ORDERS.filter(order => (order && !order.canceled && order.canBeCompleted));
+        let completed = ORDERS.filter(order => (order && !order.canceled && order.completed));
         return Promise.resolve(completed);
     }
 
@@ -42,12 +43,18 @@ export class OrderService {
     }
 
     setCompleted(id: number) {
-        this._getOrder(id).then(order => order.items.forEach(item => item.completed = true));
+        this._getOrder(id).then(order => {
+            order.completed = true;
+            order.items.forEach(item => item.completed = true);
+        });
     }
 
     createOrder(order: Order) {
+        let mock = choice(MOCK);
         order.id = ORDERS.length;
         order.date = new Date().toDateString();
+        order.company = mock.company;
+        mock.product.forEach((product, idx) => order.items.push(new Item(idx, product, false)));
         ORDERS.push(order);
         return Promise.resolve(true);
     }

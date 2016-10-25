@@ -29,10 +29,6 @@ export class OrderDetailComponent implements OnInit {
         });
     }
 
-    completeOrder(id: number) {
-        this.orderService.setComplete(id);
-    }
-
     cancelOrder(id: number) {
         this.orderService.setCancel(id);
         this.router.navigate(['/']);

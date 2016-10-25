@@ -33,6 +33,16 @@ export class BoardComponent implements OnInit {
 
     toggle(event: Event) {
 
+        let tabbar = document.querySelector('ul.ig-tab-bar-inner__menu');
+        let fab = document.querySelector('.ig-button--fab');
+
+        if (document.activeElement.isSameNode(event.target)) {
+            fab.style.visibility = 'hidden';
+            tabbar.style.visibility = 'hidden';
+        } else {
+            fab.style.visibility = '';
+            tabbar.style.visibility = '';
+        }
     }
 
     getOrders() {

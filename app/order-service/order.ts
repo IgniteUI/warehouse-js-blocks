@@ -1,6 +1,6 @@
 import { MOCK } from "./mock";
 
-function choice(arrData) {
+export function choice(arrData) {
     return arrData[Math.floor(Math.random() * arrData.length)];
 }
 
@@ -25,7 +25,7 @@ export class Order {
     completed: boolean = false;
     canceled: boolean = false;
 
-    constructor(id: string, number: string, date: string, items: Item[], canceled: boolean, completed: boolean) {
+    constructor(id: number, number: string, company: string, date: string, items: Item[], canceled: boolean, completed: boolean) {
         this.id = id;
         this.number = number;
         this.company = company;
@@ -55,7 +55,8 @@ function populate() {
             sample.company,
             sample.date,
             [],
-            Math.floor(Math.random() * 7) % 2 == 0
+            Math.floor(Math.random() * 7) % 2 == 0,
+            false
         );
 
         for (let j = 0; j < sample.product.length; j++) {

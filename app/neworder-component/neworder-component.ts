@@ -22,7 +22,7 @@ export class NewOrderComponent implements OnInit {
         private route: ActivatedRoute) {}
 
     ngOnInit() {
-        this.order = new Order('', '', '', [], false, false);
+        this.order = new Order(0, '', '', '', [], false, false);
         this.sub = this.route
             .queryParams
             .subscribe(params => {
@@ -30,9 +30,6 @@ export class NewOrderComponent implements OnInit {
             });
         if (this.isScanned) {
             this.order.number = '111-11-424-12321';
-            for (let i = 1; i < 4; i++) {
-                this.items.push(new Item(i.toString(), i.toString(), false));
-            }
         }
     }
 
@@ -51,7 +48,7 @@ export class NewOrderComponent implements OnInit {
         this.orderService.createOrder(this.order)
             .then(res => {
                 if (res) {
-                    this.router.navigate(['']);
+                    this.router.navigate(['/']);
                 }
             });
     }
