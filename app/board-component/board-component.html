@@ -1,0 +1,92 @@
+<div class="navbar-wrapper">
+	
+	<!--Navbar Component Start-->
+	<ig-navbar title="{{selected}} Orders"></ig-navbar>
+	<!--Navbar Component End-->
+	
+	<!--Searchbar Start-->
+	<div class="ig-form-group searchbar">
+		<input class="ig-form-group__input--search" [placeholder]="'Search ' +  selected.toLowerCase() + ' orders'" [(ngModel)]="search_val"
+		/>
+		<label igLabel>
+			<i class="material-icons">search</i>
+		</label>
+		<span class="ig-form-group__clear--hidden">
+			<i class="material-icons">clear</i>
+		</span>
+	</div>
+	<!--Searchbar End-->
+
+</div>
+
+<!--Main Content-->
+<div class="content--np content--main">
+
+	<!--Tabbar Component Start-->
+	<ig-tab-bar alignment="bottom" (selectTab)="changeLabel($event)">
+		<!--First Tab Start-->
+		<ig-tab label="Active" icon="bookmark">
+			<ig-list>
+				<ig-list-item igRipple="rgba(#0375be" igRippleTarget=".ig-list__item" *ngFor="let order of orders | filter: fOptions">
+					<div class="item-wrapper" (click)="goto(order)">
+						<div class="item-icon">
+							<ig-avatar roundShape="true" icon="shopping_basket" bgColor="#FBB13C">
+							</ig-avatar>
+						</div>
+						<div class="item-info">
+							<p class="item-info__prefix">Order #</p>
+							<h6 class="item-info__fl">{{ order.number }}</h6>
+							<h5 class="item-info__sl">{{ order.date }}</h5>
+						</div>
+					</div>
+				</ig-list-item>
+			</ig-list>
+		</ig-tab>
+		<!--First Tab End-->
+
+		<!--Second Tab Start-->
+		<ig-tab label="Archived" icon="archive">
+			<ig-list>
+				<ig-list-header>Completed</ig-list-header>
+				<ig-list-item igRipple igRippleTarget=".ig-list__item" *ngFor="let order of completed_orders | filter: fOptions">
+					<div class="item-wrapper" (click)="goto(order)">
+						<div class="item-icon">
+							<ig-avatar roundShape="true" icon="done" bgColor="#3C4">
+							</ig-avatar>
+						</div>
+						<div class="item-info">
+							<p class="item-info__prefix">Order #</p>
+							<h6 class="item-info__fl">{{ order.number }}</h6>
+							<h5 class="item-info__sl">{{ order.date }}</h5>
+						</div>
+					</div>
+				</ig-list-item>
+				<ig-list-header>Canceled</ig-list-header>
+				<ig-list-item igRipple igRippleTarget=".ig-list__item" *ngFor="let order of canceled_orders | filter: fOptions">
+					<div class="item-wrapper" (click)="goto(order)">
+						<div class="item-icon">
+							<ig-avatar roundShape="true" icon="close" bgColor="#FF6978">
+							</ig-avatar>
+						</div>
+						<div class="item-info">
+							<p class="item-info__prefix">Order #</p>
+							<h6 class="item-info__fl">{{ order.number }}</h6>
+							<h5 class="item-info__sl">{{ order.date }}</h5>
+						</div>
+					</div>
+				</ig-list-item>
+			</ig-list>
+		</ig-tab>
+		<!--Second Tab End-->
+
+	</ig-tab-bar>
+	<!--Tabbar Component End-->
+	
+</div>
+<!--Main Content End-->
+
+<!--FAB Start-->
+<button class="board-fab" igButton="fab" igRipple="white" routerLink="/new">
+	<i class="material-icons">add</i>
+</button>
+<!--FAB End-->

@@ -1,0 +1,26 @@
+<!--Navbar Component Start-->
+<ig-navbar title="Add order" routerLink="/" icon="arrow_back"></ig-navbar>
+<!--Navbar Component End-->
+
+<!--Main Content Start-->
+<div class="content">
+	<form (ngSubmit)="onSubmit()" #orderForm="ngForm">
+
+		<div class="ig-form-group">
+			<input type="text" igInput name="orderNumber" [(ngModel)]="order.number" required>
+			<label igLabel>Order Number</label>
+		</div>
+
+		<div class="button-group" *ngIf="!isScanned">
+			<button igButton="raised" type="submit" [disabled]="!orderForm.form.valid">Add Order</button>
+			<button igButton="raised" routerLink="/scan">Scan Barcode</button>
+		</div>
+
+		<div class="button-group" *ngIf="isScanned">
+			<button igButton="raised" igButtonBackground="white" igButtonColor="red" (click)="cancel($event)">Cancel</button>
+			<button igButton="raised" type="submit">Confirm</button>
+		</div>
+		
+	</form>
+</div>
+<!--Main Content End-->

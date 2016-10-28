@@ -1,0 +1,15 @@
+<!--Navbar Component Start-->
+<ig-navbar title="Scan" icon="arrow_back"></ig-navbar>
+<!--Navbar Component End-->
+
+<!--Main Content Start-->
+<div class="content--centered" routerLink="/new" [queryParams]="{ isScanned: true}">
+
+    <img class="barcode-image" src="../app/images/scan-picture.png" alt="barcode image" >
+    
+    <span igButton="fab" class="capture-barcode">
+        <i class="material-icons">crop_free</i>
+    </span>
+
+</div>
+<!--Main Content End-->
