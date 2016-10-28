@@ -13,7 +13,7 @@
 .navbar-wrapper {
     position: fixed;
     width: 100%;
-    height: 124px;
+    height: 126px;
     top: 0;
     background: #fff;
     z-index: 4;
@@ -25,7 +25,7 @@
     margin-top: 76px;
 }
 
-.fab-wrapper {
+ .board-fab {
     position: fixed;
     bottom: 72px;
     right: 16px;
