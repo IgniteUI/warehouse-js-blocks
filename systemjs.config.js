@@ -6,7 +6,7 @@
   System.config({
     paths: {
       // paths serve as alias
-      'npm:': 'node_modules/'
+      'npm:': 'https://rawgit.com/IgniteUI/warehouse-js-blocks/master/node_modules/'
     },
     // map tells the System loader where to look for things
     map: {
@@ -29,18 +29,18 @@
     // packages tells the System loader how to load when no filename and/or no extension
     packages: {
       app: {
-        main: './main.js',
+        main: 'https://rawgit.com/IgniteUI/warehouse-js-blocks/master/main.js',
         defaultExtension: 'js'
       },
       rxjs: {
         defaultExtension: 'js'
       },
       'angular-in-memory-web-api': {
-        main: './index.js',
+        main: 'https://rawgit.com/IgniteUI/warehouse-js-blocks/master/index.js',
         defaultExtension: 'js'
       },
       'zero-blocks': {
-        main: './main.js',
+        main: 'https://rawgit.com/IgniteUI/warehouse-js-blocks/master/main.js',
         defaultExtension: 'js'
       }
     }
