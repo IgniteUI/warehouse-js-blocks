@@ -10,8 +10,8 @@
     <meta name="mobile-web-app-capable" content="yes">
     <meta id="theme-color" name="theme-color" content="#0375BE">
     <link rel="shortcut icon" sizes="192x192" href="icon-192x192.png">
-    <link rel="manifest" href="https://raw.githubusercontent.com/rkaraivanov/demoapp/gh-pages/manifest.json">
-    <link rel="stylesheet" href="https://raw.githubusercontent.com/rkaraivanov/demoapp/gh-pages/styles.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="styles.css">
     <!-- 1. Load libraries -->
      <!-- Polyfill(s) for older browsers -->
     <script src="https://rawgit.com/web-animations/web-animations-js/master/web-animations.min.js"></script>
@@ -21,7 +21,7 @@
     <script src="https://unpkg.com/hammerjs/hammer.js"></script>
     <script src="https://unpkg.com/systemjs/dist/system.src.js"></script>
     <!-- 2. Configure SystemJS -->
-    <script src="https://raw.githubusercontent.com/rkaraivanov/demoapp/gh-pages/systemjs.config.js"></script>
+    <script src="./systemjs.config.js"></script>
     <script>
       System.import('app/main.ts').then(null, console.error.bind(console));
     </script>
