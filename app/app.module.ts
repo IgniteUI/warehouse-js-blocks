@@ -11,8 +11,10 @@ import { OrderDetailComponent } from "./order-component/order-component";
 import { NewOrderComponent } from "./neworder-component/neworder-component";
 import { ScanComponent } from "./scan-component/scan-component";
 
+
 import { IgRippleModule, ButtonModule, TabBarModule, CheckboxModule } from "zero-blocks/main";
-import { IgInput, ListModule, IgLayout, FilterModule, NavbarModule } from "zero-blocks/main";
+import { IgInput, ListModule, IgLayout, FilterModule, NavbarModule, AvatarModule } from "zero-blocks/main";
+
 
 @NgModule({
   declarations: [
@@ -35,6 +37,7 @@ import { IgInput, ListModule, IgLayout, FilterModule, NavbarModule } from "zero-
     TabBarModule,
     CheckboxModule,
     NavbarModule,
+    AvatarModule,
     RouterModule.forRoot([
       {
         path: '',
