@@ -1,6 +1,14 @@
 @import "node_modules/zero-blocks/fonts/material-icons.css";
 @import "node_modules/zero-blocks/zero-blocks.material.css";
 
+/* App Loading Container */
+.loader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
 .ig-tab-inner {
     margin-bottom: 56px;
 }
