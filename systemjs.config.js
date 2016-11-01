@@ -6,7 +6,12 @@
   System.config({
     paths: {
       // paths serve as alias
-      'npm:': 'node_modules/'
+      'npm:': 'https://unpkg.com/'
+    },
+    meta: {
+      'typescript': {
+        'exports': 'ts'
+      }
     },
     // map tells the System loader where to look for things
     map: {
@@ -24,13 +29,14 @@
       // other libraries
       'rxjs':                      'npm:rxjs',
       'angular-in-memory-web-api': 'npm:angular-in-memory-web-api',
+      'ts':                         'npm:plugin-typescript@4.0.10/lib/plugin.js',
+      'typescript':                 'npm:typescript@2.0.2/lib/typescript.js',
       'zero-blocks': 'npm:zero-blocks'
     },
     // packages tells the System loader how to load when no filename and/or no extension
     packages: {
       app: {
-        main: './main.js',
-        defaultExtension: 'js'
+        defaultExtension: 'ts'
       },
       rxjs: {
         defaultExtension: 'js'
@@ -40,9 +46,15 @@
         defaultExtension: 'js'
       },
       'zero-blocks': {
-        main: './main.js',
         defaultExtension: 'js'
       }
+    },
+    transpiler: 'ts',
+    typescriptOptions: {
+      "target": "es5",
+      "module": "commonjs",
+      "emitDecoratorMetadata": true,
+      "experimentalDecorators": true,
     }
   });
 })(this);

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { IgRippleModule, ButtonModule, ListModule } from "../../node_modules/zero-blocks/main";
-import { IgInput, FilterOptions } from "../../node_modules/zero-blocks/main";
+import { IgRippleModule, ButtonModule, ListModule } from "zero-blocks/main";
+import { IgInput, FilterOptions } from "zero-blocks/main";
 import { OrderService } from "../order-service/order-service";
 import { Order } from "../order-service/order";
 
