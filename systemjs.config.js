@@ -8,6 +8,11 @@
       // paths serve as alias
       'npm:': 'https://unpkg.com/'
     },
+    meta: {
+      'typescript': {
+        'exports': 'ts'
+      }
+    },
     // map tells the System loader where to look for things
     map: {
       // our app is within the app folder
@@ -24,12 +29,13 @@
       // other libraries
       'rxjs':                      'npm:rxjs',
       'angular-in-memory-web-api': 'npm:angular-in-memory-web-api',
+      'ts':                         'npm:plugin-typescript@4.0.10/lib/plugin.js',
+      'typescript':                 'npm:typescript@2.0.2/lib/typescript.js',
       'zero-blocks': 'npm:zero-blocks'
     },
     // packages tells the System loader how to load when no filename and/or no extension
     packages: {
       app: {
-        main: './main.ts',
         defaultExtension: 'ts'
       },
       rxjs: {
@@ -40,13 +46,15 @@
         defaultExtension: 'js'
       },
       'zero-blocks': {
-        main: './main.js',
         defaultExtension: 'js'
       }
     },
-    transpiler: 'typescript',
+    transpiler: 'ts',
     typescriptOptions: {
-      emitDecoratorMetadata: true
+      "target": "es5",
+      "module": "commonjs",
+      "emitDecoratorMetadata": true,
+      "experimentalDecorators": true,
     }
   });
 })(this);
