@@ -10,7 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
-var main_1 = require("../../node_modules/zero-blocks/main");
+var main_1 = require("zero-blocks/main");
 var order_service_1 = require("../order-service/order-service");
 var BoardComponent = (function () {
     function BoardComponent(router, orderService) {

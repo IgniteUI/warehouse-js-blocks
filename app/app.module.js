@@ -19,8 +19,8 @@ var board_component_1 = require("./board-component/board-component");
 var order_component_1 = require("./order-component/order-component");
 var neworder_component_1 = require("./neworder-component/neworder-component");
 var scan_component_1 = require("./scan-component/scan-component");
-var main_1 = require("../node_modules/zero-blocks/main");
-var main_2 = require("../node_modules/zero-blocks/main");
+var main_1 = require("zero-blocks/main");
+var main_2 = require("zero-blocks/main");
 var AppModule = (function () {
     function AppModule() {
     }
