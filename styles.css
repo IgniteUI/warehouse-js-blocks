@@ -2,6 +2,11 @@
 @import "node_modules/zero-blocks/zero-blocks.material.css";
 
 /* App Loading Container */
+html,
+body {
+    height: 100%;
+}
+
 .loader {
     display: flex;
     align-items: center;
