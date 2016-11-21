@@ -69,6 +69,7 @@ body {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
+    align-items: center;
 }
 
 .item-icon {
@@ -79,6 +80,11 @@ body {
     display: flex;
     flex-direction: column;
     flex-grow: 2;
+}
+
+.item-arrow {
+    height: 24px;
+    color: #E3E3E3;
 }
 
 .item-info__prefix {
