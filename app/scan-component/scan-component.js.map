@@ -1,1 +1,0 @@
-{"version":3,"file":"scan-component.js","sourceRoot":"","sources":["scan-component.ts"],"names":[],"mappings":";;;;;;;;;;AAAA,qBAA0B,eAAe,CAAC,CAAA;AAO1C;IAAA;IACA,CAAC;IAND;QAAC,gBAAS,CAAC;YACP,QAAQ,EAAE,SAAS;YACnB,QAAQ,EAAE,MAAM,CAAC,EAAE;YACnB,WAAW,EAAE,qBAAqB;SACrC,CAAC;;qBAAA;IAEF,oBAAC;AAAD,CAAC,AADD,IACC;AADY,qBAAa,gBACzB,CAAA"}
