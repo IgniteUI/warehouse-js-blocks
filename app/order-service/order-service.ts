@@ -8,7 +8,7 @@ import { MOCK } from "./mock";
 export class OrderService {
 
     getOrders(): Promise<Order[]> {
-        let orders = ORDERS.filter(order => order && !order.canceled && !order.completed);
+        let orders = ORDERS.filter(order => order && (!order.canceled && !order.completed));
         return Promise.resolve(orders);
     }
 
@@ -17,12 +17,12 @@ export class OrderService {
     }
 
     getCanceledOrders(): Promise<Order[]> {
-        let canceled = ORDERS.filter(order => order && order.canceled);
+        let canceled = ORDERS.filter(order => (order && order.canceled));
         return Promise.resolve(canceled);
     }
 
     getCompletedOrders(): Promise<Order[]> {
-        let completed = ORDERS.filter(order => (order && !order.canceled && order.completed));
+        let completed = ORDERS.filter(order => (order && (!order.canceled && order.completed)));
         return Promise.resolve(completed);
     }
 

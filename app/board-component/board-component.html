@@ -1,17 +1,16 @@
 <div class="navbar-wrapper">
-	
+
 	<!--Navbar Component Start-->
-	<ig-navbar title="{{selected}} Orders"></ig-navbar>
+	<igx-navbar title="{{selected}} Orders"></igx-navbar>
 	<!--Navbar Component End-->
-	
+
 	<!--Searchbar Start-->
-	<div class="ig-form-group searchbar">
-		<input class="ig-form-group__input--search" [placeholder]="'Search ' +  selected.toLowerCase() + ' orders'" [(ngModel)]="search_val"
-		/>
-		<label igLabel>
+	<div class="igx-form-group searchbar">
+		<input class="igx-form-group__input--search" [placeholder]="'Search ' +  selected.toLowerCase() + ' orders'" [(ngModel)]="search_val"/>
+		<label igxLabel>
 			<i class="material-icons">search</i>
 		</label>
-		<span class="ig-form-group__clear--hidden">
+		<span class="igx-form-group__clear--hidden">
 			<i class="material-icons">clear</i>
 		</span>
 	</div>
@@ -23,15 +22,14 @@
 <div class="content--np content--main">
 
 	<!--Tabbar Component Start-->
-	<ig-tab-bar alignment="bottom" (selectTab)="changeLabel($event)">
+	<igx-tab-bar alignment="bottom" (selectTab)="changeLabel($event)">
 		<!--First Tab Start-->
-		<ig-tab label="Active" icon="bookmark">
-			<ig-list>
-				<ig-list-item igRipple="rgba(#0375be" igRippleTarget=".ig-list__item" *ngFor="let order of orders | filter: fOptions">
+		<igx-tab label="Active" icon="bookmark">
+			<igx-list>
+				<igx-list-item igxRipple="#0375be" igxRippleTarget=".ig-list__item" *ngFor="let order of orders | igxFilter: fOptions">
 					<div class="item-wrapper" (click)="goto(order)">
-						<div class="item-icon">
-							<ig-avatar roundShape="true" icon="shopping_basket" bgColor="#FBB13C">
-							</ig-avatar>
+						<div class="item-icon" style="width: 46px; height: 46px;">
+    						<igx-circular-bar [value]="order.completion || 0"></igx-circular-bar>
 						</div>
 						<div class="item-info">
 							<h6 class="item-info__fl">{{ order.number }}</h6>
@@ -41,20 +39,20 @@
 							<i class="material-icons">chevron_right</i>
 						</div>
 					</div>
-				</ig-list-item>
-			</ig-list>
-		</ig-tab>
+				</igx-list-item>
+			</igx-list>
+		</igx-tab>
 		<!--First Tab End-->
 
 		<!--Second Tab Start-->
-		<ig-tab label="Archived" icon="archive">
-			<ig-list>
-				<ig-list-header>Completed</ig-list-header>
-				<ig-list-item igRipple igRippleTarget=".ig-list__item" *ngFor="let order of completed_orders | filter: fOptions">
+		<igx-tab label="Archived" icon="archive">
+			<igx-list>
+				<igx-list-header>Completed</igx-list-header>
+				<igx-list-item igxRipple igxRippleTarget=".ig-list__item" *ngFor="let order of completed_orders | igxFilter: fOptions">
 					<div class="item-wrapper" (click)="goto(order)">
 						<div class="item-icon">
-							<ig-avatar roundShape="true" icon="done" bgColor="#3C4">
-							</ig-avatar>
+							<igx-avatar roundShape="true" icon="done" bgColor="#3C4">
+							</igx-avatar>
 						</div>
 						<div class="item-info">
 							<h6 class="item-info__fl">{{ order.number }}</h6>
@@ -64,13 +62,13 @@
 							<i class="material-icons">chevron_right</i>
 						</div>
 					</div>
-				</ig-list-item>
-				<ig-list-header>Canceled</ig-list-header>
-				<ig-list-item igRipple igRippleTarget=".ig-list__item" *ngFor="let order of canceled_orders | filter: fOptions">
+				</igx-list-item>
+				<igx-list-header>Canceled</igx-list-header>
+				<igx-list-item igxRipple igxRippleTarget=".ig-list__item" *ngFor="let order of canceled_orders | igxFilter: fOptions">
 					<div class="item-wrapper" (click)="goto(order)">
 						<div class="item-icon">
-							<ig-avatar roundShape="true" icon="close" bgColor="#FF6978">
-							</ig-avatar>
+							<igx-avatar roundShape="true" icon="close" bgColor="#FF6978">
+							</igx-avatar>
 						</div>
 						<div class="item-info">
 							<h6 class="item-info__fl">{{ order.number }}</h6>
@@ -80,19 +78,19 @@
 							<i class="material-icons">chevron_right</i>
 						</div>
 					</div>
-				</ig-list-item>
-			</ig-list>
-		</ig-tab>
+				</igx-list-item>
+			</igx-list>
+		</igx-tab>
 		<!--Second Tab End-->
 
-	</ig-tab-bar>
+	</igx-tab-bar>
 	<!--Tabbar Component End-->
-	
+
 </div>
 <!--Main Content End-->
 
 <!--FAB Start-->
-<button class="board-fab" igButton="fab" igRipple="white" routerLink="/new">
+<button class="board-fab" igxButton="fab" igxRipple="white" routerLink="/new">
 	<i class="material-icons">add</i>
 </button>
 <!--FAB End-->

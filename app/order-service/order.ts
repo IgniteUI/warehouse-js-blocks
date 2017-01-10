@@ -35,6 +35,15 @@ export class Order {
         this.completed = completed;
     }
 
+    get completion() {
+
+        let completed = 0;
+        this.items.forEach(item => {
+            if (item.completed) { completed++; }
+        });
+        return Math.round(completed / this.items.length * 100);
+    }
+
     get canBeCompleted() {
         return this.items.every(item => item.completed);
     }

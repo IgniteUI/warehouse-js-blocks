@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { IgRippleModule, ButtonModule, ListModule } from "zero-blocks/main";
-import { IgInput, FilterOptions } from "zero-blocks/main";
+import { IgxComponentsModule, IgxDirectivesModule, IgxFilterOptions } from "igniteui-js-blocks/main";
 import { OrderService } from "../order-service/order-service";
 import { Order } from "../order-service/order";
 
@@ -21,11 +20,11 @@ export class BoardComponent implements OnInit {
 
     constructor(
         private router: Router,
-        private orderService: OrderService
+        private orderService: OrderService,
     ) {}
 
     get fOptions() {
-        let fo = new FilterOptions();
+        let fo = new IgxFilterOptions();
         fo.key = "number";
         fo.inputValue = this.search_val;
         return fo;
@@ -51,6 +50,23 @@ export class BoardComponent implements OnInit {
         setTimeout(() => {
             this.router.navigate(link);
         }, 250);
+    }
+
+    cancel(id: number, event) {
+        console.log(event);
+        // event.gesture.preventDefault();
+        this.orderService.setCancel(id);
+        this.getOrders();
+        this.getCompletedOrders();
+        this.getCanceledOrders();
+    }
+
+    complete(id: number, event) {
+        // event.gesture.preventDefault();
+        this.orderService.setCompleted(id);
+        this.getOrders();
+        this.getCompletedOrders();
+        this.getCanceledOrders();
     }
 
     changeLabel(ev) {

@@ -1,5 +1,5 @@
 <!--Navbar Component Start-->
-<ig-navbar title="Order" icon="arrow_back"></ig-navbar>
+<igx-navbar title="Order" icon="arrow_back"></igx-navbar>
 <!--Navbar Component End-->
 
 <!--Main Content Start -->
@@ -13,25 +13,25 @@
 
 		<div class="order-detail__cbxgroup" *ngIf="order.items">
 			<div style="margin-top: 10px;" *ngFor="let item of order.items">
-				<ig-checkbox [disabled]="order.completed || order.canceled" [checked]="order.completed" [(ngModel)]="item.completed">{{ item.description }}</ig-checkbox>
+				<igx-checkbox [disabled]="order.completed || order.canceled" [checked]="order.completed" [(ngModel)]="item.completed">{{ item.description }}</igx-checkbox>
 			</div>
 		</div>
 
 		<div class="button-group" *ngIf="order.canceled || order.completed">
-			<span *ngIf="order.canceled" igButton="raised" igButtonBackground="red" igButtonColor="white" (click)="deleteOrder(order.id)" igRipple>
+			<span *ngIf="order.canceled" igxButton="raised" igxButtonBackground="red" igxButtonColor="white" (click)="deleteOrder(order.id)" igxRipple>
 				Delete
 			</span>
 
-			<span *ngIf="order.completed" igButton="raised" igButtonBackground="red" igButtonColor="white" (click)="deleteOrder(order.id)" igRipple>
+			<span *ngIf="order.completed" igxButton="raised" igxButtonBackground="red" igxButtonColor="white" (click)="deleteOrder(order.id)" igxRipple>
 				Delete
 			</span>
 		</div>
-		
+
 		<div class="button-group" *ngIf="!order.canceled && !order.completed">
-			<span igButton="raised" igButtonBackground="white" igButtonColor="red" (click)="cancelOrder(order.id)" igRipple>
+			<span igxButton="raised" igxButtonBackground="white" igxButtonColor="red" (click)="cancelOrder(order.id)" igxRipple>
 				Cancel
 			</span>
-			<span *ngIf="!order.canceled" igButton="raised" igButtonBackground (click)="completeOrder(order.id)" [disabled]="!order.canBeCompleted && !order.canceled" igRipple="white">
+			<span *ngIf="!order.canceled" igxButton="raised" igxButtonBackground (click)="completeOrder(order.id)" [disabled]="!order.canBeCompleted && !order.canceled" igxRipple="white">
 				Complete
 			</span>
 		</div>

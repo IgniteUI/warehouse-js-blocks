@@ -10,11 +10,9 @@ import { BoardComponent } from "./board-component/board-component";
 import { OrderDetailComponent } from "./order-component/order-component";
 import { NewOrderComponent } from "./neworder-component/neworder-component";
 import { ScanComponent } from "./scan-component/scan-component";
+import { SplashScreenComponent } from "./splashscreen-component/splashscreen.component";
 
-
-import { IgRippleModule, ButtonModule, TabBarModule, CheckboxModule } from "zero-blocks/main";
-import { IgInput, ListModule, IgLayout, FilterModule, NavbarModule, AvatarModule } from "zero-blocks/main";
-
+import { IgxComponentsModule, IgxDirectivesModule } from "igniteui-js-blocks/main";
 
 @NgModule({
   declarations: [
@@ -23,25 +21,23 @@ import { IgInput, ListModule, IgLayout, FilterModule, NavbarModule, AvatarModule
     OrderDetailComponent,
     NewOrderComponent,
     ScanComponent,
-    IgInput
+    SplashScreenComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    IgRippleModule,
-    ButtonModule,
-    ListModule,
-    IgLayout,
-    FilterModule,
-    TabBarModule,
-    CheckboxModule,
-    NavbarModule,
-    AvatarModule,
+
+    IgxDirectivesModule,
+    IgxComponentsModule,
     RouterModule.forRoot([
       {
         path: '',
         component: BoardComponent
+      },
+      {
+        path: 'splash',
+        component: SplashScreenComponent
       },
       {
         path: 'detail/:id',
