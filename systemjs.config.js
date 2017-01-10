@@ -6,7 +6,12 @@
   System.config({
     paths: {
       // paths serve as alias
-      'npm:': 'node_modules/'
+      'npm:': 'https://unpkg.com/'
+    },
+    meta: {
+      'typescript': {
+        'exports': 'ts'
+      }
     },
     // map tells the System loader where to look for things
     map: {
@@ -23,6 +28,8 @@
       '@angular/forms': 'npm:@angular/forms/bundles/forms.umd.js',
       // other libraries
       'rxjs':                      'npm:rxjs',
+      'ts':                 'npm:plugin-typescript@4.0.10/lib/plugin.js',
+      'typescript':                 'npm:typescript@2.0.2/lib/typescript.js',
       'igniteui-js-blocks': 'npm:igniteui-js-blocks'
     },
     // packages tells the System loader how to load when no filename and/or no extension
@@ -38,6 +45,13 @@
         main: './main.js',
         defaultExtension: 'js'
       }
+    },
+    transpiler: 'ts',
+    typescriptOptions: {
+      "target": "es5",
+      "module": "commonjs",
+      "emitDecoratorMetadata": true,
+      "experimentalDecorators": true
     }
   });
 })(this);
