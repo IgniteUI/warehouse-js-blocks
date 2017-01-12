@@ -24,6 +24,10 @@ body {
     z-index: 4;
 }
 
+.board-nav button {
+    display: none;
+}
+
 .searchbar {
     position: relative;
     padding: 0 16px;
@@ -130,7 +134,7 @@ body {
     align-self: flex-end;
 }
 
-.button-group [igButton]~[igButton] {
+.button-group [igxButton]~[igxButton] {
     margin-left: 8px;
 }
 
