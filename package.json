@@ -4,10 +4,9 @@
   "scripts": {
     "start": "tsc && concurrently \"tsc -w\" \"lite-server\" ",
     "lite": "lite-server",
-    "postinstall": "typings install",
+    "postinstall": "npm prune",
     "tsc": "tsc",
-    "tsc:w": "tsc -w",
-    "typings": "typings"
+    "tsc:w": "tsc -w"
   },
   "licenses": [
     {
@@ -15,28 +14,32 @@
     }
   ],
   "dependencies": {
-    "@angular/common": "^2.0.0",
-    "@angular/compiler": "^2.0.0",
-    "@angular/core": "^2.0.0",
-    "@angular/forms": "^2.0.0",
-    "@angular/http": "^2.0.0",
-    "@angular/platform-browser": "^2.0.0",
-    "@angular/platform-browser-dynamic": "^2.0.0",
-    "@angular/router": "^3.0.0",
-    "@angular/upgrade": "^2.0.0",
+    "@angular/animations": "^4.0.0",
+    "@angular/common": "^4.0.0",
+    "@angular/compiler": "^4.0.0",
+    "@angular/core": "^4.0.0",
+    "@angular/forms": "^4.0.0",
+    "@angular/http": "^4.0.0",
+    "@angular/platform-browser": "^4.0.0",
+    "@angular/platform-browser-dynamic": "^4.0.0",
+    "@angular/router": "^4.0.0",
     "core-js": "^2.4.1",
-    "reflect-metadata": "^0.1.8",
-    "rxjs": "5.0.3",
-    "systemjs": "^0.19.27",
-    "zone.js": "^0.7.2",
-    "igniteui-js-blocks": "^0.2.2",
+    "reflect-metadata": "^0.1.10",
+    "rxjs": "^5.0.1",
+    "systemjs": "^0.19.40",
+    "zone.js": "^0.8.8",
+    "igniteui-js-blocks": "^4.0.0",
     "hammerjs": "2.0.8",
     "material-design-icons": "3.0.1"
   },
   "devDependencies": {
     "concurrently": "^3.0.0",
     "lite-server": "^2.2.2",
-    "typescript": "^2.0.3",
-    "typings":"^1.4.0"
+    "typescript": "^2.3.2",
+
+    "@types/core-js": "^0.9.41",
+    "@types/jasmine": "^2.5.47",
+    "@types/node": "^6.0.46",
+    "@types/hammerjs": "^2.0.34"
   }
 }
