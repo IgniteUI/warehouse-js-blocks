@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { IgxComponentsModule, IgxDirectivesModule, IgxFilterOptions } from "igniteui-js-blocks/main";
+import { IgxComponentsModule, IgxDirectivesModule, IgxFilterOptions, IgxSnackbar } from 'igniteui-js-blocks/main';
 import { OrderService } from "../order-service/order-service";
 import { Order } from "../order-service/order";
 
@@ -17,7 +17,9 @@ export class BoardComponent implements OnInit {
     completed_orders: Order[];
     search_val: string;
     selected: string = 'Active';
+    lastProcessedOrder: number;
 
+    @ViewChild(IgxSnackbar) snackbar: IgxSnackbar;
     constructor(
         private router: Router,
         private orderService: OrderService,
@@ -28,6 +30,12 @@ export class BoardComponent implements OnInit {
         fo.key = "number";
         fo.inputValue = this.search_val;
         return fo;
+    }
+
+    getAll() {
+        this.getOrders();
+        this.getCanceledOrders();
+        this.getCompletedOrders();
     }
 
     getOrders() {
@@ -53,20 +61,29 @@ export class BoardComponent implements OnInit {
     }
 
     cancel(id: number, event) {
-        console.log(event);
-        // event.gesture.preventDefault();
         this.orderService.setCancel(id);
-        this.getOrders();
-        this.getCompletedOrders();
-        this.getCanceledOrders();
+        this.lastProcessedOrder = id;
+        this.getAll();
+        this.snackbar.message = "Order canceled";
+        this.snackbar.show();
+    }
+
+    revertOrder() {
+        this.orderService.getOrder(this.lastProcessedOrder).then(order => {
+            order.canceled = false;
+            order.completed = false;
+        }).then(() => {
+            this.snackbar.hide();
+            this.getAll();
+        });
     }
 
     complete(id: number, event) {
-        // event.gesture.preventDefault();
         this.orderService.setCompleted(id);
-        this.getOrders();
-        this.getCompletedOrders();
-        this.getCanceledOrders();
+        this.lastProcessedOrder = id;
+        this.getAll();
+        this.snackbar.message = "Order completed";
+        this.snackbar.show();
     }
 
     changeLabel(ev) {
@@ -74,8 +91,6 @@ export class BoardComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.getOrders();
-        this.getCompletedOrders();
-        this.getCanceledOrders();
+        this.getAll();
     }
 }

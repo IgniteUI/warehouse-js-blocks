@@ -1,7 +1,7 @@
 <div class="navbar-wrapper">
 
 	<!--Navbar Component Start-->
-	<igx-navbar title="{{selected}} Orders"></igx-navbar>
+	<igx-navbar title="{{selected}} Orders" routerLink="/" actionButtonIcon="home"></igx-navbar>
 	<!--Navbar Component End-->
 
 	<!--Searchbar Start-->
@@ -24,9 +24,13 @@
 	<!--Tabbar Component Start-->
 	<igx-tab-bar alignment="bottom" (selectTab)="changeLabel($event)">
 		<!--First Tab Start-->
-		<igx-tab label="Active" icon="bookmark">
-			<igx-list>
-				<igx-list-item igxRipple="#0375be" igxRippleTarget=".ig-list__item" *ngFor="let order of orders | igxFilter: fOptions">
+		<igx-tab-panel label="Active" icon="bookmark">
+			<igx-list [allowRightPanning]="true"
+					  [allowLeftPanning]="true"
+					  (onLeftPan)="cancel($event.options.id, $event)"
+					  (onRightPan)="complete($event.options.id, $event)"
+					  hasNoItemsTemplate="true">
+				<igx-list-item [options]="{id: order.id}" igxRipple="gray" igxRippleTarget=".igx-list__item"  *ngFor="let order of orders | igxFilter: fOptions">
 					<div class="item-wrapper" (click)="goto(order)">
 						<div class="item-icon" style="width: 46px; height: 46px;">
     						<igx-circular-bar [value]="order.completion || 0"></igx-circular-bar>
@@ -40,15 +44,18 @@
 						</div>
 					</div>
 				</igx-list-item>
+				<div class="igx-list__empty--custom">
+					<h2>Nothing was found!</h2>
+				</div>
 			</igx-list>
-		</igx-tab>
+		</igx-tab-panel>
 		<!--First Tab End-->
 
 		<!--Second Tab Start-->
-		<igx-tab label="Archived" icon="archive">
+		<igx-tab-panel label="Archived" icon="archive">
 			<igx-list>
-				<igx-list-header>Completed</igx-list-header>
-				<igx-list-item igxRipple igxRippleTarget=".ig-list__item" *ngFor="let order of completed_orders | igxFilter: fOptions">
+				<igx-list-item [isHeader]="true">Completed</igx-list-item>
+				<igx-list-item igxRipple="gray" igxRippleTarget=".igx-list__item" *ngFor="let order of completed_orders | igxFilter: fOptions">
 					<div class="item-wrapper" (click)="goto(order)">
 						<div class="item-icon">
 							<igx-avatar roundShape="true" icon="done" bgColor="#3C4">
@@ -63,7 +70,7 @@
 						</div>
 					</div>
 				</igx-list-item>
-				<igx-list-header>Canceled</igx-list-header>
+				<igx-list-item [isHeader]="true">Canceled</igx-list-item>
 				<igx-list-item igxRipple igxRippleTarget=".ig-list__item" *ngFor="let order of canceled_orders | igxFilter: fOptions">
 					<div class="item-wrapper" (click)="goto(order)">
 						<div class="item-icon">
@@ -80,7 +87,7 @@
 					</div>
 				</igx-list-item>
 			</igx-list>
-		</igx-tab>
+		</igx-tab-panel>
 		<!--Second Tab End-->
 
 	</igx-tab-bar>
@@ -94,3 +101,5 @@
 	<i class="material-icons">add</i>
 </button>
 <!--FAB End-->
+
+<igx-snackbar (onAction)="revertOrder()" actionText="Undo"></igx-snackbar>
