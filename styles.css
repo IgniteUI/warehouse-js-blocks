@@ -2,9 +2,17 @@
 @import "node_modules/igniteui-js-blocks/zero-blocks.material.css";
 
 /* App Loading Container */
-html,
+/*html,
 body {
     height: 100%;
+}*/
+
+app {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
 }
 
 .loader {
@@ -27,7 +35,6 @@ body {
 .searchbar {
     position: relative;
     padding: 0 16px;
-    margin-top: 76px;
 }
 
  .board-fab {
@@ -44,13 +51,12 @@ body {
     display: flex;
     flex-flow: column;
     flex-basis: 100%;
-    height: calc(100% - 56px);
-    margin-top: 56px;
     padding: 16px;
 }
 
 .content--main {
     margin-top: 136px;
+    margin-bottom: 76px;
 }
 
 .content--np {
@@ -130,7 +136,7 @@ body {
     align-self: flex-end;
 }
 
-.button-group [igButton]~[igButton] {
+.button-group [igxButton] ~ [igxButton] {
     margin-left: 8px;
 }
 
