@@ -44,6 +44,10 @@ export class NewOrderComponent implements OnInit {
         this.sub.unsubscribe();
     }
 
+    navigateBack() {
+        this.router.navigateByUrl('/');
+    }
+
     onSubmit() {
         this.order.items = this.items;
         this.orderService.createOrder(this.order)
