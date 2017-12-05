@@ -54,7 +54,6 @@ export class BoardComponent implements OnInit {
     }
 
     goto(order: Order) {
-        debugger;
         let link = ['/detail', order.id];
         setTimeout(() => {
             this.router.navigate(link);
