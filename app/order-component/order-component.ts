@@ -43,4 +43,8 @@ export class OrderDetailComponent implements OnInit {
         this.orderService.deleteOrder(id);
         this.router.navigate(['/']);
     }
+
+    navigateBack() {
+        this.router.navigateByUrl('/');
+    }
 }

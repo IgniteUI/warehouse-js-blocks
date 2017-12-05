@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-// import { IgRippleModule, ButtonModule, IgInput } from "igniteui-js-blocks/main";
-import { IgxComponentsModule, IgxDirectivesModule } from "igniteui-js-blocks/main";
 import { OrderService } from "../order-service/order-service";
 import { Order, Item } from "../order-service/order";
 
@@ -42,6 +40,10 @@ export class NewOrderComponent implements OnInit {
 
     ngOnDestroy() {
         this.sub.unsubscribe();
+    }
+
+    navigateBack() {
+        this.router.navigateByUrl('/');
     }
 
     onSubmit() {

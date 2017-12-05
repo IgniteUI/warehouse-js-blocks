@@ -45,7 +45,7 @@
         defaultExtension: 'js'
       },
       'igniteui-js-blocks': {
-        main: './main.js',
+        main: './index.umd.js',
         defaultExtension: 'js'
       }
     },
