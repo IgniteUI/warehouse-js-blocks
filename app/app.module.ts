@@ -10,7 +10,6 @@ import { OrderService } from "./order-service/order-service";
 import {
     IgxAvatarModule,
     IgxBadgeModule,
-    IgxCardComponent,
     IgxCarouselModule,
     IgxCheckboxModule,
     IgxFilterModule,
