@@ -1,6 +1,6 @@
+import { IgxFilterOptions, IgxSnackbar } from 'igniteui-js-blocks/index.umd';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { IgxComponentsModule, IgxDirectivesModule, IgxFilterOptions, IgxSnackbar } from 'igniteui-js-blocks/main';
 import { OrderService } from "../order-service/order-service";
 import { Order } from "../order-service/order";
 
@@ -54,6 +54,7 @@ export class BoardComponent implements OnInit {
     }
 
     goto(order: Order) {
+        debugger;
         let link = ['/detail', order.id];
         setTimeout(() => {
             this.router.navigate(link);
