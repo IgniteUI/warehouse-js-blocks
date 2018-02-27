@@ -1,0 +1,46 @@
+
+body, div {
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+.mainDivContent {
+    text-align: center;
+    overflow: hidden;
+}
+
+.obNavigation {
+    background-color: white;
+    height: 120px;
+    width: 100%;
+    text-align: center;
+    position: fixed;
+    bottom: 0px;
+}
+
+.customSkipButton {
+    font-family: Verdana;
+    cursor:pointer;
+    color: #8A8A8A;
+    position: absolute;
+    margin-top: 20px;
+    left: 25px;
+}
+
+.customNextButton {
+    font-family: Verdana;
+    cursor:pointer;
+    color: #0375BE;
+    position: absolute;
+    margin-top: 20px;
+    right: 25px;
+}
+
+.shadow {
+    background-image: url(../../assets/images/onboarding/shadow_bg.png);
+    background-repeat: repeat-x;
+    height: 60px;
+}

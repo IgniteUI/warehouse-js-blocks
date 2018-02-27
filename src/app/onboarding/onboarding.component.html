@@ -1,0 +1,54 @@
+<div id="mainDiv"
+  class="mainDivContent"
+  (mousedown)="mouseDownHandler($event)" (mousemove)="mouseMoveHandler($event)" (mouseup)="mouseUpHandler($event)" (mouseout)="mouseOutHandler($event)"
+  (touchstart)="touchStartHandler($event)" (touchmove)="touchMoveHandler($event)" (touchend)="touchEndHandler($event)">
+  &nbsp;<br />
+  
+  <img src="../../assets/images/onboarding/logo.png" draggable="false" width=110 height="51"
+  style="position:absolute; transform:translate(-50%, 0);" />
+
+  <img src="{{currentSlideInfo.image1Path}}" draggable="false" style="position:absolute; transform:translate(-50%, 60px);"
+  [@swipeLeftRightAnimation]="{value: getCurrentSlideState, params: {speed: '800ms'}}"
+  (@swipeLeftRightAnimation.done)="swipeAnimationFinished($event)"
+  [style.left]="currentSlideInfo.image1Left"
+  [style.opacity]="currentSlideInfo.image1Opacity" />
+
+  <img src="{{currentSlideInfo.image2Path}}" draggable="false" style="position:absolute; transform:translate(-50%, 110px);"
+  [@swipeLeftRightAnimation]="{value: getCurrentSlideState, params: {speed: '600ms'}}"
+  (@swipeLeftRightAnimation.done)="swipeAnimationFinished($event)"
+  [style.left]="currentSlideInfo.image2Left"
+  [style.opacity]="currentSlideInfo.image2Opacity" />
+
+  <img src="{{currentSlideInfo.image3Path}}" draggable="false" style="position:absolute; transform:translate(-50%, 160px);"
+  [@swipeLeftRightAnimation]="{value: getCurrentSlideState, params: {speed: '400ms'}}"
+  (@swipeLeftRightAnimation.done)="swipeAnimationFinished($event)"
+  [style.left]="currentSlideInfo.image3Left"
+  [style.opacity]="currentSlideInfo.image3Opacity" />
+
+  <span style="position:absolute; transform:translate(-50%, 350px); word-wrap:nowrap; width:250px; height:50px; "
+  [@swipeLeftRightAnimation]="{value: getCurrentSlideState, params: {speed: '600ms'}}"
+  (@swipeLeftRightAnimation.done)="swipeAnimationFinished($event)"
+  [style.left]="currentSlideInfo.slideTitleLeft"
+  [style.opacity]="currentSlideInfo.slideTitleOpacity">
+    <h2>{{currentSlideInfo.slideTitle}}</h2>
+  </span>
+
+  <span style="position:absolute; transform:translate(-50%, 420px); word-wrap:nowrap; width:300px;" [innerHTML]=currentSlideInfo.slideText
+  [@swipeLeftRightAnimation]="{value: getCurrentSlideState, params: {speed: '800ms'}}"
+  (@swipeLeftRightAnimation.done)="swipeAnimationFinished($event)"
+  [style.left]="currentSlideInfo.slideTextLeft"
+  [style.opacity]="currentSlideInfo.slideTextOpacity">
+  </span>
+
+</div>
+
+<div class="obNavigation">
+  <div class="shadow">&nbsp;</div>
+  <div class="customSkipButton">
+    <span (click)="invokePrev()">PREVIOUS</span>
+  </div>
+  <div class="customNextButton">
+    <span (click)="invokeNext()">NEXT</span>
+  </div>
+  <img src="{{currentSlideInfo.slideDotsImagePath}}" style="margin-top:15px;" />
+</div>
