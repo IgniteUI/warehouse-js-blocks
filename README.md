@@ -1,6 +1,6 @@
 # Warehouse Picklist App
 
-A showcase application built using [Ignite UI JS Blocks](https://github.com/IgniteUI/igniteui-js-blocks).
+A showcase application built using [Ignite UI for Angular](https://github.com/IgniteUI/ignite-ui).
 
 **List of components used:**
 
@@ -13,3 +13,18 @@ A showcase application built using [Ignite UI JS Blocks](https://github.com/Igni
 | igx-tabbar            |     | Active Orders, Archived Orders                          |
 | igxButton             |     | Active Orders, Archived Orders, Order, Add Order, Scan  |
 | igxInput              |     | Active Orders, Add Order                                |
+
+## Install
+To get started follow the respective package manager installation:
+
+#### npm
+```shell
+npm install
+```
+
+## Start
+
+#### ng
+```shell
+ng serve
+```
