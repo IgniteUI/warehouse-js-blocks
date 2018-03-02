@@ -1,0 +1,14 @@
+.logoContainer {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.searchBoxContainer {
+    margin-left: 10px;
+    margin-right: 10px;
+    box-shadow: 0 1px 3px 0 gray, 0 1px 1px 0 gray, 0 2px 1px -1px gray;
+}
+
+
+
