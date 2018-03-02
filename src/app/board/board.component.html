@@ -1,0 +1,105 @@
+
+<div class="logoContainer">
+  <img src="../../assets/images/logo.png" draggable="false" width=110 height="51" />
+</div>
+
+<igx-tab-bar>
+  
+  <igx-tab-panel label="ACTIVE" icon="bookmark">
+    
+    <div class="searchBoxContainer">
+      <table border="0" cellspacing="0" cellpadding="0" width="100%">
+        <tr>
+          <td width="50px">
+            <button igxButton="icon" igxRipple igxRippleCentered="true" (click)="searchButtonClicked()">
+              <igx-icon fontSet="material" name="search"></igx-icon>
+            </button>
+          </td>
+          <td>
+            <div class="igx-form-group" style="margin-bottom:0px;">
+              <input igxInput type="text" name="firstName" [(ngModel)]="searchCriteriaValue" >
+              <label igxLabel for="firstName" >Search active orders</label>    
+            </div>
+          </td>
+          <td width="50px">
+          </td>
+        </tr>
+      </table>
+    </div>
+    
+    <igx-list>
+      <igx-list-item *ngFor="let order of orders">
+        <table style="margin:0px;" cell-padding="1" cell-margin="0">
+          <tr>
+            <td rowspan="2">
+              <div style="width:50px; height:50px; color:pink; margin-right:10px; ">
+                <igx-circular-bar [value]="order.progress" [animate]="true">
+                </igx-circular-bar>
+              </div>
+            </td>
+            <td>
+              <span style="color:red;">{{ order.id }}</span>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <span style="color:green;">{{ order.date }}</span>
+            </td>
+          </tr>
+        </table>
+      </igx-list-item>
+    </igx-list>
+  </igx-tab-panel>
+
+  <igx-tab-panel label="ARCHIVE" icon="content_copy">
+    <igx-list>
+      <igx-list-item isHeader="true">Completed</igx-list-item>  
+        
+      <igx-list-item *ngFor="let order of ordersCompleted">
+        <table style="margin:0px;" cell-padding="1" cell-margin="0">
+          <tr>
+            <td rowspan="2">
+              <div style="width:50px; height:50px; color:pink; margin-right:10px; ">
+                <igx-circular-bar [value]="order.progress" [animate]="true">
+                </igx-circular-bar>
+              </div>
+            </td>
+            <td>
+              <span style="color:red;">{{ order.id }}</span>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <span style="color:green;">{{ order.date }}</span>
+            </td>
+          </tr>
+        </table>
+      </igx-list-item>
+    
+      <igx-list-item isHeader="true">Incompleted</igx-list-item>  
+    
+      <igx-list-item *ngFor="let order of ordersIncompleted">
+        <table style="margin:0px;" cell-padding="1" cell-margin="0">
+          <tr>
+            <td rowspan="2">
+              <div style="width:50px; height:50px; color:pink; margin-right:10px; ">
+                <igx-circular-bar [value]="order.progress" [animate]="true">
+                </igx-circular-bar>
+              </div>
+            </td>
+            <td>
+              <span style="color:red;">{{ order.id }}</span>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <span style="color:green;">{{ order.date }}</span>
+            </td>
+          </tr>
+        </table>
+      </igx-list-item>
+    
+    </igx-list>
+  </igx-tab-panel>
+
+</igx-tab-bar>

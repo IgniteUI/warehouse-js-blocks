@@ -19,7 +19,8 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "styles.css"
+        "styles.css",
+        "../node_modules/igniteui-angular/styles/igniteui-angular.css"
       ],
       "scripts": [],
       "environmentSource": "environments/environment.ts",
