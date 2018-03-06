@@ -1,16 +1,17 @@
-import { Component, OnInit } from '@angular/core';
-import { trigger, state, style, animate, transition } from '@angular/animations';
+import { Component, OnInit } from "@angular/core";
+import { trigger, state, style, animate, transition } from "@angular/animations";
+import { Router } from "@angular/router";
 
 // this parameter (in percents) defines how much the mouse should be dragged
 // compared to the current browser width in order for a slide to be switched
 const slideSwitchTreshold: number = 30; // default - 30%
 
 @Component({
-  selector: 'app-onboarding',
-  templateUrl: './onboarding.component.html',
-  styleUrls: ['./onboarding.component.css'],
+  selector: "app-onboarding",
+  templateUrl: "./onboarding.component.html",
+  styleUrls: ["./onboarding.component.css"],
   animations: [
-    trigger('swipeLeftRightAnimation', [
+    trigger("swipeLeftRightAnimation", [
       state("left",   style( { left: "-20%", opacity: "0" } )), // 0 - positioned left (outside of the screen)
       state("center", style( { left: "50%", opacity: "1" } ) ), // 1 - positioned center (inside the screen)
       state("right",  style( { left: "120%", opacity: "0" } ) ), // 2 - positioned right (outside of the screen)
@@ -44,8 +45,12 @@ export class OnboardingComponent implements OnInit {
   currentSlideInfo: VisibleSlideInfo = new VisibleSlideInfo();
 
   slides: Array<SlideInfo> = new Array<SlideInfo>();
+  leftButtonText: string;
+  rightButtonText: string;
 
-  constructor() { }
+  constructor(private router: Router) {
+
+  }
 
   ngOnInit() {
     this.generateSlidesData();
@@ -202,6 +207,18 @@ export class OnboardingComponent implements OnInit {
     }
   }
 
+  invokeLeftButton() {
+    this.router.navigateByUrl("/board");
+  }
+
+  invokeRightButton() {
+    if (this.currentSlideIndex < 3) {
+      this.invokeNext();
+    } else {
+      this.router.navigateByUrl("/board");
+    }
+  }
+
 
 
   // used to trigger several animation one after another
@@ -260,6 +277,7 @@ export class OnboardingComponent implements OnInit {
   }
 
 
+
   // set the "currentSlideInfo" with the values from the "newSlide" argument
   setCurrentSlide(newSlide: SlideInfo) {
     this.currentSlideInfo.image1Path = newSlide.image1Path;
@@ -283,6 +301,25 @@ export class OnboardingComponent implements OnInit {
     this.currentSlideInfo.slideTextAcceleration = newSlide.slideTextAcceleration;
 
     this.currentSlideInfo.slideDotsImagePath = newSlide.slideDotsImagePath;
+
+    switch (this.currentSlideIndex) {
+      case 0:
+        this.leftButtonText = "SKIP";
+        this.rightButtonText = "NEXT";
+        break;
+      case 1:
+        this.leftButtonText = "SKIP";
+        this.rightButtonText = "NEXT";
+        break;
+      case 2:
+        this.leftButtonText = "SKIP";
+        this.rightButtonText = "NEXT";
+        break;
+      case 3:
+        this.leftButtonText = "";
+        this.rightButtonText = "GOT IT";
+        break;
+    }
   }
 
 
