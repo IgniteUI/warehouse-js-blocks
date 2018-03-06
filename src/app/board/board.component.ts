@@ -14,34 +14,20 @@ export class BoardComponent implements OnInit {
   ordersIncompleted = [];
 
   constructor(private ordersService: OrdersService) {
-
-
     this.orders = ordersService.getOrdersAll();
     this.ordersCompleted = ordersService.getOrdersCompleted();
     this.ordersIncompleted = ordersService.getOrdersIncompleted();
-
   }
 
   ngOnInit() {
-
-
-
   }
 
   searchButtonClicked() {
-    console.log("@@@ search requested");
-    //this.orders.pop();
-    //console.log(this.orders);
-    //console.log("@@@ " + this.orders);
-    console.log("@@@ " + this.searchCriteriaValue);
-
     if (!this.searchCriteriaValue) {
       this.orders = this.ordersService.getOrdersAll();
     } else {
       this.orders = this.ordersService.getOrdersById(this.searchCriteriaValue);
     }
-
-
   }
 
 }
