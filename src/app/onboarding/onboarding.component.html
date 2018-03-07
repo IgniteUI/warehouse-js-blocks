@@ -25,7 +25,7 @@
   [style.left]="currentSlideInfo.image3Left"
   [style.opacity]="currentSlideInfo.image3Opacity" />
 
-  <span style="position:absolute; transform:translate(-50%, 350px); word-wrap:nowrap; width:250px; height:50px; "
+  <span style="position:absolute; transform:translate(-50%, 340px); word-wrap:nowrap; width:250px; height:50px; "
   [@swipeLeftRightAnimation]="{value: getCurrentSlideState, params: {speed: '600ms'}}"
   (@swipeLeftRightAnimation.done)="swipeAnimationFinished($event)"
   [style.left]="currentSlideInfo.slideTitleLeft"
@@ -33,7 +33,7 @@
     <h2>{{currentSlideInfo.slideTitle}}</h2>
   </span>
 
-  <span style="position:absolute; transform:translate(-50%, 420px); word-wrap:nowrap; width:300px;" [innerHTML]=currentSlideInfo.slideText
+  <span style="position:absolute; transform:translate(-50%, 430px); word-wrap:nowrap; width:300px;" [innerHTML]=currentSlideInfo.slideText
   [@swipeLeftRightAnimation]="{value: getCurrentSlideState, params: {speed: '800ms'}}"
   (@swipeLeftRightAnimation.done)="swipeAnimationFinished($event)"
   [style.left]="currentSlideInfo.slideTextLeft"

@@ -1,0 +1,24 @@
+{
+    "btnSkip": "[jp] SKIP",
+    "btnNext": "[jp] NEXT",
+    "btnGotIt": "[jp] GOT IT",
+
+    "slide1Title": "[jp] Meet Roger",
+    "slide1Text": "[jp] Welcome to the warehouse demo app.<br/>Step in the shoes of Roger<br/>from the Furniture store warehouse.",
+
+    "slide2Title": "[jp] Orders",
+    "slide2Text": "[jp] Roger and his teammates assign<br/>themselves the incoming customer<br/>orders from the online store. It's done<br/> either by entering the number of the<br/>order manually or by scanning a barcode.",
+
+    "slide3Title": "[jp] Search mode",
+    "slide3Text": "[jp] Roger then starts looking for the items to<br/>fulfill his assigned orders. He's able to<br/>see the location of each item in the<br/>warehouse, or tap to expand and see<br/>further details.",
+
+    "slide4Title": "[jp] Completion",
+    "slide4Text": "[jp] When Roger finds an item, he marks it as<br/>found. When he retrieves all items, he's<br/>allowed to finalize the order. If he can't find<br/>items, he's able to raise a flag by marking<br/> an order as 'incomplete'.",
+
+    "btnActive": "[jp] ACTIVE",
+    "btnArchive": "[jp] ARCHIVE",
+    "lblSearchBoxDefaultText": "[jp] Search active orders",
+    "lblCompleted": "[jp] Completed",
+    "lblIncompleted": "[jp] Incompleted"
+
+}

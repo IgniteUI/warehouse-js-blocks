@@ -2,6 +2,8 @@ import { Component, OnInit } from "@angular/core";
 import { trigger, state, style, animate, transition } from "@angular/animations";
 import { Router } from "@angular/router";
 
+import { TranslateService, LangChangeEvent } from "@ngx-translate/core";
+
 // this parameter (in percents) defines how much the mouse should be dragged
 // compared to the current browser width in order for a slide to be switched
 const slideSwitchTreshold: number = 30; // default - 30%
@@ -48,13 +50,20 @@ export class OnboardingComponent implements OnInit {
   leftButtonText: string;
   rightButtonText: string;
 
-  constructor(private router: Router) {
-
+  constructor(private router: Router, private translate: TranslateService) {
+    // internationalization
+    translate.addLangs(["en", "jp"]);
+    translate.setDefaultLang("en");
+    let browserLang = translate.getBrowserLang();
+    translate.use(browserLang.match(/en|jp/) ? browserLang : "en");
+    //translate.use("jp");
+    translate.onLangChange.subscribe((event: LangChangeEvent) => {
+      this.generateSlidesData();
+      this.setCurrentSlide(this.slides[this.currentSlideIndex]);
+    });
   }
 
   ngOnInit() {
-    this.generateSlidesData();
-    this.setCurrentSlide(this.slides[this.currentSlideIndex]);
   }
 
   get getCurrentSlideState() {
@@ -304,20 +313,20 @@ export class OnboardingComponent implements OnInit {
 
     switch (this.currentSlideIndex) {
       case 0:
-        this.leftButtonText = "SKIP";
-        this.rightButtonText = "NEXT";
+        this.translate.get("btnSkip").subscribe((res: string) => { this.leftButtonText = res; });
+        this.translate.get("btnNext").subscribe((res: string) => { this.rightButtonText = res; });
         break;
       case 1:
-        this.leftButtonText = "SKIP";
-        this.rightButtonText = "NEXT";
+        this.translate.get("btnSkip").subscribe((res: string) => { this.leftButtonText = res; });
+        this.translate.get("btnNext").subscribe((res: string) => { this.rightButtonText = res; });
         break;
       case 2:
-        this.leftButtonText = "SKIP";
-        this.rightButtonText = "NEXT";
+        this.translate.get("btnSkip").subscribe((res: string) => { this.leftButtonText = res; });
+        this.translate.get("btnNext").subscribe((res: string) => { this.rightButtonText = res; });
         break;
       case 3:
         this.leftButtonText = "";
-        this.rightButtonText = "GOT IT";
+        this.translate.get("btnGotIt").subscribe((res: string) => { this.rightButtonText = res; });
         break;
     }
   }
@@ -326,61 +335,61 @@ export class OnboardingComponent implements OnInit {
 
   // generates the slides' data
   generateSlidesData() {
-    let slide = new SlideInfo();
-    slide.image1Path = "../../assets/images/onboarding/slide1_circle.png";
-    slide.image1Acceleration = 0.6;
-    slide.image2Path = "../../assets/images/onboarding/slide1_pluses.png";
-    slide.image2Acceleration = 0.8;
-    slide.image3Path = "../../assets/images/onboarding/slide1_roger.png";
-    slide.image3Acceleration = 1.0;
-    slide.slideTitle = "Meet Roger";
-    slide.slideTitleAcceleration = 0.8;
-    slide.slideText = "Welcome to the warehouse demo app.<br/>Step in the shoes of Roger<br/>from the Furniture store warehouse.";
-    slide.slideTextAcceleration = 0.6;
-    slide.slideDotsImagePath = "../../assets/images/onboarding/onboarding_dots1.png";
-    this.slides.push(slide);
+    let slide1 = new SlideInfo();
+    slide1.image1Path = "../../assets/images/onboarding/slide1_circle.png";
+    slide1.image1Acceleration = 0.6;
+    slide1.image2Path = "../../assets/images/onboarding/slide1_pluses.png";
+    slide1.image2Acceleration = 0.8;
+    slide1.image3Path = "../../assets/images/onboarding/slide1_roger.png";
+    slide1.image3Acceleration = 1.0;
+    slide1.slideTitle = this.translate.instant("slide1Title");
+    slide1.slideTitleAcceleration = 0.8;
+    slide1.slideText = this.translate.instant("slide1Text");
+    slide1.slideTextAcceleration = 0.6;
+    slide1.slideDotsImagePath = "../../assets/images/onboarding/onboarding_dots1.png";
+    this.slides.push(slide1);
 
-    slide = new SlideInfo();
-    slide.image1Path = "../../assets/images/onboarding/slide2_circle.png";
-    slide.image1Acceleration = 0.6;
-    slide.image2Path = "../../assets/images/onboarding/slide2_pluses.png";
-    slide.image2Acceleration = 0.8;
-    slide.image3Path = "../../assets/images/onboarding/slide2_big_plus.png";
-    slide.image3Acceleration = 1.0;
-    slide.slideTitle = "Orders";
-    slide.slideTitleAcceleration = 0.8;
-    slide.slideText = "Roger and his teammates assign<br/>themselves the incoming customer<br/>orders from the online store. It's done<br/> either by entering the number of the<br/>order manually or by scanning a barcode.";
-    slide.slideTextAcceleration = 0.6;
-    slide.slideDotsImagePath = "../../assets/images/onboarding/onboarding_dots2.png";
-    this.slides.push(slide);
+    let slide2 = new SlideInfo();
+    slide2.image1Path = "../../assets/images/onboarding/slide2_circle.png";
+    slide2.image1Acceleration = 0.6;
+    slide2.image2Path = "../../assets/images/onboarding/slide2_pluses.png";
+    slide2.image2Acceleration = 0.8;
+    slide2.image3Path = "../../assets/images/onboarding/slide2_big_plus.png";
+    slide2.image3Acceleration = 1.0;
+    slide2.slideTitle = this.translate.instant("slide2Title");
+    slide2.slideTitleAcceleration = 0.8;
+    slide2.slideText = this.translate.instant("slide2Text");
+    slide2.slideTextAcceleration = 0.6;
+    slide2.slideDotsImagePath = "../../assets/images/onboarding/onboarding_dots2.png";
+    this.slides.push(slide2);
 
-    slide = new SlideInfo();
-    slide.image1Path = "../../assets/images/onboarding/slide3_circle.png";
-    slide.image1Acceleration = 0.6;
-    slide.image2Path = "../../assets/images/onboarding/slide3_pluses.png";
-    slide.image2Acceleration = 0.8;
-    slide.image3Path = "../../assets/images/onboarding/slide3_lamp.png";
-    slide.image3Acceleration = 1.0;
-    slide.slideTitle = "Search mode";
-    slide.slideTitleAcceleration = 0.8;
-    slide.slideText = "Roger then starts looking for the items to<br/>fulfill his assigned orders. He's able to<br/>see the location of each item in the<br/>warehouse, or tap to expand and see<br/>further details.";
-    slide.slideTextAcceleration = 0.6;
-    slide.slideDotsImagePath = "../../assets/images/onboarding/onboarding_dots3.png";
-    this.slides.push(slide);
+    let slide3 = new SlideInfo();
+    slide3.image1Path = "../../assets/images/onboarding/slide3_circle.png";
+    slide3.image1Acceleration = 0.6;
+    slide3.image2Path = "../../assets/images/onboarding/slide3_pluses.png";
+    slide3.image2Acceleration = 0.8;
+    slide3.image3Path = "../../assets/images/onboarding/slide3_lamp.png";
+    slide3.image3Acceleration = 1.0;
+    slide3.slideTitle = this.translate.instant("slide3Title");
+    slide3.slideTitleAcceleration = 0.8;
+    slide3.slideText = this.translate.instant("slide3Text");
+    slide3.slideTextAcceleration = 0.6;
+    slide3.slideDotsImagePath = "../../assets/images/onboarding/onboarding_dots3.png";
+    this.slides.push(slide3);
 
-    slide = new SlideInfo();
-    slide.image1Path = "../../assets/images/onboarding/slide4_circle.png";
-    slide.image1Acceleration = 0.6;
-    slide.image2Path = "../../assets/images/onboarding/slide4_pluses.png";
-    slide.image2Acceleration = 0.8;
-    slide.image3Path = "../../assets/images/onboarding/slide4_cup.png";
-    slide.image3Acceleration = 1.0;
-    slide.slideTitle = "Completion";
-    slide.slideTitleAcceleration = 0.8;
-    slide.slideText = "When Roger finds an item, he marks it as<br/>found. When he retrieves all items, he's<br/>allowed to finalize the order. If he can't find<br/>items, he's able to raise a flag by marking<br/> an order as 'incomplete'.";
-    slide.slideTextAcceleration = 0.6;
-    slide.slideDotsImagePath = "../../assets/images/onboarding/onboarding_dots4.png";
-    this.slides.push(slide);
+    let slide4 = new SlideInfo();
+    slide4.image1Path = "../../assets/images/onboarding/slide4_circle.png";
+    slide4.image1Acceleration = 0.6;
+    slide4.image2Path = "../../assets/images/onboarding/slide4_pluses.png";
+    slide4.image2Acceleration = 0.8;
+    slide4.image3Path = "../../assets/images/onboarding/slide4_cup.png";
+    slide4.image3Acceleration = 1.0;
+    slide4.slideTitle = this.translate.instant("slide4Title");
+    slide4.slideTitleAcceleration = 0.8;
+    slide4.slideText = this.translate.instant("slide4Text");
+    slide4.slideTextAcceleration = 0.6;
+    slide4.slideDotsImagePath = "../../assets/images/onboarding/onboarding_dots4.png";
+    this.slides.push(slide4);
   }
 
 }
