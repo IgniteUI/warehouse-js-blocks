@@ -9,6 +9,7 @@ import { TranslateModule, TranslateLoader } from "@ngx-translate/core";
 import { TranslateHttpLoader } from "@ngx-translate/http-loader";
 
 import { IgxButtonModule } from "igniteui-angular/main";
+import { IgxCheckboxModule } from "igniteui-angular/main";
 import { IgxIconModule } from "igniteui-angular/main";
 import { IgxInputModule  } from "igniteui-angular/main";
 import { IgxLabelModule } from "igniteui-angular/main";
@@ -19,6 +20,7 @@ import { IgxTabBarModule } from "igniteui-angular/main";
 import { AppComponent } from "./app.component";
 import { BoardComponent } from "./board/board.component";
 import { OnboardingComponent } from "./onboarding/onboarding.component";
+import { OrderComponent } from './order/order.component';
 import { OrdersService } from "./orders-service/orders.service"
 
 import "hammerjs";
@@ -26,6 +28,7 @@ import "hammerjs";
 const appRoutes: Routes = [
   { path: "board", component: BoardComponent },
   { path: "onboarding", component: OnboardingComponent },
+  { path: "order/:orderId", component: OrderComponent },
   { path: "", redirectTo: "/onboarding", pathMatch: "full" },
 ];
 
@@ -38,12 +41,14 @@ export function HttpLoaderFactory(http: HttpClient) {
     AppComponent,
     BoardComponent,
     OnboardingComponent,
+    OrderComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
     IgxButtonModule,
+    IgxCheckboxModule,
     IgxIconModule,
     IgxInputModule,
     IgxLabelModule,

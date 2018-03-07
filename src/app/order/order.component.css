@@ -1,0 +1,18 @@
+.orderHeader {
+    background-color: #1276BC;
+    color: white;
+}
+
+.orderInfo {
+    color: black;
+}
+
+.orderItems {
+    color: black;
+}
+
+.aisleBin {
+    border: solid 1px black;
+    background-color: #1276BC;
+    color: white;
+}

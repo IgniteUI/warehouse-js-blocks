@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 import { OrdersService } from "../orders-service/orders.service";
 
@@ -16,7 +17,7 @@ export class BoardComponent implements OnInit {
   ordersCompleted = [];
   ordersIncompleted = [];
 
-  constructor(private ordersService: OrdersService, private translate: TranslateService) {
+  constructor(private ordersService: OrdersService, private translate: TranslateService, private route: ActivatedRoute, private router: Router) {
     this.orders = ordersService.getOrdersAll();
     this.ordersCompleted = ordersService.getOrdersCompleted();
     this.ordersIncompleted = ordersService.getOrdersIncompleted();
@@ -37,6 +38,14 @@ export class BoardComponent implements OnInit {
       this.orders = this.ordersService.getOrdersAll();
     } else {
       this.orders = this.ordersService.getOrdersById(this.searchCriteriaValue);
+    }
+  }
+
+  listItemClicked(evt) {
+    if (evt.item) {
+      let orderId = this.orders[evt.item.index].id;
+      console.log("@@@ selected order: " + orderId);
+      this.router.navigate(['/order', orderId]);
     }
   }
 
