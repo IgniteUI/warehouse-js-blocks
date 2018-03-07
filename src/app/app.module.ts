@@ -3,6 +3,10 @@ import { BrowserModule } from "@angular/platform-browser";
 import { FormsModule } from "@angular/forms";
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
+import { HttpClientModule, HttpClient } from "@angular/common/http";
+
+import { TranslateModule, TranslateLoader } from "@ngx-translate/core";
+import { TranslateHttpLoader } from "@ngx-translate/http-loader";
 
 import { IgxButtonModule } from "igniteui-angular/main";
 import { IgxIconModule } from "igniteui-angular/main";
@@ -25,6 +29,10 @@ const appRoutes: Routes = [
   { path: "", redirectTo: "/onboarding", pathMatch: "full" },
 ];
 
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http, "./assets/i18n/", ".json");
+}
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,7 +50,15 @@ const appRoutes: Routes = [
     IgxListModule,
     IgxProgressBarModule,
     IgxTabBarModule,
-    RouterModule.forRoot(appRoutes, {enableTracing: false})
+    RouterModule.forRoot(appRoutes, {enableTracing: false}),
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
   ],
   providers: [
     OrdersService

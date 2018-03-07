@@ -5,7 +5,7 @@
 
 <igx-tab-bar>
   
-  <igx-tab-panel label="ACTIVE" icon="bookmark">
+  <igx-tab-panel label="{{ 'btnActive' | translate }}" icon="bookmark">
     
     <div class="searchBoxContainer">
       <table border="0" cellspacing="0" cellpadding="0" width="100%">
@@ -17,8 +17,8 @@
           </td>
           <td>
             <div class="igx-form-group" style="margin-bottom:0px;">
-              <input igxInput type="text" name="firstName" [(ngModel)]="searchCriteriaValue" >
-              <label igxLabel for="firstName" >Search active orders</label>    
+              <input igxInput type="text" name="searchBox" [(ngModel)]="searchCriteriaValue" >
+              <label igxLabel for="searchBox">{{ 'lblSearchBoxDefaultText' | translate }}</label>    
             </div>
           </td>
           <td width="50px">
@@ -51,9 +51,9 @@
     </igx-list>
   </igx-tab-panel>
 
-  <igx-tab-panel label="ARCHIVE" icon="content_copy">
+  <igx-tab-panel label="{{ 'btnActive' | translate }}" icon="content_copy">
     <igx-list>
-      <igx-list-item isHeader="true">Completed</igx-list-item>  
+      <igx-list-item isHeader="true">{{ 'lblCompleted' | translate }}</igx-list-item>  
         
       <igx-list-item *ngFor="let order of ordersCompleted">
         <table style="margin:0px;" cell-padding="1" cell-margin="0">
@@ -76,7 +76,7 @@
         </table>
       </igx-list-item>
     
-      <igx-list-item isHeader="true">Incompleted</igx-list-item>  
+      <igx-list-item isHeader="true">{{ 'lblIncompleted' | translate }}</igx-list-item>  
     
       <igx-list-item *ngFor="let order of ordersIncompleted">
         <table style="margin:0px;" cell-padding="1" cell-margin="0">

@@ -1,5 +1,8 @@
 import { Component, OnInit } from "@angular/core";
+
 import { OrdersService } from "../orders-service/orders.service";
+
+import { TranslateService, LangChangeEvent } from "@ngx-translate/core";
 
 @Component({
   selector: "app-board",
@@ -13,10 +16,17 @@ export class BoardComponent implements OnInit {
   ordersCompleted = [];
   ordersIncompleted = [];
 
-  constructor(private ordersService: OrdersService) {
+  constructor(private ordersService: OrdersService, private translate: TranslateService) {
     this.orders = ordersService.getOrdersAll();
     this.ordersCompleted = ordersService.getOrdersCompleted();
     this.ordersIncompleted = ordersService.getOrdersIncompleted();
+
+    // internationalization
+    translate.addLangs(["en", "jp"]);
+    translate.setDefaultLang("en");
+    let browserLang = translate.getBrowserLang();
+    translate.use(browserLang.match(/en|jp/) ? browserLang : "en");
+    //translate.use("jp");
   }
 
   ngOnInit() {
