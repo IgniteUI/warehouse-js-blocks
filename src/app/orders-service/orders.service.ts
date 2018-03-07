@@ -70,4 +70,20 @@ export class OrdersService {
     return result;
   }
 
+  getOrder(searchOrderId: string): Order {
+    for (let i = 0; i < ORDERS_MOCK_DATA.length; i++) {
+      if (ORDERS_MOCK_DATA[i].ID == searchOrderId) {
+        let order = new Order();
+        order.id = ORDERS_MOCK_DATA[i].ID;
+        order.date = ORDERS_MOCK_DATA[i].CreationDate;
+        order.progress = ORDERS_MOCK_DATA[i].Progress;
+        order.completed = ORDERS_MOCK_DATA[i].IsCompleted;
+        order.items = ORDERS_MOCK_DATA[i].Items;
+        return order;
+      }
+    }
+    return null;
+    
+  }
+
 }
