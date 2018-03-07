@@ -13,10 +13,10 @@ export class OrdersService {
     let result = [];
     for (let i = 0; i < ORDERS_MOCK_DATA.length; i++) {
       let order = new Order();
-      order.id = ORDERS_MOCK_DATA[i].id;
-      order.date = ORDERS_MOCK_DATA[i].date;
-      order.progress = ORDERS_MOCK_DATA[i].progress;
-      order.completed = ORDERS_MOCK_DATA[i].completed;
+      order.id = ORDERS_MOCK_DATA[i].ID;
+      order.date = ORDERS_MOCK_DATA[i].CreationDate;
+      order.progress = ORDERS_MOCK_DATA[i].Progress;
+      order.completed = ORDERS_MOCK_DATA[i].IsCompleted;
       result.push(order);
     }
     return result;
@@ -25,12 +25,13 @@ export class OrdersService {
   getOrdersById(idPattern: string): Order[] {
     let result = [];
     for (let i = 0; i < ORDERS_MOCK_DATA.length; i++) {
-      if (ORDERS_MOCK_DATA[i].id.indexOf(idPattern) >= 0) {
+      if (ORDERS_MOCK_DATA[i].ID.indexOf(idPattern) >= 0) {
         let order = new Order();
-        order.id = ORDERS_MOCK_DATA[i].id;
-        order.date = ORDERS_MOCK_DATA[i].date;
-        order.progress = ORDERS_MOCK_DATA[i].progress;
-        order.completed = ORDERS_MOCK_DATA[i].completed;
+        order.id = ORDERS_MOCK_DATA[i].ID;
+        order.date = ORDERS_MOCK_DATA[i].CreationDate;
+        order.progress = ORDERS_MOCK_DATA[i].Progress;
+        order.completed = ORDERS_MOCK_DATA[i].IsCompleted;
+        order.items = ORDERS_MOCK_DATA[i].Items;
         result.push(order);
       }
     }
@@ -40,12 +41,13 @@ export class OrdersService {
   getOrdersCompleted(): Order[] {
     let result = [];
     for (let i = 0; i < ORDERS_MOCK_DATA.length; i++) {
-      if (ORDERS_MOCK_DATA[i].completed) {
+      if (ORDERS_MOCK_DATA[i].IsCompleted) {
         let order = new Order();
-        order.id = ORDERS_MOCK_DATA[i].id;
-        order.date = ORDERS_MOCK_DATA[i].date;
-        order.progress = ORDERS_MOCK_DATA[i].progress;
-        order.completed = ORDERS_MOCK_DATA[i].completed;
+        order.id = ORDERS_MOCK_DATA[i].ID;
+        order.date = ORDERS_MOCK_DATA[i].CreationDate;
+        order.progress = ORDERS_MOCK_DATA[i].Progress;
+        order.completed = ORDERS_MOCK_DATA[i].IsCompleted;
+        order.items = ORDERS_MOCK_DATA[i].Items;
         result.push(order);
       }
     }
@@ -55,12 +57,13 @@ export class OrdersService {
   getOrdersIncompleted(): Order[] {
     let result = [];
     for (let i = 0; i < ORDERS_MOCK_DATA.length; i++) {
-      if (!ORDERS_MOCK_DATA[i].completed) {
+      if (!ORDERS_MOCK_DATA[i].IsCompleted) {
         let order = new Order();
-        order.id = ORDERS_MOCK_DATA[i].id;
-        order.date = ORDERS_MOCK_DATA[i].date;
-        order.progress = ORDERS_MOCK_DATA[i].progress;
-        order.completed = ORDERS_MOCK_DATA[i].completed;
+        order.id = ORDERS_MOCK_DATA[i].ID;
+        order.date = ORDERS_MOCK_DATA[i].CreationDate;
+        order.progress = ORDERS_MOCK_DATA[i].Progress;
+        order.completed = ORDERS_MOCK_DATA[i].IsCompleted;
+        order.items = ORDERS_MOCK_DATA[i].Items;
         result.push(order);
       }
     }

@@ -3,4 +3,5 @@ export class Order {
     date: string;
     progress: number;
     completed: boolean;
+    items: object[];
 }
