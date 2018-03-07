@@ -11,7 +11,7 @@ export const ORDERS_MOCK_DATA = [
                 Description: "Oak veneer brown stained",
                 Price: 1050,
                 Quantity: 2,
-                Image: "",
+                Image: "../../assets/images/board/table.png",
                 Packaged: false,
                 Aisle: 76,
                 Bin: 49
@@ -22,7 +22,7 @@ export const ORDERS_MOCK_DATA = [
                 Description: "Light-gray",
                 Price: 250,
                 Quantity: 8,
-                Image: "",
+                Image: "../../assets/images/board/chair.png",
                 Packaged: true,
                 Aisle: 80,
                 Bin: 27
@@ -33,7 +33,7 @@ export const ORDERS_MOCK_DATA = [
                 Description: "White",
                 Price: 499,
                 Quantity: 6,
-                Image: "",
+                Image: "../../assets/images/board/desk.png",
                 Packaged: true,
                 Aisle: 37,
                 Bin: 6
@@ -44,7 +44,7 @@ export const ORDERS_MOCK_DATA = [
                 Description: "Can use magnets on the board and write with chalk",
                 Price: 29,
                 Quantity: 5,
-                Image: "",
+                Image: "../../assets/images/board/magneticBoard.png",
                 Packaged: true,
                 Aisle: 6,
                 Bin: 45
@@ -55,7 +55,7 @@ export const ORDERS_MOCK_DATA = [
                 Description: "Low pile, brown",
                 Price: 101,
                 Quantity: 5,
-                Image: "",
+                Image: "../../assets/images/board/carpet.png",
                 Packaged: true,
                 Aisle: 73,
                 Bin: 35
@@ -74,7 +74,7 @@ export const ORDERS_MOCK_DATA = [
                 Description: "3-seat, dark gray",
                 Price: 1414,
                 Quantity: 3,
-                Image: "",
+                Image: "../../assets/images/board/couch.png",
                 Packaged: true,
                 Aisle: 60,
                 Bin: 82
@@ -85,7 +85,7 @@ export const ORDERS_MOCK_DATA = [
                 Description: "Dark-gray",
                 Price: 1619,
                 Quantity: 7,
-                Image: "",
+                Image: "../../assets/images/board/desk.png",
                 Packaged: false,
                 Aisle: 87,
                 Bin: 92
@@ -96,7 +96,7 @@ export const ORDERS_MOCK_DATA = [
                 Description: "Rectangular, black",
                 Price: 55,
                 Quantity: 1,
-                Image: "",
+                Image: "../../assets/images/board/ovenDish.png",
                 Packaged: false,
                 Aisle: 11,
                 Bin: 44
@@ -115,7 +115,7 @@ export const ORDERS_MOCK_DATA = [
                 Description: "4-seat, brown",
                 Price: 4500,
                 Quantity: 3,
-                Image: "",
+                Image: "../../assets/images/board/couch.png",
                 Packaged: true,
                 Aisle: 100,
                 Bin: 77
@@ -126,7 +126,7 @@ export const ORDERS_MOCK_DATA = [
                 Description: "High pile, black",
                 Price: 380,
                 Quantity: 7,
-                Image: "",
+                Image: "../../assets/images/board/carpet.png",
                 Packaged: false,
                 Aisle: 94,
                 Bin: 5
@@ -145,7 +145,7 @@ export const ORDERS_MOCK_DATA = [
                 Description: "Black-brown",
                 Price: 5000,
                 Quantity: 8,
-                Image: "",
+                Image: "../../assets/images/board/tvUnit.png",
                 Packaged: false,
                 Aisle: 71,
                 Bin: 78
@@ -156,7 +156,7 @@ export const ORDERS_MOCK_DATA = [
                 Description: "White, adjustable height",
                 Price: 812,
                 Quantity: 7,
-                Image: "",
+                Image: "../../assets/images/board/desk.png",
                 Packaged: false,
                 Aisle: 9,
                 Bin: 98
@@ -167,7 +167,7 @@ export const ORDERS_MOCK_DATA = [
                 Description: "Gray",
                 Price: 45,
                 Quantity: 10,
-                Image: "",
+                Image: "../../assets/images/board/laptopSupport.png",
                 Packaged: true,
                 Aisle: 18,
                 Bin: 83
@@ -186,7 +186,7 @@ export const ORDERS_MOCK_DATA = [
                 Description: "Green armchair, outdoor",
                 Price: 70,
                 Quantity: 4,
-                Image: "",
+                Image: "../../assets/images/board/chair.png",
                 Packaged: true,
                 Aisle: 83,
                 Bin: 58
@@ -205,7 +205,7 @@ export const ORDERS_MOCK_DATA = [
                 Description: "Black",
                 Price: 15,
                 Quantity: 3,
-                Image: "",
+                Image: "../../assets/images/board/coffeeMug.png",
                 Packaged: false,
                 Aisle: 50,
                 Bin: 8
@@ -216,7 +216,7 @@ export const ORDERS_MOCK_DATA = [
                 Description: "Black-brown",
                 Price: 220,
                 Quantity: 10,
-                Image: "",
+                Image: "../../assets/images/board/desk.png",
                 Packaged: false,
                 Aisle: 70,
                 Bin: 33
@@ -235,7 +235,7 @@ export const ORDERS_MOCK_DATA = [
                 Description: "White",
                 Price: 200,
                 Quantity: 3,
-                Image: "",
+                Image: "../../assets/images/board/nightstand.png",
                 Packaged: true,
                 Aisle: 49,
                 Bin: 46
@@ -246,7 +246,7 @@ export const ORDERS_MOCK_DATA = [
                 Description: "Extendable table, dark brown",
                 Price: 2449,
                 Quantity: 7,
-                Image: "",
+                Image: "../../assets/images/board/table.png",
                 Packaged: true,
                 Aisle: 49,
                 Bin: 10
@@ -257,7 +257,7 @@ export const ORDERS_MOCK_DATA = [
                 Description: "Black",
                 Price: 35,
                 Quantity: 7,
-                Image: "",
+                Image: "../../assets/images/board/deskPad.png",
                 Packaged: true,
                 Aisle: 28,
                 Bin: 16
@@ -276,7 +276,7 @@ export const ORDERS_MOCK_DATA = [
                 Description: "Type AAA",
                 Price: 5,
                 Quantity: 3,
-                Image: "",
+                Image: "../../assets/images/board/batteries.png",
                 Packaged: true,
                 Aisle: 2,
                 Bin: 48
@@ -295,7 +295,7 @@ export const ORDERS_MOCK_DATA = [
                 Description: "Black-brown, pull-out panel",
                 Price: 1260,
                 Quantity: 1,
-                Image: "",
+                Image: "../../assets/images/board/desk.png",
                 Packaged: true,
                 Aisle: 14,
                 Bin: 32
@@ -306,7 +306,7 @@ export const ORDERS_MOCK_DATA = [
                 Description: "White, plastic",
                 Price: 20,
                 Quantity: 7,
-                Image: "",
+                Image: "../../assets/images/board/trashCan.png",
                 Packaged: false,
                 Aisle: 96,
                 Bin: 51
@@ -325,7 +325,7 @@ export const ORDERS_MOCK_DATA = [
                 Description: "High pile, blue",
                 Price: 190,
                 Quantity: 4,
-                Image: "",
+                Image: "../../assets/images/board/carpet.png",
                 Packaged: true,
                 Aisle: 47,
                 Bin: 61
@@ -336,7 +336,7 @@ export const ORDERS_MOCK_DATA = [
                 Description: "Sleeper sofa, 4-seat, gray",
                 Price: 7587,
                 Quantity: 1,
-                Image: "",
+                Image: "../../assets/images/board/sofa.png",
                 Packaged: false,
                 Aisle: 47,
                 Bin: 17
@@ -347,7 +347,7 @@ export const ORDERS_MOCK_DATA = [
                 Description: "5m",
                 Price: 4,
                 Quantity: 2,
-                Image: "",
+                Image: "../../assets/images/board/tapeMeasure.png",
                 Packaged: false,
                 Aisle: 78,
                 Bin: 48
@@ -358,7 +358,7 @@ export const ORDERS_MOCK_DATA = [
                 Description: "Extendable table, black",
                 Price: 530,
                 Quantity: 5,
-                Image: "",
+                Image: "../../assets/images/board/table.png",
                 Packaged: false,
                 Aisle: 63,
                 Bin: 22
@@ -377,7 +377,7 @@ export const ORDERS_MOCK_DATA = [
                 Description: "Chrome plated, white",
                 Price: 1510,
                 Quantity: 7,
-                Image: "",
+                Image: "../../assets/images/board/chair.png",
                 Packaged: false,
                 Aisle: 34,
                 Bin: 79
@@ -396,7 +396,7 @@ export const ORDERS_MOCK_DATA = [
                 Description: "Walnut veneer",
                 Price: 399,
                 Quantity: 1,
-                Image: "",
+                Image: "../../assets/images/board/table.png",
                 Packaged: false,
                 Aisle: 59,
                 Bin: 65
@@ -415,7 +415,7 @@ export const ORDERS_MOCK_DATA = [
                 Description: "White",
                 Price: 15,
                 Quantity: 1,
-                Image: "",
+                Image: "../../assets/images/board/coffeeMug.png",
                 Packaged: true,
                 Aisle: 99,
                 Bin: 68
@@ -426,7 +426,7 @@ export const ORDERS_MOCK_DATA = [
                 Description: "Rectangular, white",
                 Price: 70,
                 Quantity: 1,
-                Image: "",
+                Image: "../../assets/images/board/ovenDish.png",
                 Packaged: false,
                 Aisle: 7,
                 Bin: 72
@@ -445,7 +445,7 @@ export const ORDERS_MOCK_DATA = [
                 Description: "White, single-bulb",
                 Price: 619,
                 Quantity: 3,
-                Image: "",
+                Image: "../../assets/images/board/floorLamp.png",
                 Packaged: false,
                 Aisle: 23,
                 Bin: 51
@@ -456,7 +456,7 @@ export const ORDERS_MOCK_DATA = [
                 Description: "20m",
                 Price: 60,
                 Quantity: 5,
-                Image: "",
+                Image: "../../assets/images/board/tarpaulinRope.png",
                 Packaged: false,
                 Aisle: 29,
                 Bin: 72
@@ -467,7 +467,7 @@ export const ORDERS_MOCK_DATA = [
                 Description: "Solid pine, black",
                 Price: 2049,
                 Quantity: 2,
-                Image: "",
+                Image: "../../assets/images/board/table.png",
                 Packaged: true,
                 Aisle: 19,
                 Bin: 12
@@ -486,7 +486,7 @@ export const ORDERS_MOCK_DATA = [
                 Description: "Brown",
                 Price: 20,
                 Quantity: 3,
-                Image: "",
+                Image: "../../assets/images/board/showerCurtain.png",
                 Packaged: false,
                 Aisle: 38,
                 Bin: 77
@@ -505,7 +505,7 @@ export const ORDERS_MOCK_DATA = [
                 Description: "Black, plastic",
                 Price: 20,
                 Quantity: 3,
-                Image: "",
+                Image: "../../assets/images/board/trashCan.png",
                 Packaged: false,
                 Aisle: 26,
                 Bin: 76
@@ -516,7 +516,7 @@ export const ORDERS_MOCK_DATA = [
                 Description: "Black, three-bulbs",
                 Price: 819,
                 Quantity: 3,
-                Image: "",
+                Image: "../../assets/images/board/floorLamp.png",
                 Packaged: true,
                 Aisle: 36,
                 Bin: 28
@@ -535,7 +535,7 @@ export const ORDERS_MOCK_DATA = [
                 Description: "Silver",
                 Price: 10,
                 Quantity: 1,
-                Image: "",
+                Image: "../../assets/images/board/pencilCase.png",
                 Packaged: true,
                 Aisle: 28,
                 Bin: 4
@@ -554,7 +554,7 @@ export const ORDERS_MOCK_DATA = [
                 Description: "Silver",
                 Price: 12,
                 Quantity: 4,
-                Image: "",
+                Image: "../../assets/images/board/towelHanger.png",
                 Packaged: false,
                 Aisle: 43,
                 Bin: 73
@@ -565,7 +565,7 @@ export const ORDERS_MOCK_DATA = [
                 Description: "High-gloss white",
                 Price: 399,
                 Quantity: 4,
-                Image: "",
+                Image: "../../assets/images/board/table.png",
                 Packaged: false,
                 Aisle: 82,
                 Bin: 91
@@ -576,7 +576,7 @@ export const ORDERS_MOCK_DATA = [
                 Description: "Plastic table, three-legged, white",
                 Price: 55,
                 Quantity: 3,
-                Image: "",
+                Image: "../../assets/images/board/table.png",
                 Packaged: false,
                 Aisle: 38,
                 Bin: 80
@@ -595,7 +595,7 @@ export const ORDERS_MOCK_DATA = [
                 Description: "Wall clock, white",
                 Price: 25,
                 Quantity: 1,
-                Image: "",
+                Image: "../../assets/images/board/clock.png",
                 Packaged: true,
                 Aisle: 48,
                 Bin: 75
@@ -614,7 +614,7 @@ export const ORDERS_MOCK_DATA = [
                 Description: "White",
                 Price: 7,
                 Quantity: 2,
-                Image: "",
+                Image: "../../assets/images/board/soapDispenser.png",
                 Packaged: false,
                 Aisle: 7,
                 Bin: 59
@@ -625,7 +625,7 @@ export const ORDERS_MOCK_DATA = [
                 Description: "White",
                 Price: 20,
                 Quantity: 3,
-                Image: "",
+                Image: "../../assets/images/board/showerCurtain.png",
                 Packaged: true,
                 Aisle: 17,
                 Bin: 27
