@@ -27,7 +27,7 @@
         </table>
       </div>
       
-      <igx-list (onItemClicked)="listItemClicked($event)" id="activeIgxList" >
+      <igx-list (onItemClicked)="listItemClicked($event)" id="activeIgxList">
         <igx-list-item *ngFor="let order of orders">
           <table style="margin:0px;" cell-padding="1" cell-margin="0">
             <tr>
@@ -53,7 +53,8 @@
   </igx-tab-panel>
 
   <igx-tab-panel label="{{ 'btnArchive' | translate }}" icon="content_copy">
-    <igx-list>
+    
+    <igx-list (onItemClicked)="listItemClicked($event)" id="archiveIgxList">
       <igx-list-item isHeader="true">{{ 'lblCompleted' | translate }}</igx-list-item>  
         
       <igx-list-item *ngFor="let order of ordersCompleted">

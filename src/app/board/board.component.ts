@@ -31,6 +31,7 @@ export class BoardComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.onResize(null);
   }
 
   searchButtonClicked() {
@@ -51,14 +52,15 @@ export class BoardComponent implements OnInit {
 
   @HostListener("window:resize", ["$event"])
   onResize(evt) {
-    //console.log("@@@ win " + evt.target.innerHeight);
-    //console.log("@@@ body " + document.body.offsetHeight);
-    let theList = document.getElementById("activeIgxList");
-    if (theList) {
-      let theValue = (evt.target.innerHeight - 300) + "px";
-      //console.log("@@@ set " + theValue);
-
-      //theList.style.height = theValue;
+    let theActiveIgxList = document.getElementById("activeIgxList");
+    if (theActiveIgxList) {
+      let newHeight = (window.innerHeight - 226) + "px";
+      theActiveIgxList.style.height = newHeight;
+    }
+    let theArchiveIgxList = document.getElementById("archiveIgxList");
+    if (theArchiveIgxList) {
+      let newHeight = (window.innerHeight - 139) + "px";
+      theArchiveIgxList.style.height = newHeight;
     }
   }
 
