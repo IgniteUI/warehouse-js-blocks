@@ -1,9 +1,17 @@
 <div class="orderHeader">
 
-  <button igxButton="icon" igxRipple igxRippleCentered="true" (click)="backButtonClicked()">
-    <igx-icon fontSet="material" name="arrow_back"></igx-icon>
-  </button>
-  Order
+  <div style="display: inline-block;">
+    <button igxButton="icon" igxRipple igxRippleCentered="true" (click)="backButtonClicked()">
+      <igx-icon fontSet="material" name="arrow_back"></igx-icon>
+    </button>
+  </div>
+
+  <div style="display: inline-block" *ngIf="order.completed == true">
+    {{ 'lblCompleteOrder' | translate }}
+  </div>
+  <div style="display: inline-block" *ngIf="order.completed == false">
+    {{ 'lblIncompleteOrder' | translate }}
+  </div>
 
 </div>
 
@@ -21,30 +29,22 @@
 -->
   <igx-list >
     
-    
-    
     <igx-list-item *ngFor="let item of order.items">
-      
 
       <div>
         <div>
-          <igx-checkbox checked={{item.Packaged}}></igx-checkbox>
-          
+          <div style="display: inline-block;">
+            <igx-checkbox [(ngModel)]="item.Packaged"></igx-checkbox>
+          </div>
           {{item.Quantity}}x
-          
           {{item.ID}}
-          
           <span class="aisleBin">{{item.Aisle}}</span>&nbsp;
           <span class="aisleBin">{{item.Bin}}</span>
-
-          <!--
-{{order.id}},{{item.id}}
-          -->
-
-          <button igxButton="icon" igxRipple igxRippleCentered="true" (click)="toggleListItem(order.id, item.ID)">
-            <igx-icon fontSet="material" name="keyboard_arrow_down"></igx-icon>
-          </button>
-
+          <div style="display: inline-block;">
+            <button igxButton="icon" igxRipple igxRippleCentered="true" (click)="toggleListItem(order.id, item.ID)">
+              <igx-icon fontSet="material" name="keyboard_arrow_down"></igx-icon>
+            </button>
+          </div>
         </div>
         <div id="cont_{{order.id}}_{{item.ID}}" style="display:none">
           <img src="{{item.Image}}" style="float:left; margin:5px; width:60px; height:60px;">
@@ -54,50 +54,8 @@
         </div>
       </div>      
       
-
-<!--
-ID: 8657,
-                Name: "Table",
-                Description: "Oak veneer brown stained",
-                Price: 1050,
-                Quantity: 2,
-                Image: "",
-                Packaged: false,
-                Aisle: 76,
-                Bin: 49
-
-
-  -->
-
-
-
-
-      
-      <!-- <table style="margin:0px;" cell-padding="1" cell-margin="0">
-        <tr>
-          <td rowspan="2">
-            <div style="width:50px; height:50px; color:pink; margin-right:10px; ">
-              <igx-circular-bar [value]="order.progress" [animate]="true">
-              </igx-circular-bar>
-            </div>
-          </td>
-          <td>
-            <span style="color:red;"></span>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <span style="color:green;">{{ order.date }}</span>
-          </td>
-        </tr>
-      </table> -->
     </igx-list-item>
 
-
-
   </igx-list>
-
-
-
 
 </div>

@@ -5,6 +5,7 @@
 
 .orderInfo {
     color: black;
+    margin: 10px;
 }
 
 .orderItems {
@@ -12,7 +13,6 @@
 }
 
 .aisleBin {
-    border: solid 1px black;
     background-color: #1276BC;
     color: white;
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, HostListener } from "@angular/core";
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 import { OrdersService } from "../orders-service/orders.service";
@@ -44,8 +44,21 @@ export class BoardComponent implements OnInit {
   listItemClicked(evt) {
     if (evt.item) {
       let orderId = this.orders[evt.item.index].id;
-      console.log("@@@ selected order: " + orderId);
+      //console.log("@@@ selected order: " + orderId);
       this.router.navigate(['/order', orderId]);
+    }
+  }
+
+  @HostListener("window:resize", ["$event"])
+  onResize(evt) {
+    //console.log("@@@ win " + evt.target.innerHeight);
+    //console.log("@@@ body " + document.body.offsetHeight);
+    let theList = document.getElementById("activeIgxList");
+    if (theList) {
+      let theValue = (evt.target.innerHeight - 300) + "px";
+      //console.log("@@@ set " + theValue);
+
+      //theList.style.height = theValue;
     }
   }
 

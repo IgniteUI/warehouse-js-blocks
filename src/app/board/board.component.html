@@ -7,9 +7,6 @@
   
   <igx-tab-panel label="{{ 'btnActive' | translate }}" icon="bookmark">
     
-    <div style="overflow:visible; width:100%; height:100%;">
-
-
       <div class="searchBoxContainer">
         <table border="0" cellspacing="0" cellpadding="0" width="100%">
           <tr>
@@ -30,7 +27,7 @@
         </table>
       </div>
       
-      <igx-list (onItemClicked)="listItemClicked($event)">
+      <igx-list (onItemClicked)="listItemClicked($event)" id="activeIgxList" >
         <igx-list-item *ngFor="let order of orders">
           <table style="margin:0px;" cell-padding="1" cell-margin="0">
             <tr>
@@ -52,18 +49,10 @@
           </table>
         </igx-list-item>
       </igx-list>
-  
-
-
-    </div>
-
-
-
-
 
   </igx-tab-panel>
 
-  <igx-tab-panel label="{{ 'btnActive' | translate }}" icon="content_copy">
+  <igx-tab-panel label="{{ 'btnArchive' | translate }}" icon="content_copy">
     <igx-list>
       <igx-list-item isHeader="true">{{ 'lblCompleted' | translate }}</igx-list-item>  
         
