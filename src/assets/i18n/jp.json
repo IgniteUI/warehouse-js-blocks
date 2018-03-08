@@ -22,6 +22,8 @@
     "lblIncompleted": "[jp] Incompleted",
 
     "lblCompleteOrder": "[jp] Complete Order",
-    "lblIncompleteOrder": "[jp] Incomplete Order"
+    "lblIncompleteOrder": "[jp] Incomplete Order",
 
+    "emptyListTemplateHeader": "[jp] No active orders found.",
+    "emptyListTemplateDescription": "[jp] Could the order you're looking for be in the Archive already?"
 }

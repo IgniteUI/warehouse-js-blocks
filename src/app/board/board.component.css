@@ -14,5 +14,38 @@
     overflow: auto;
 }
 
+.emptyListContainer {
+    text-align: center;
+    margin-top: 50px;
+    vertical-align: middle;
+}
 
+.emptyListHeader {
+    width: 282px;
+    height: 36px;
+    /* font-family: TitilliumWeb; */
+    font-size: 28px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.29;
+    letter-spacing: normal;
+    text-align: center;
+    color: #0375be;
+    /* color: var(--cerulean); */
+}
+
+.emptyListDescription {
+    width: 261px;
+    height: 36px;
+    /* font-family: TitilliumWeb; */
+    font-size: 14px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.29;
+    letter-spacing: normal;
+    text-align: center;
+    color: rgba(0, 0, 0, 0.54);
+}
 
