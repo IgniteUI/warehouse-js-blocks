@@ -19,6 +19,9 @@
     "btnArchive": "ARCHIVE",
     "lblSearchBoxDefaultText": "Search active orders",
     "lblCompleted": "Completed",
-    "lblIncompleted": "Incompleted"
+    "lblIncompleted": "Incompleted",
+
+    "lblCompleteOrder": "Complete Order",
+    "lblIncompleteOrder": "Incomplete Order"
 
 }

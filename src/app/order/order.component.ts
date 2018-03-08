@@ -26,6 +26,13 @@ export class OrderComponent implements OnInit {
               private location: Location) {
     
     this.orders = ordersService.getOrdersAll();
+
+    // internationalization
+    translate.addLangs(["en", "jp"]);
+    translate.setDefaultLang("en");
+    let browserLang = translate.getBrowserLang();
+    translate.use(browserLang.match(/en|jp/) ? browserLang : "en");
+    //translate.use("jp");
   }
 
   ngOnInit() {

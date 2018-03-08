@@ -19,6 +19,9 @@
     "btnArchive": "[jp] ARCHIVE",
     "lblSearchBoxDefaultText": "[jp] Search active orders",
     "lblCompleted": "[jp] Completed",
-    "lblIncompleted": "[jp] Incompleted"
+    "lblIncompleted": "[jp] Incompleted",
+
+    "lblCompleteOrder": "[jp] Complete Order",
+    "lblIncompleteOrder": "[jp] Incomplete Order"
 
 }
