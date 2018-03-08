@@ -49,6 +49,14 @@ export class BoardComponent implements OnInit {
     }
   }
 
+  searchBoxKeyDown(event) {
+    if (!this.searchCriteriaValue) {
+      this.orders = this.ordersService.getOrdersAll();
+    } else {
+      this.orders = this.ordersService.getOrdersById(this.searchCriteriaValue.toUpperCase());
+    }
+  }
+
   @HostListener("window:resize", ["$event"])
   onResize(evt) {
     //console.log("@@@ win " + evt.target.innerHeight);
