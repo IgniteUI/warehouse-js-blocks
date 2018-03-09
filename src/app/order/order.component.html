@@ -24,17 +24,13 @@
 
 <div class="orderItems">
 
-<!--
-  (onItemClicked)="toggleListItem($event)"
--->
-  <igx-list >
-    
+  <igx-list>
     <igx-list-item *ngFor="let item of order.items">
 
       <div>
         <div>
           <div style="display: inline-block;">
-            <igx-checkbox [(ngModel)]="item.Packaged"></igx-checkbox>
+            <igx-checkbox [(ngModel)]="item.Found"></igx-checkbox>
           </div>
           {{item.Quantity}}x
           {{item.ID}}
@@ -55,7 +51,6 @@
       </div>      
       
     </igx-list-item>
-
   </igx-list>
 
 </div>

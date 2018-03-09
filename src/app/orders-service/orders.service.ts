@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 
 import { ORDERS_MOCK_DATA } from "./orders-mock"
 import { Order } from "./order";
+import { OrderStatus } from "./orderStatus";
 
 @Injectable()
 export class OrdersService {
@@ -9,28 +10,27 @@ export class OrdersService {
   constructor() {
   }
 
-  getOrdersAll(): Order[] {
+  getOrdersActive(): Order[] {
     let result = [];
     for (let i = 0; i < ORDERS_MOCK_DATA.length; i++) {
       let order = new Order();
       order.id = ORDERS_MOCK_DATA[i].ID;
       order.date = ORDERS_MOCK_DATA[i].CreationDate;
-      order.progress = ORDERS_MOCK_DATA[i].Progress;
-      order.completed = ORDERS_MOCK_DATA[i].IsCompleted;
+      order.status = ORDERS_MOCK_DATA[i].Status;
+      order.items = ORDERS_MOCK_DATA[i].Items;
       result.push(order);
     }
     return result;
   }
 
-  getOrdersById(idPattern: string): Order[] {
+  getOrdersActiveById(idPattern: string): Order[] {
     let result = [];
     for (let i = 0; i < ORDERS_MOCK_DATA.length; i++) {
-      if (ORDERS_MOCK_DATA[i].ID.indexOf(idPattern) >= 0) {
+      if (ORDERS_MOCK_DATA[i].Status == OrderStatus.Active && ORDERS_MOCK_DATA[i].ID.indexOf(idPattern) >= 0) {
         let order = new Order();
         order.id = ORDERS_MOCK_DATA[i].ID;
         order.date = ORDERS_MOCK_DATA[i].CreationDate;
-        order.progress = ORDERS_MOCK_DATA[i].Progress;
-        order.completed = ORDERS_MOCK_DATA[i].IsCompleted;
+        order.status = ORDERS_MOCK_DATA[i].Status;
         order.items = ORDERS_MOCK_DATA[i].Items;
         result.push(order);
       }
@@ -41,12 +41,11 @@ export class OrdersService {
   getOrdersCompleted(): Order[] {
     let result = [];
     for (let i = 0; i < ORDERS_MOCK_DATA.length; i++) {
-      if (ORDERS_MOCK_DATA[i].IsCompleted) {
+      if (ORDERS_MOCK_DATA[i].Status == OrderStatus.Complete) {
         let order = new Order();
         order.id = ORDERS_MOCK_DATA[i].ID;
         order.date = ORDERS_MOCK_DATA[i].CreationDate;
-        order.progress = ORDERS_MOCK_DATA[i].Progress;
-        order.completed = ORDERS_MOCK_DATA[i].IsCompleted;
+        order.status = ORDERS_MOCK_DATA[i].Status;
         order.items = ORDERS_MOCK_DATA[i].Items;
         result.push(order);
       }
@@ -57,12 +56,11 @@ export class OrdersService {
   getOrdersIncompleted(): Order[] {
     let result = [];
     for (let i = 0; i < ORDERS_MOCK_DATA.length; i++) {
-      if (!ORDERS_MOCK_DATA[i].IsCompleted) {
+      if (ORDERS_MOCK_DATA[i].Status == OrderStatus.Incomplete) {
         let order = new Order();
         order.id = ORDERS_MOCK_DATA[i].ID;
         order.date = ORDERS_MOCK_DATA[i].CreationDate;
-        order.progress = ORDERS_MOCK_DATA[i].Progress;
-        order.completed = ORDERS_MOCK_DATA[i].IsCompleted;
+        order.status = ORDERS_MOCK_DATA[i].Status;
         order.items = ORDERS_MOCK_DATA[i].Items;
         result.push(order);
       }
@@ -76,14 +74,12 @@ export class OrdersService {
         let order = new Order();
         order.id = ORDERS_MOCK_DATA[i].ID;
         order.date = ORDERS_MOCK_DATA[i].CreationDate;
-        order.progress = ORDERS_MOCK_DATA[i].Progress;
-        order.completed = ORDERS_MOCK_DATA[i].IsCompleted;
+        order.status = ORDERS_MOCK_DATA[i].Status;
         order.items = ORDERS_MOCK_DATA[i].Items;
         return order;
       }
     }
     return null;
-    
   }
 
 }

@@ -27,7 +27,7 @@
       </table>
     </div>
 
-    <igx-list (onItemClicked)="listItemClicked($event)" id="activeIgxList" >
+    <igx-list (onItemClicked)="listItemClicked($event)" id="activeIgxList">
       <ng-template igxEmptyList>
         <div class="emptyListContainer">
           <span class="emptyListHeader">{{ 'emptyListTemplateHeader' | translate }}</span>
@@ -35,13 +35,12 @@
           <span class="emptyListDescription">{{ 'emptyListTemplateDescription' | translate }}</span>
         </div>
       </ng-template>
-
-      <igx-list-item *ngFor="let order of orders">
+      <igx-list-item *ngFor="let order of ordersActive">
         <table style="margin:0px;" cell-padding="1" cell-margin="0">
           <tr>
             <td rowspan="2">
               <div style="width:50px; height:50px; color:pink; margin-right:10px; ">
-                <igx-circular-bar [value]="order.progress" [animate]="true">
+                <igx-circular-bar [value]="order.getProgress()" [animate]="true">
                 </igx-circular-bar>
               </div>
             </td>
@@ -58,29 +57,6 @@
       </igx-list-item>
     </igx-list>
 
-    <igx-list (onItemClicked)="listItemClicked($event)" id="activeIgxList">
-      <igx-list-item *ngFor="let order of orders">
-        <table style="margin:0px;" cell-padding="1" cell-margin="0">
-          <tr>
-            <td rowspan="2">
-              <div style="width:50px; height:50px; color:pink; margin-right:10px; ">
-                <igx-circular-bar [value]="order.progress" [animate]="true">
-                </igx-circular-bar>
-              </div>
-            </td>
-            <td>
-              <span style="color:red;">{{ order.id }}</span>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <span style="color:green;">{{ order.date }}</span>
-            </td>
-          </tr>
-        </table>
-      </igx-list-item>
-    </igx-list>
-      
   </igx-tab-panel>
 
   <igx-tab-panel label="{{ 'btnArchive' | translate }}" icon="content_copy">
@@ -92,12 +68,6 @@
       <igx-list-item *ngFor="let order of ordersCompleted">
         <table style="margin:0px;" cell-padding="1" cell-margin="0">
           <tr>
-            <td rowspan="2">
-              <div style="width:50px; height:50px; color:pink; margin-right:10px; ">
-                <igx-circular-bar [value]="order.progress" [animate]="true">
-                </igx-circular-bar>
-              </div>
-            </td>
             <td>
               <span style="color:red;">{{ order.id }}</span>
             </td>
@@ -115,12 +85,6 @@
       <igx-list-item *ngFor="let order of ordersIncompleted">
         <table style="margin:0px;" cell-padding="1" cell-margin="0">
           <tr>
-            <td rowspan="2">
-              <div style="width:50px; height:50px; color:pink; margin-right:10px; ">
-                <igx-circular-bar [value]="order.progress" [animate]="true">
-                </igx-circular-bar>
-              </div>
-            </td>
             <td>
               <span style="color:red;">{{ order.id }}</span>
             </td>
