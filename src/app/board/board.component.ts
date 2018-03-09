@@ -33,12 +33,9 @@ export class BoardComponent implements OnInit {
   ngOnInit() {
   }
 
-  searchButtonClicked() {
-    if (!this.searchCriteriaValue) {
-      this.orders = this.ordersService.getOrdersAll();
-    } else {
-      this.orders = this.ordersService.getOrdersById(this.searchCriteriaValue);
-    }
+  deleteButtonClicked() {
+    this.searchCriteriaValue = "";
+    this.searchBoxKeyDown(null);
   }
 
   listItemClicked(evt) {
