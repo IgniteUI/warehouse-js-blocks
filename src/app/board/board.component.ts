@@ -13,12 +13,12 @@ import { TranslateService, LangChangeEvent } from "@ngx-translate/core";
 export class BoardComponent implements OnInit {
 
   searchCriteriaValue: string = "";
-  orders = [];
+  ordersActive = [];
   ordersCompleted = [];
   ordersIncompleted = [];
 
   constructor(private ordersService: OrdersService, private translate: TranslateService, private route: ActivatedRoute, private router: Router) {
-    this.orders = ordersService.getOrdersAll();
+    this.ordersActive = ordersService.getOrdersActive();
     this.ordersCompleted = ordersService.getOrdersCompleted();
     this.ordersIncompleted = ordersService.getOrdersIncompleted();
 
@@ -41,7 +41,7 @@ export class BoardComponent implements OnInit {
 
   listItemClicked(evt) {
     if (evt.item) {
-      let orderId = this.orders[evt.item.index].id;
+      let orderId = this.ordersActive[evt.item.index].id;
       //console.log("@@@ selected order: " + orderId);
       this.router.navigate(['/order', orderId]);
     }
@@ -49,9 +49,9 @@ export class BoardComponent implements OnInit {
 
   searchBoxKeyDown(event) {
     if (!this.searchCriteriaValue) {
-      this.orders = this.ordersService.getOrdersAll();
+      this.ordersActive = this.ordersService.getOrdersActive();
     } else {
-      this.orders = this.ordersService.getOrdersById(this.searchCriteriaValue.toUpperCase());
+      this.ordersActive = this.ordersService.getOrdersActiveById(this.searchCriteriaValue.toUpperCase());
     }
   }
 

@@ -17,7 +17,7 @@ export class OrderComponent implements OnInit {
   orderId: string;
   order: Order;
   private subscription: any;
-  orders = [];
+  //orders = [];
 
   constructor(private ordersService: OrdersService,
               private translate: TranslateService,
@@ -25,7 +25,7 @@ export class OrderComponent implements OnInit {
               private router: Router,
               private location: Location) {
     
-    this.orders = ordersService.getOrdersAll();
+    //this.orders = ordersService.getOrdersAll();
 
     // internationalization
     translate.addLangs(["en", "jp"]);
