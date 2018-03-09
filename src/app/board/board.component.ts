@@ -34,12 +34,9 @@ export class BoardComponent implements OnInit {
     this.onResize(null);
   }
 
-  searchButtonClicked() {
-    if (!this.searchCriteriaValue) {
-      this.ordersActive = this.ordersService.getOrdersActive();
-    } else {
-      this.ordersActive = this.ordersService.getOrdersActiveById(this.searchCriteriaValue);
-    }
+  deleteButtonClicked() {
+    this.searchCriteriaValue = "";
+    this.searchBoxKeyDown(null);
   }
 
   listItemClicked(evt) {

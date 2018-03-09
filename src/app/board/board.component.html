@@ -11,17 +11,20 @@
       <table border="0" cellspacing="0" cellpadding="0" width="100%">
         <tr>
           <td width="50px">
-            <button igxButton="icon" igxRipple igxRippleCentered="true" (click)="searchButtonClicked()">
+            <div style="text-align:center;">
               <igx-icon fontSet="material" name="search"></igx-icon>
-            </button>
+            </div>              
           </td>
           <td>
             <div class="igx-form-group" style="margin-bottom:0px;">
-              <input igxInput type="text" name="searchBox" [(ngModel)]="searchCriteriaValue" (ngModelChange)="searchBoxKeyDown($event)">              
+              <input igxInput type="text" name="searchBox" [(ngModel)]="searchCriteriaValue" (ngModelChange)="searchBoxKeyDown($event)">
               <label igxLabel for="searchBox">{{ 'lblSearchBoxDefaultText' | translate }}</label>
             </div>
           </td>
           <td width="50px">
+            <button *ngIf="searchCriteriaValue!=''" igxButton="icon" igxRipple igxRippleCentered="true" (click)="deleteButtonClicked()">
+              <igx-icon fontSet="material" name="close"></igx-icon>
+            </button>
           </td>
         </tr>
       </table>
