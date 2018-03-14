@@ -1,11 +1,12 @@
+<igx-toast #toastComp [message]="toastMessage"></igx-toast>
 
-<div class="logoContainer">
-  <img src="../../assets/images/logo.png" draggable="false" width=110 height="51" />
-</div>
-
-<igx-tab-bar>
+<igx-tab-bar #mainTabBar>
 
   <igx-tab-panel label="{{ 'btnActive' | translate }}" icon="bookmark">
+
+    <div class="logoContainer">
+      <img src="../../assets/images/logo.png" draggable="false" width=110 height="51" />
+    </div>
 
     <div class="searchBoxContainer">
       <table border="0" cellspacing="0" cellpadding="0" width="100%">
@@ -18,7 +19,7 @@
           <td>
             <div class="igx-form-group" style="margin-bottom:0px;">
               <input igxInput type="text" name="searchBox" [(ngModel)]="searchCriteriaValue" (ngModelChange)="searchBoxKeyDown($event)">
-              <label igxLabel for="searchBox">{{ 'lblSearchBoxDefaultText' | translate }}</label>
+              <label igxLabel for="searchBox">{{ "lblSearchBoxDefaultText" | translate }}</label>
             </div>
           </td>
           <td width="50px">
@@ -30,12 +31,12 @@
       </table>
     </div>
 
-    <igx-list (onItemClicked)="listItemClicked($event)" id="activeIgxList">
+    <igx-list (onItemClicked)="activeListItemClicked($event)" id="activeIgxList">
       <ng-template igxEmptyList>
         <div class="emptyListContainer">
-          <span class="emptyListHeader">{{ 'emptyListTemplateHeader' | translate }}</span>
+          <span class="emptyListHeader">{{ "emptyListTemplateHeader" | translate }}</span>
           <br>
-          <span class="emptyListDescription">{{ 'emptyListTemplateDescription' | translate }}</span>
+          <span class="emptyListDescription">{{ "emptyListTemplateDescription" | translate }}</span>
         </div>
       </ng-template>
       <igx-list-item *ngFor="let order of ordersActive">
@@ -48,12 +49,12 @@
               </div>
             </td>
             <td>
-              <span style="color:red;">{{ order.id }}</span>
+              <span style="font-weight: bold;">{{ order.id }}</span>
             </td>
           </tr>
           <tr>
             <td>
-              <span style="color:green;">{{ order.date }}</span>
+              {{ "lblCreatedOn" | translate }} {{ order.date }}
             </td>
           </tr>
         </table>
@@ -64,37 +65,41 @@
 
   <igx-tab-panel label="{{ 'btnArchive' | translate }}" icon="content_copy">
 
-    <igx-list (onItemClicked)="listItemClicked($event)" id="archiveIgxList">
+    <div class="archivePageHeader">
+      {{ "lblArchiveOrders" | translate }}
+    </div>
+
+    <igx-list (onItemClicked)="archiveListItemClicked($event)" id="archiveIgxList">
       
-      <igx-list-item isHeader="true">{{ 'lblCompleted' | translate }}</igx-list-item>  
+      <igx-list-item isHeader="true">{{ "lblCompleted" | translate }}</igx-list-item>  
       
       <igx-list-item *ngFor="let order of ordersCompleted">
         <table style="margin:0px;" cell-padding="1" cell-margin="0">
           <tr>
             <td>
-              <span style="color:red;">{{ order.id }}</span>
+              <span style="font-weight: bold;">{{ order.id }}</span>
             </td>
           </tr>
           <tr>
             <td>
-              <span style="color:green;">{{ order.date }}</span>
+              {{ "lblCompletedOn" | translate }} {{ order.date }}
             </td>
           </tr>
         </table>
       </igx-list-item>
 
-      <igx-list-item isHeader="true">{{ 'lblIncompleted' | translate }}</igx-list-item>
+      <igx-list-item isHeader="true">{{ "lblIncompleted" | translate }}</igx-list-item>
 
       <igx-list-item *ngFor="let order of ordersIncompleted">
         <table style="margin:0px;" cell-padding="1" cell-margin="0">
           <tr>
             <td>
-              <span style="color:red;">{{ order.id }}</span>
+              <span style="font-weight: bold;">{{ order.id }}</span>
             </td>
           </tr>
           <tr>
             <td>
-              <span style="color:green;">{{ order.date }}</span>
+              {{ "lblCreatedOn" | translate }} {{ order.date }}
             </td>
           </tr>
         </table>

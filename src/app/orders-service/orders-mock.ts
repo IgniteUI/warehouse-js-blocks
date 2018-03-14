@@ -178,7 +178,7 @@ export const ORDERS_MOCK_DATA = [
         ID: "U-679097-EL",
         CreationDate: "05/25/2018",
         Progress: 70,
-        Status: 0,
+        Status: 2,
         Items: [
             {
                 ID: 8541,
@@ -197,7 +197,7 @@ export const ORDERS_MOCK_DATA = [
         ID: "P-313076-XH",
         CreationDate: "07/31/2018",
         Progress: 65,
-        Status: 2,
+        Status: 0,
         Items: [
             {
                 ID: 1875,
@@ -268,7 +268,7 @@ export const ORDERS_MOCK_DATA = [
         ID: "I-526137-FM",
         CreationDate: "09/12/2017",
         Progress: 47,
-        Status: 0,
+        Status: 2,
         Items: [
             {
                 ID: 8947,
@@ -437,7 +437,7 @@ export const ORDERS_MOCK_DATA = [
         ID: "V-802147-KK",
         CreationDate: "06/06/2018",
         Progress: 26,
-        Status: 2,
+        Status: 0,
         Items: [
             {
                 ID: 9763,
@@ -478,7 +478,7 @@ export const ORDERS_MOCK_DATA = [
         ID: "N-234981-OY",
         CreationDate: "02/04/2019",
         Progress: 91,
-        Status: 2,
+        Status: 0,
         Items: [
             {
                 ID: 7487,
@@ -527,7 +527,7 @@ export const ORDERS_MOCK_DATA = [
         ID: "C-244975-BD",
         CreationDate: "04/29/2017",
         Progress: 64,
-        Status: 0,
+        Status: 2,
         Items: [
             {
                 ID: 1699,
@@ -587,7 +587,7 @@ export const ORDERS_MOCK_DATA = [
         ID: "W-614749-GC",
         CreationDate: "09/05/2018",
         Progress: 15,
-        Status: 1,
+        Status: 2,
         Items: [
             {
                 ID: 7234,
@@ -606,7 +606,7 @@ export const ORDERS_MOCK_DATA = [
         ID: "E-637209-ST",
         CreationDate: "01/07/2018",
         Progress: 99,
-        Status: 2,
+        Status: 0,
         Items: [
             {
                 ID: 5759,

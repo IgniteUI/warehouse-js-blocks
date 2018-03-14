@@ -16,12 +16,15 @@ import { IgxLabelModule } from "igniteui-angular/main";
 import { IgxListModule } from "igniteui-angular/main";
 import { IgxProgressBarModule } from "igniteui-angular/main";
 import { IgxTabBarModule } from "igniteui-angular/main";
+import { IgxToastModule } from "igniteui-angular/main";
 
 import { AppComponent } from "./app.component";
 import { BoardComponent } from "./board/board.component";
 import { OnboardingComponent } from "./onboarding/onboarding.component";
-import { OrderComponent } from './order/order.component';
-import { OrdersService } from "./orders-service/orders.service"
+import { OrderComponent } from "./order/order.component";
+
+import { MessagesService } from "./messages-service/messages.service";
+import { OrdersService } from "./orders-service/orders.service";
 
 import "hammerjs";
 
@@ -55,6 +58,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     IgxListModule,
     IgxProgressBarModule,
     IgxTabBarModule,
+    IgxToastModule,
     RouterModule.forRoot(appRoutes, {enableTracing: false}),
     HttpClientModule,
     TranslateModule.forRoot({
@@ -66,6 +70,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     })
   ],
   providers: [
+    MessagesService,
     OrdersService
   ],
   bootstrap: [AppComponent]

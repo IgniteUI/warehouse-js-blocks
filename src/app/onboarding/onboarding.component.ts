@@ -73,7 +73,7 @@ export class OnboardingComponent implements OnInit {
       case 2: return "right";
       case 3: return "move";
     }
-    console.log("@@@ unknow state !!!!");
+    console.log("!!! Unknow slide state !!!");
   }
 
 

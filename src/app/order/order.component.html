@@ -1,4 +1,4 @@
-<div class="orderHeader">
+<div class="pageHeader">
 
   <div style="display: inline-block;">
     <button igxButton="icon" igxRipple igxRippleCentered="true" (click)="backButtonClicked()">
@@ -6,11 +6,14 @@
     </button>
   </div>
 
-  <div style="display: inline-block" *ngIf="order.completed == true">
-    {{ 'lblCompleteOrder' | translate }}
+  <div style="display: inline-block" *ngIf="order.status == 0">
+    {{ "lblActive" | translate }}
   </div>
-  <div style="display: inline-block" *ngIf="order.completed == false">
-    {{ 'lblIncompleteOrder' | translate }}
+  <div style="display: inline-block" *ngIf="order.status == 1">
+    {{ "lblIncompleteOrder" | translate }}
+  </div>
+  <div style="display: inline-block" *ngIf="order.status == 2">
+    {{ "lblCompleteOrder" | translate }}
   </div>
 
 </div>
@@ -30,7 +33,7 @@
       <div>
         <div>
           <div style="display: inline-block;">
-            <igx-checkbox [(ngModel)]="item.Found"></igx-checkbox>
+            <igx-checkbox [(ngModel)]="item.Found" [disabled]="itemsDisabled"></igx-checkbox>
           </div>
           {{item.Quantity}}x
           {{item.ID}}
@@ -52,5 +55,27 @@
       
     </igx-list-item>
   </igx-list>
+
+</div>
+
+<div class="orderActionButtons">
+
+  <button class="btnBlue" (click)="btnSentToActiveHandler()" *ngIf="order.status == 1">
+    {{ "btnSentToActive" | translate }}
+  </button><br />
+  <button class="btnRed" (click)="btnDeleteHandler()" *ngIf="order.status == 1 || order.status == 2">
+    {{ "btnPermanentlyDelete" | translate }}
+  </button><br />
+  <button class="btnBlue" (click)="btnCompleteHandler()" *ngIf="order.status == 0">
+    {{ "btnCompleteOrder" | translate }}
+  </button><br />
+
+  <span *ngIf="order.status == 0">
+    {{ "lblMissingItems" | translate }}
+  </span><br />
+
+  <a href="#" (click)="btnMarkAsIncompleteHandler()" *ngIf="order.status == 0">
+    {{ "lblMarkTheOrderAsIncomplete" | translate }}
+  </a>
 
 </div>

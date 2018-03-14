@@ -49,3 +49,15 @@
     color: rgba(0, 0, 0, 0.54);
 }
 
+.igx-list__header {
+    color: #0375be;
+    font-size: 18px;
+}
+
+.archivePageHeader {
+    background-color: #1276BC;
+    color: black;
+    height: 60px;
+    padding-top: 18px;
+    padding-left: 20px;
+}
