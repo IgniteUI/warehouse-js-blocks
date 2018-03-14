@@ -21,9 +21,26 @@
     "lblCompleted": "Completed",
     "lblIncompleted": "Incompleted",
 
+    "lblActive": "Active Order",
+    "lblArchiveOrders": "Archive orders",
     "lblCompleteOrder": "Complete Order",
     "lblIncompleteOrder": "Incomplete Order",
+    "lblCreatedOn": "Created on ",
+    "lblCompletedOn": "Completed on ",
 
     "emptyListTemplateHeader": "No active orders found.",
-    "emptyListTemplateDescription": "Could the order you're looking for be in the Archive already?"
+    "emptyListTemplateDescription": "Could the order you're looking for be in the Archive already?",
+
+    "btnSentToActive": "SEND TO ACTIVE",
+    "btnPermanentlyDelete": "PERMANENTLY DELETE",
+    "btnCompleteOrder": "COMPLETE ORDER",
+
+    "lblMissingItems": "If there are missing items from the list, you can",
+    "lblMarkTheOrderAsIncomplete": "mark the order as incomplete",
+
+    "lblOrderToActive": "Order sent to active!",
+    "lblOrderToDeleted": "Order successfully deleted.",
+    "lblOrderToCompleted": "Order successfully completed.",
+    "lblOrderToIncomplete": "Order marked as incomplete."
+
 }

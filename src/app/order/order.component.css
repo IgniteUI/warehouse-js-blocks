@@ -1,4 +1,4 @@
-.orderHeader {
+.pageHeader {
     background-color: #1276BC;
     color: white;
 }
@@ -15,4 +15,32 @@
 .aisleBin {
     background-color: #1276BC;
     color: white;
+}
+
+.orderActionButtons {
+    text-align: center;
+}
+
+.btnBlue {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border: none;
+    color: white;
+    font-weight: bold;
+    background-color: #1276BC;
+    width: 230px;
+}
+
+.btnRed {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border: none;
+    color: white;
+    font-weight: bold;
+    background-color: #CE0022;
+    width: 230px;
 }

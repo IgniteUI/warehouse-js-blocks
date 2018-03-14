@@ -7,32 +7,35 @@ import { OrderStatus } from "./orderStatus";
 @Injectable()
 export class OrdersService {
 
-  constructor() {
-  }
+  allOrders: Order[];
 
-  getOrdersActive(): Order[] {
-    let result = [];
+  constructor() {
+    this.allOrders = new Array();
     for (let i = 0; i < ORDERS_MOCK_DATA.length; i++) {
       let order = new Order();
       order.id = ORDERS_MOCK_DATA[i].ID;
       order.date = ORDERS_MOCK_DATA[i].CreationDate;
       order.status = ORDERS_MOCK_DATA[i].Status;
       order.items = ORDERS_MOCK_DATA[i].Items;
-      result.push(order);
+      this.allOrders.push(order);
+    }
+  }
+
+  getOrdersActive(): Order[] {
+    let result = [];
+    for (let i = 0; i < this.allOrders.length; i++) {
+      if (this.allOrders[i].status == OrderStatus.Active) {
+        result.push(this.allOrders[i]);
+      }
     }
     return result;
   }
 
   getOrdersActiveById(idPattern: string): Order[] {
     let result = [];
-    for (let i = 0; i < ORDERS_MOCK_DATA.length; i++) {
-      if (ORDERS_MOCK_DATA[i].Status == OrderStatus.Active && ORDERS_MOCK_DATA[i].ID.indexOf(idPattern) >= 0) {
-        let order = new Order();
-        order.id = ORDERS_MOCK_DATA[i].ID;
-        order.date = ORDERS_MOCK_DATA[i].CreationDate;
-        order.status = ORDERS_MOCK_DATA[i].Status;
-        order.items = ORDERS_MOCK_DATA[i].Items;
-        result.push(order);
+    for (let i = 0; i < this.allOrders.length; i++) {
+      if (this.allOrders[i].status == OrderStatus.Active && this.allOrders[i].id.indexOf(idPattern) >= 0) {
+        result.push(this.allOrders[i]);
       }
     }
     return result;
@@ -40,14 +43,9 @@ export class OrdersService {
 
   getOrdersCompleted(): Order[] {
     let result = [];
-    for (let i = 0; i < ORDERS_MOCK_DATA.length; i++) {
-      if (ORDERS_MOCK_DATA[i].Status == OrderStatus.Complete) {
-        let order = new Order();
-        order.id = ORDERS_MOCK_DATA[i].ID;
-        order.date = ORDERS_MOCK_DATA[i].CreationDate;
-        order.status = ORDERS_MOCK_DATA[i].Status;
-        order.items = ORDERS_MOCK_DATA[i].Items;
-        result.push(order);
+    for (let i = 0; i < this.allOrders.length; i++) {
+      if (this.allOrders[i].status == OrderStatus.Complete) {
+        result.push(this.allOrders[i]);
       }
     }
     return result;
@@ -55,31 +53,30 @@ export class OrdersService {
 
   getOrdersIncompleted(): Order[] {
     let result = [];
-    for (let i = 0; i < ORDERS_MOCK_DATA.length; i++) {
-      if (ORDERS_MOCK_DATA[i].Status == OrderStatus.Incomplete) {
-        let order = new Order();
-        order.id = ORDERS_MOCK_DATA[i].ID;
-        order.date = ORDERS_MOCK_DATA[i].CreationDate;
-        order.status = ORDERS_MOCK_DATA[i].Status;
-        order.items = ORDERS_MOCK_DATA[i].Items;
-        result.push(order);
+    for (let i = 0; i < this.allOrders.length; i++) {
+      if (this.allOrders[i].status == OrderStatus.Incomplete) {
+        result.push(this.allOrders[i]);
       }
     }
     return result;
   }
 
   getOrder(searchOrderId: string): Order {
-    for (let i = 0; i < ORDERS_MOCK_DATA.length; i++) {
-      if (ORDERS_MOCK_DATA[i].ID == searchOrderId) {
-        let order = new Order();
-        order.id = ORDERS_MOCK_DATA[i].ID;
-        order.date = ORDERS_MOCK_DATA[i].CreationDate;
-        order.status = ORDERS_MOCK_DATA[i].Status;
-        order.items = ORDERS_MOCK_DATA[i].Items;
-        return order;
+    for (let i = 0; i < this.allOrders.length; i++) {
+      if (this.allOrders[i].id == searchOrderId) {
+        return this.allOrders[i];
       }
     }
     return null;
+  }
+
+  deleteOrder(orderId: string) {
+    for (let i = 0; i < this.allOrders.length; i++) {
+      if (this.allOrders[i].id == orderId) {
+        this.allOrders.splice(i, 1);
+        break;
+      }
+    }
   }
 
 }

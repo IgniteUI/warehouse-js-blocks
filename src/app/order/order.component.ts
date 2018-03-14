@@ -2,7 +2,10 @@ import { Component, OnInit } from "@angular/core";
 import { Location } from '@angular/common';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
+import { MessagesService } from "../messages-service/messages.service";
+import { MessageTarget } from "../messages-service/messageTarget";
 import { Order } from "../orders-service/order";
+import { OrderStatus } from "../orders-service/orderStatus";
 import { OrdersService } from "../orders-service/orders.service";
 
 import { TranslateService, LangChangeEvent } from "@ngx-translate/core";
@@ -17,15 +20,13 @@ export class OrderComponent implements OnInit {
   orderId: string;
   order: Order;
   private subscription: any;
-  //orders = [];
 
   constructor(private ordersService: OrdersService,
               private translate: TranslateService,
               private route: ActivatedRoute,
               private router: Router,
-              private location: Location) {
-    
-    //this.orders = ordersService.getOrdersAll();
+              private location: Location,
+              private messagesService: MessagesService) {
 
     // internationalization
     translate.addLangs(["en", "jp"]);
@@ -35,6 +36,10 @@ export class OrderComponent implements OnInit {
     //translate.use("jp");
   }
 
+  get itemsDisabled(): boolean {
+    return (!this.order || (this.order.status == OrderStatus.Complete || this.order.status == OrderStatus.Incomplete));
+  }
+
   ngOnInit() {
     this.subscription = this.route.params.subscribe(
       params => {
@@ -42,7 +47,6 @@ export class OrderComponent implements OnInit {
         this.order = this.ordersService.getOrder(this.orderId);
       }
     );
-    
   }
 
   ngOnDestroy() {
@@ -54,24 +58,49 @@ export class OrderComponent implements OnInit {
   }
 
   toggleListItem(orderId, itemId) {
-    //console.log(evt.item.index);
-    //let orderId = this.orders[evt.item.index].id;
-    //onsole.log("@@@ " + orderId + " " + itemId);
-
     let theContainer = document.getElementById("cont_" + orderId + "_" + itemId);
     if (theContainer) {
-      //console.log(theContainer);
-
-      //console.log(theContainer.style.display);
-
       if (theContainer.style.display == "none") {
         theContainer.style.display = "block";
       } else {
         theContainer.style.display = "none";
       }
     }
+  }
+
+  btnSentToActiveHandler() {
+    if (this.order) {
+      this.order.status = OrderStatus.Active;
+      this.messagesService.addMessage(MessageTarget.Board, "showToast:" + this.translate.instant("lblOrderToActive"));
+      this.router.navigate(['/board']);
+    }
+  }
+
+  btnDeleteHandler() {
+    if (this.order) {
+      this.ordersService.deleteOrder(this.order.id);
+      this.messagesService.addMessage(MessageTarget.Board, "showToast:" + this.translate.instant("lblOrderToDeleted"));
+      this.router.navigate(['/board']);
+    }
+  }
 
 
+  btnCompleteHandler() {
+    if (this.order) {
+      this.order.status = OrderStatus.Complete;
+      this.messagesService.addMessage(MessageTarget.Board, "switchTab:Archive");
+      this.messagesService.addMessage(MessageTarget.Board, "showToast:" + this.translate.instant("lblOrderToCompleted"));
+      this.router.navigate(['/board']);
+    }
+  }
+
+  btnMarkAsIncompleteHandler() {
+    if (this.order) {
+      this.order.status = OrderStatus.Incomplete;
+      this.messagesService.addMessage(MessageTarget.Board, "showToast:" + this.translate.instant("lblOrderToIncomplete"));
+      this.router.navigate(['/board']);
+    }
+    return false;
   }
 
 }

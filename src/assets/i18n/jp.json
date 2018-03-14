@@ -21,9 +21,26 @@
     "lblCompleted": "[jp] Completed",
     "lblIncompleted": "[jp] Incompleted",
 
+    "lblActive": "[jp] Active Order",
+    "lblArchiveOrders": "[jp] Archive orders",
     "lblCompleteOrder": "[jp] Complete Order",
     "lblIncompleteOrder": "[jp] Incomplete Order",
+    "lblCreatedOn": "[jp] Created on ",
+    "lblCompletedOn": "[jp] Completed on ",
 
     "emptyListTemplateHeader": "[jp] No active orders found.",
-    "emptyListTemplateDescription": "[jp] Could the order you're looking for be in the Archive already?"
+    "emptyListTemplateDescription": "[jp] Could the order you're looking for be in the Archive already?",
+
+    "btnSentToActive": "[jp] SEND TO ACTIVE",
+    "btnPermanentlyDelete": "[jp] PERMANENTLY DELETE",
+    "btnCompleteOrder": "[jp] COMPLETE ORDER",
+
+    "lblMissingItems": "[jp] If there are missing items from the list, you can",
+    "lblMarkTheOrderAsIncomplete": "[jp] mark the order as incomplete",
+
+    "lblOrderToActive": "[jp] Order sent to active!",
+    "lblOrderToDeleted": "[jp] Order successfully deleted.",
+    "lblOrderToCompleted": "[jp] Order successfully completed.",
+    "lblOrderToIncomplete": "[jp] Order marked as incomplete."
+
 }
