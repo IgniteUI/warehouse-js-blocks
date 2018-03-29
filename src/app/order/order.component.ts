@@ -40,6 +40,13 @@ export class OrderComponent implements OnInit {
     return (!this.order || (this.order.status == OrderStatus.Complete || this.order.status == OrderStatus.Incomplete));
   }
 
+  get orderCompletionDisabled(): boolean {
+    for (let i = 0; i < this.order.items.length; i++) {
+      if (!this.order.items[i]["Found"]) return true;
+    }
+    return false;
+  }
+
   ngOnInit() {
     this.subscription = this.route.params.subscribe(
       params => {
