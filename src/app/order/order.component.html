@@ -60,13 +60,18 @@
 
 <div class="orderActionButtons">
 
-  <button class="btnBlue" (click)="btnSentToActiveHandler()" *ngIf="order.status == 1">
+  <button igxButton="raised" igxButtonColor="white" igxButtonBackground="#1276BC" class="actionButton"
+          (click)="btnSentToActiveHandler()" *ngIf="order.status == 1">
     {{ "btnSentToActive" | translate }}
   </button><br />
-  <button class="btnRed" (click)="btnDeleteHandler()" *ngIf="order.status == 1 || order.status == 2">
+
+  <button igxButton="raised" igxButtonColor="white" igxButtonBackground="#CE0022" class="actionButton"
+         (click)="btnDeleteHandler()" *ngIf="order.status == 1 || order.status == 2">
     {{ "btnPermanentlyDelete" | translate }}
   </button><br />
-  <button class="btnBlue" (click)="btnCompleteHandler()" *ngIf="order.status == 0">
+
+  <button igxButton="raised" igxButtonColor="white" igxButtonBackground="#1276BC" class="actionButton"
+          (click)="btnCompleteHandler()" *ngIf="order.status == 0" [disabled]="orderCompletionDisabled">
     {{ "btnCompleteOrder" | translate }}
   </button><br />
 
