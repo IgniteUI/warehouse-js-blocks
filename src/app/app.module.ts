@@ -14,6 +14,7 @@ import { IgxIconModule } from "igniteui-angular/main";
 import { IgxInputModule  } from "igniteui-angular/main";
 import { IgxLabelModule } from "igniteui-angular/main";
 import { IgxListModule } from "igniteui-angular/main";
+import { IgxNavbarModule } from "igniteui-angular/main";
 import { IgxProgressBarModule } from "igniteui-angular/main";
 import { IgxTabBarModule } from "igniteui-angular/main";
 import { IgxToastModule } from "igniteui-angular/main";
@@ -56,6 +57,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     IgxInputModule,
     IgxLabelModule,
     IgxListModule,
+    IgxNavbarModule,
     IgxProgressBarModule,
     IgxTabBarModule,
     IgxToastModule,

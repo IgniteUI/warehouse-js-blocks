@@ -65,9 +65,8 @@
 
   <igx-tab-panel label="{{ 'btnArchive' | translate }}" icon="content_copy">
 
-    <div class="archivePageHeader">
-      {{ "lblArchiveOrders" | translate }}
-    </div>
+    <igx-navbar title="{{ 'lblArchiveOrders' | translate }}">
+    </igx-navbar>
 
     <igx-list (onItemClicked)="archiveListItemClicked($event)" id="archiveIgxList">
       
