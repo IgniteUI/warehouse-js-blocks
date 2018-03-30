@@ -1,22 +1,5 @@
-<div class="pageHeader">
-
-  <div style="display: inline-block;">
-    <button igxButton="icon" igxRipple igxRippleCentered="true" (click)="backButtonClicked()">
-      <igx-icon fontSet="material" name="arrow_back"></igx-icon>
-    </button>
-  </div>
-
-  <div style="display: inline-block" *ngIf="order.status == 0">
-    {{ "lblActive" | translate }}
-  </div>
-  <div style="display: inline-block" *ngIf="order.status == 1">
-    {{ "lblIncompleteOrder" | translate }}
-  </div>
-  <div style="display: inline-block" *ngIf="order.status == 2">
-    {{ "lblCompleteOrder" | translate }}
-  </div>
-
-</div>
+<igx-navbar [title]="pageTitle" actionButtonIcon="arrow_back" (onAction)="backButtonClicked()">
+</igx-navbar>
 
 <div class="orderInfo">
   Order Number<br />
@@ -33,7 +16,7 @@
       <div>
         <div>
           <div style="display: inline-block;">
-            <igx-checkbox [(ngModel)]="item.Found" [disabled]="itemsDisabled"></igx-checkbox>
+            <igx-checkbox [(ngModel)]="item.Found" [checked]="item.Found" [disabled]="itemsDisabled"></igx-checkbox>
           </div>
           {{item.Quantity}}x
           {{item.ID}}

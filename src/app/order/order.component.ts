@@ -47,6 +47,17 @@ export class OrderComponent implements OnInit {
     return false;
   }
 
+  get pageTitle(): string {
+    if (this.order) {
+      switch (this.order.status) {
+        case OrderStatus.Active: return this.translate.instant("lblActive");
+        case OrderStatus.Complete: return this.translate.instant("lblIncompleteOrder");
+        case OrderStatus.Incomplete: return this.translate.instant("lblCompleteOrder");
+      }
+    }
+    return "Unknown Order";
+  }
+
   ngOnInit() {
     this.subscription = this.route.params.subscribe(
       params => {
@@ -61,6 +72,13 @@ export class OrderComponent implements OnInit {
   }
 
   backButtonClicked() {
+    if (this.order) {
+      if (this.order.status == OrderStatus.Complete || this.order.status == OrderStatus.Incomplete) {
+        this.messagesService.addMessage(MessageTarget.Board, "switchTab:Archive");
+        this.router.navigate(['/board']);
+        return;
+      }
+    }
     this.location.back();
   }
 
