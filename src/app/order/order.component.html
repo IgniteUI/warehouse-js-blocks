@@ -23,12 +23,12 @@
           <span class="aisleBin">{{item.Aisle}}</span>&nbsp;
           <span class="aisleBin">{{item.Bin}}</span>
           <div style="display: inline-block;">
-            <button igxButton="icon" igxRipple igxRippleCentered="true" (click)="toggleListItem(order.id, item.ID)">
-              <igx-icon fontSet="material" name="keyboard_arrow_down"></igx-icon>
+            <button igxButton="icon" igxRipple igxRippleCentered="true" (click)="toggleListItem(item.ID)">
+              <igx-icon fontSet="material" [name]="convertExpandedStateToIcon(item.ID)"></igx-icon>
             </button>
           </div>
         </div>
-        <div id="cont_{{order.id}}_{{item.ID}}" style="display:none">
+        <div id="cont_{{order.id}}_{{item.ID}}" [style.display]="convertBooleanToDisplay(item.Expanded)">
           <img src="{{item.Image}}" style="float:left; margin:5px; width:60px; height:60px;">
           <span>{{item.Name}}</span><br />
           <span>{{item.Description}}</span><br />
