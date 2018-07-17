@@ -6,8 +6,8 @@ import { MessageTarget } from "../messages-service/messageTarget";
 import { OrdersService } from "../orders-service/orders.service";
 
 import { TranslateService, LangChangeEvent } from "@ngx-translate/core";
-import { IgxTabBarComponent } from "igniteui-angular/main";
-import { IgxToastComponent } from "igniteui-angular/main";
+import { IgxBottomNavComponent } from "igniteui-angular";
+import { IgxToastComponent } from "igniteui-angular";
 
 @Component({
   selector: "app-board",
@@ -17,7 +17,7 @@ import { IgxToastComponent } from "igniteui-angular/main";
 export class BoardComponent implements OnInit, AfterViewInit {
 
   @ViewChild("toastComp") toastComp: IgxToastComponent;
-  @ViewChild("mainTabBar") mainTabBar: IgxTabBarComponent;
+  @ViewChild("mainTabBar") mainTabBar: IgxBottomNavComponent;
   searchCriteriaValue: string = "";
   ordersActive = [];
   ordersCompleted = [];
@@ -82,7 +82,7 @@ export class BoardComponent implements OnInit, AfterViewInit {
     }
   }
 
-  deleteButtonClicked() {
+  clearSearchInputClicked() {
     this.searchCriteriaValue = "";
     this.searchBoxKeyDown(null);
   }

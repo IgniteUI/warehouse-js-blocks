@@ -1,6 +1,6 @@
 <igx-toast #toastComp [message]="toastMessage"></igx-toast>
 
-<igx-tab-bar #mainTabBar>
+<igx-bottom-nav #mainTabBar>
 
   <igx-tab-panel label="{{ 'btnActive' | translate }}" icon="bookmark">
 
@@ -9,28 +9,20 @@
     </div>
 
     <div class="searchBoxContainer">
-      <table border="0" cellspacing="0" cellpadding="0" width="100%">
-        <tr>
-          <td width="50px">
-            <div style="text-align:center;">
-              <igx-icon fontSet="material" name="search"></igx-icon>
-            </div>              
-          </td>
-          <td>
-            <div class="igx-form-group" style="margin-bottom:0px;">
-              <input igxInput type="text" name="searchBox" [(ngModel)]="searchCriteriaValue" (ngModelChange)="searchBoxKeyDown($event)">
-              <label igxLabel for="searchBox">{{ "lblSearchBoxDefaultText" | translate }}</label>
-            </div>
-          </td>
-          <td width="50px">
-            <button *ngIf="searchCriteriaValue!=''" igxButton="icon" igxRipple igxRippleCentered="true" (click)="deleteButtonClicked()">
-              <igx-icon fontSet="material" name="close"></igx-icon>
-            </button>
-          </td>
-        </tr>
-      </table>
+      <igx-input-group type="search">
+          <input #searchBox igxInput type="text" name="searchBox"
+            placeholder="{{ 'lblSearchBoxDefaultText' | translate }}"
+            [(ngModel)]="searchCriteriaValue" (ngModelChange)="searchBoxKeyDown($event)" />
+          <igx-prefix>
+              <igx-icon>search</igx-icon>
+          </igx-prefix>
+          <igx-suffix *ngIf="searchBox.value.length > 0" (click)="clearSearchInputClicked()">
+              <igx-icon fontSet="material" name="clear"></igx-icon>
+          </igx-suffix>
+      </igx-input-group>
     </div>
 
+    <!-- The active orders list -->
     <igx-list (onItemClicked)="activeListItemClicked($event)" id="activeIgxList">
       <ng-template igxEmptyList>
         <div class="emptyListContainer">
@@ -40,24 +32,12 @@
         </div>
       </ng-template>
       <igx-list-item *ngFor="let order of ordersActive">
-        <table style="margin:0px;" cell-padding="1" cell-margin="0">
-          <tr>
-            <td rowspan="2">
-              <div style="width:50px; height:50px; color:pink; margin-right:10px; ">
-                <igx-circular-bar [value]="order.getProgress()" [animate]="true">
-                </igx-circular-bar>
-              </div>
-            </td>
-            <td>
-              <span style="font-weight: bold;">{{ order.id }}</span>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              {{ "lblCreatedOn" | translate }} {{ order.date }}
-            </td>
-          </tr>
-        </table>
+        <igx-circular-bar [value]="order.getProgress()" [animate]="true" style="width: 50px; height: 50px">
+        </igx-circular-bar>
+        <div style="display: inline-block">
+          <span style="font-weight: bold;">{{ order.id }}</span>
+          <br />{{ "lblCreatedOn" | translate }} {{ order.date }}
+        </div>
       </igx-list-item>
     </igx-list>
 
@@ -68,43 +48,26 @@
     <igx-navbar title="{{ 'lblArchiveOrders' | translate }}">
     </igx-navbar>
 
+    <!-- The archive orders list -->
     <igx-list (onItemClicked)="archiveListItemClicked($event)" id="archiveIgxList">
-      
+
       <igx-list-item isHeader="true">{{ "lblCompleted" | translate }}</igx-list-item>  
-      
       <igx-list-item *ngFor="let order of ordersCompleted">
-        <table style="margin:0px;" cell-padding="1" cell-margin="0">
-          <tr>
-            <td>
-              <span style="font-weight: bold;">{{ order.id }}</span>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              {{ "lblCompletedOn" | translate }} {{ order.date }}
-            </td>
-          </tr>
-        </table>
+        <div style="display: inline-block">
+          <span style="font-weight: bold;">{{ order.id }}</span>
+          <br />{{ "lblCompletedOn" | translate }} {{ order.date }}
+        </div>
       </igx-list-item>
 
       <igx-list-item isHeader="true">{{ "lblIncompleted" | translate }}</igx-list-item>
-
       <igx-list-item *ngFor="let order of ordersIncompleted">
-        <table style="margin:0px;" cell-padding="1" cell-margin="0">
-          <tr>
-            <td>
-              <span style="font-weight: bold;">{{ order.id }}</span>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              {{ "lblCreatedOn" | translate }} {{ order.date }}
-            </td>
-          </tr>
-        </table>
+        <div style="display: inline-block">
+          <span style="font-weight: bold;">{{ order.id }}</span>
+          <br />{{ "lblCreatedOn" | translate }} {{ order.date }}
+        </div>
       </igx-list-item>
 
     </igx-list>
   </igx-tab-panel>
 
-</igx-tab-bar>
+</igx-bottom-nav>

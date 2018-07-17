@@ -82,15 +82,30 @@ export class OrderComponent implements OnInit {
     this.location.back();
   }
 
-  toggleListItem(orderId, itemId) {
-    let theContainer = document.getElementById("cont_" + orderId + "_" + itemId);
-    if (theContainer) {
-      if (theContainer.style.display == "none") {
-        theContainer.style.display = "block";
-      } else {
-        theContainer.style.display = "none";
+  toggleListItem(itemId) {
+    for (let i = 0; i < this.order.items.length; i++) {
+      if (this.order.items[i]["ID"] == itemId) {
+        if (this.order.items[i]["Expanded"] === undefined) {
+          this.order.items[i]["Expanded"] = true;
+        }
+        else {
+          this.order.items[i]["Expanded"] = !this.order.items[i]["Expanded"];
+        }
+        break;
       }
     }
+  }
+
+  convertExpandedStateToIcon(itemId) {
+    for (let i = 0; i < this.order.items.length; i++) {
+      if (this.order.items[i]["ID"] == itemId) {
+        return this.order.items[i]["Expanded"] === true ? 'keyboard_arrow_up' : 'keyboard_arrow_down';
+      }
+    }
+  }
+
+  convertBooleanToDisplay(inputValue) {
+    return inputValue === true ? 'block' : 'none';
   }
 
   btnSentToActiveHandler() {
