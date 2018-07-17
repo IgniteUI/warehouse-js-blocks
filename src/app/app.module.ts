@@ -8,16 +8,15 @@ import { HttpClientModule, HttpClient } from "@angular/common/http";
 import { TranslateModule, TranslateLoader } from "@ngx-translate/core";
 import { TranslateHttpLoader } from "@ngx-translate/http-loader";
 
-import { IgxButtonModule } from "igniteui-angular/main";
-import { IgxCheckboxModule } from "igniteui-angular/main";
-import { IgxIconModule } from "igniteui-angular/main";
-import { IgxInputModule  } from "igniteui-angular/main";
-import { IgxLabelModule } from "igniteui-angular/main";
-import { IgxListModule } from "igniteui-angular/main";
-import { IgxNavbarModule } from "igniteui-angular/main";
-import { IgxProgressBarModule } from "igniteui-angular/main";
-import { IgxTabBarModule } from "igniteui-angular/main";
-import { IgxToastModule } from "igniteui-angular/main";
+import { IgxButtonModule } from "igniteui-angular";
+import { IgxBottomNavModule } from "igniteui-angular";
+import { IgxCheckboxModule } from "igniteui-angular";
+import { IgxIconModule } from "igniteui-angular";
+import { IgxInputGroupModule } from "igniteui-angular";
+import { IgxListModule } from "igniteui-angular";
+import { IgxNavbarModule } from "igniteui-angular";
+import { IgxProgressBarModule } from "igniteui-angular";
+import { IgxToastModule } from "igniteui-angular";
 
 import { AppComponent } from "./app.component";
 import { BoardComponent } from "./board/board.component";
@@ -52,14 +51,13 @@ export function HttpLoaderFactory(http: HttpClient) {
     BrowserAnimationsModule,
     FormsModule,
     IgxButtonModule,
+    IgxBottomNavModule,
     IgxCheckboxModule,
     IgxIconModule,
-    IgxInputModule,
-    IgxLabelModule,
+    IgxInputGroupModule,
     IgxListModule,
     IgxNavbarModule,
     IgxProgressBarModule,
-    IgxTabBarModule,
     IgxToastModule,
     RouterModule.forRoot(appRoutes, {enableTracing: false}),
     HttpClientModule,
