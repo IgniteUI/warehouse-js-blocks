@@ -1,0 +1,26 @@
+<igx-navbar title="{{ 'lblAddOrder' | translate }}" actionButtonIcon="arrow_back" (onAction)="backButtonClicked()">
+</igx-navbar>
+
+<igx-toast #toastComp [message]="toastMessage" ></igx-toast>
+
+<div class="pageImages">
+    <img src="../../assets/images/onboarding/slide2_circle.png" draggable="false" style="position:absolute; transform:translate(-50%, 0px);" />
+    <img src="../../assets/images/onboarding/slide2_pluses.png" draggable="false" style="position:absolute; transform:translate(-50%, 20px);" />
+    <img src="../../assets/images/onboarding/slide2_big_plus.png" draggable="false" style="position:absolute; transform:translate(-50%, 60px);" />
+</div>
+
+<div class="pageContent">
+    <button igxButton="raised" (click)="toggleDropDown($event)">{{ selectOrderButtonCaption }}</button>
+    <igx-drop-down #dropdown1 (onSelection)="onSelectionHandler($event)">
+        <igx-drop-down-item [igxDropDownItemNavigation]="dropdown1" *ngFor="let order of ordersAvailable">
+            {{ order.id }}
+        </igx-drop-down-item>
+    </igx-drop-down>
+</div>
+
+<div class="actionButtons">
+    <button igxButton="raised" igxButtonColor="white" igxButtonBackground="#1276BC" class="actionButton"
+        (click)="btnAddOrderHandler()" [disabled]="selectedOrder == null">
+        {{ "lblAddOrder" | translate }}
+    </button>
+</div>

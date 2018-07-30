@@ -631,5 +631,114 @@ export const ORDERS_MOCK_DATA = [
                 Bin: 27
             }
         ]
-    }
+    },
+    {
+        ID: "I-382031-GD",
+        CreationDate: "04/17/2018",
+        Status: 3,
+        Items: [
+            {
+                ID: 5759,
+                Name: "Soap dispenser",
+                Description: "White",
+                Price: 7,
+                Quantity: 2,
+                Image: "../../assets/images/board/soapDispenser.png",
+                Found: false,
+                Aisle: 7,
+                Bin: 59
+            },
+            {
+                ID: 7504,
+                Name: "Shower curtain",
+                Description: "White",
+                Price: 20,
+                Quantity: 3,
+                Image: "../../assets/images/board/showerCurtain.png",
+                Found: false,
+                Aisle: 17,
+                Bin: 27
+            }
+        ]
+    },
+    {
+        ID: "E-703619-KD",
+        CreationDate: "09/28/2018",
+        Status: 3,
+        Items: [
+            {
+                ID: 3506,
+                Name: "Towel hanger",
+                Description: "Silver",
+                Price: 12,
+                Quantity: 4,
+                Image: "../../assets/images/board/towelHanger.png",
+                Found: false,
+                Aisle: 43,
+                Bin: 73
+            },
+            {
+                ID: 3303,
+                Name: "Coffee table",
+                Description: "High-gloss white",
+                Price: 399,
+                Quantity: 4,
+                Image: "../../assets/images/board/table.png",
+                Found: false,
+                Aisle: 82,
+                Bin: 91
+            },
+            {
+                ID: 9559,
+                Name: "Table",
+                Description: "Plastic table, three-legged, white",
+                Price: 55,
+                Quantity: 3,
+                Image: "../../assets/images/board/table.png",
+                Found: false,
+                Aisle: 38,
+                Bin: 80
+            }
+        ]
+    },
+    {
+        ID: "N-473091-WN",
+        CreationDate: "06/06/2018",
+        Status: 3,
+        Items: [
+            {
+                ID: 9763,
+                Name: "Floor lamp",
+                Description: "White, single-bulb",
+                Price: 619,
+                Quantity: 3,
+                Image: "../../assets/images/board/floorLamp.png",
+                Found: false,
+                Aisle: 23,
+                Bin: 51
+            },
+            {
+                ID: 6894,
+                Name: "Tarpaulin rope",
+                Description: "20m",
+                Price: 60,
+                Quantity: 5,
+                Image: "../../assets/images/board/tarpaulinRope.png",
+                Found: false,
+                Aisle: 29,
+                Bin: 72
+            },
+            {
+                ID: 7029,
+                Name: "Table",
+                Description: "Solid pine, black",
+                Price: 2049,
+                Quantity: 2,
+                Image: "../../assets/images/board/table.png",
+                Found: false,
+                Aisle: 19,
+                Bin: 12
+            }
+        ]
+    },
 ];

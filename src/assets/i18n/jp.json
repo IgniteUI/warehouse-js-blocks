@@ -41,6 +41,11 @@
     "lblOrderToActive": "[jp] Order sent to active!",
     "lblOrderToDeleted": "[jp] Order successfully deleted.",
     "lblOrderToCompleted": "[jp] Order successfully completed.",
-    "lblOrderToIncomplete": "[jp] Order marked as incomplete."
+    "lblOrderToIncomplete": "[jp] Order marked as incomplete.",
+
+    "lblAddOrder": "[jp] Add Order",
+    "lblNoOrders": "[jp] There are no orders",
+    "lblSelectOrder": "[jp] Select an order",
+    "lblOrderSuccessful": "[jp] Order successfully added."
 
 }

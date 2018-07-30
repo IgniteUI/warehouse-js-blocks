@@ -13,13 +13,13 @@
   [style.left]="currentSlideInfo.image1Left"
   [style.opacity]="currentSlideInfo.image1Opacity" />
 
-  <img src="{{currentSlideInfo.image2Path}}" draggable="false" style="position:absolute; transform:translate(-50%, 110px);"
+  <img src="{{currentSlideInfo.image2Path}}" draggable="false" style="position:absolute; transform:translate(-50%, 100px);"
   [@swipeLeftRightAnimation]="{value: getCurrentSlideState, params: {speed: '600ms'}}"
   (@swipeLeftRightAnimation.done)="swipeAnimationFinished($event)"
   [style.left]="currentSlideInfo.image2Left"
   [style.opacity]="currentSlideInfo.image2Opacity" />
 
-  <img src="{{currentSlideInfo.image3Path}}" draggable="false" style="position:absolute; transform:translate(-50%, 160px);"
+  <img src="{{currentSlideInfo.image3Path}}" draggable="false" style="position:absolute; transform:translate(-50%, 150px);"
   [@swipeLeftRightAnimation]="{value: getCurrentSlideState, params: {speed: '400ms'}}"
   (@swipeLeftRightAnimation.done)="swipeAnimationFinished($event)"
   [style.left]="currentSlideInfo.image3Left"

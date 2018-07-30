@@ -41,6 +41,11 @@
     "lblOrderToActive": "Order sent to active!",
     "lblOrderToDeleted": "Order successfully deleted.",
     "lblOrderToCompleted": "Order successfully completed.",
-    "lblOrderToIncomplete": "Order marked as incomplete."
+    "lblOrderToIncomplete": "Order marked as incomplete.",
+
+    "lblAddOrder": "Add Order",
+    "lblNoOrders": "There are no orders",
+    "lblSelectOrder": "Select an order",
+    "lblOrderSuccessful": "Order successfully added."
 
 }

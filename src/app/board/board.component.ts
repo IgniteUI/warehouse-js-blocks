@@ -131,4 +131,8 @@ export class BoardComponent implements OnInit, AfterViewInit {
     }
   }
 
+  addOrderClicked() {
+    this.router.navigateByUrl("/addorder");
+  }
+
 }

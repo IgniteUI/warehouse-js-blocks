@@ -62,3 +62,10 @@
     padding-top: 18px;
     padding-left: 20px;
 }
+
+.addOrderButton {
+    z-index: 3;
+    position: absolute;
+    right: 50px;
+    bottom: 90px;
+}
