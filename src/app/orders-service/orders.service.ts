@@ -61,6 +61,16 @@ export class OrdersService {
     return result;
   }
 
+  getOrdersAvailable(): Order[] {
+    let result = [];
+    for (let i = 0; i < this.allOrders.length; i++) {
+      if (this.allOrders[i].status == OrderStatus.Available) {
+        result.push(this.allOrders[i]);
+      }
+    }
+    return result;
+  }
+
   getOrder(searchOrderId: string): Order {
     for (let i = 0; i < this.allOrders.length; i++) {
       if (this.allOrders[i].id == searchOrderId) {
@@ -74,6 +84,15 @@ export class OrdersService {
     for (let i = 0; i < this.allOrders.length; i++) {
       if (this.allOrders[i].id == orderId) {
         this.allOrders.splice(i, 1);
+        break;
+      }
+    }
+  }
+
+  updateOrderStatus(orderId: string, newStatus: OrderStatus) {
+    for (let i = 0; i < this.allOrders.length; i++) {
+      if (this.allOrders[i].id == orderId) {
+        this.allOrders[i].status = newStatus;
         break;
       }
     }
