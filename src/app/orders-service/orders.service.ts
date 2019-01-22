@@ -12,7 +12,7 @@ export class OrdersService {
   constructor() {
     this.allOrders = new Array();
     for (let i = 0; i < ORDERS_MOCK_DATA.length; i++) {
-      let order = new Order();
+      const order = new Order();
       order.id = ORDERS_MOCK_DATA[i].ID;
       order.date = ORDERS_MOCK_DATA[i].CreationDate;
       order.status = ORDERS_MOCK_DATA[i].Status;
@@ -22,9 +22,9 @@ export class OrdersService {
   }
 
   getOrdersActive(): Order[] {
-    let result = [];
+    const result = [];
     for (let i = 0; i < this.allOrders.length; i++) {
-      if (this.allOrders[i].status == OrderStatus.Active) {
+      if (this.allOrders[i].status === OrderStatus.Active) {
         result.push(this.allOrders[i]);
       }
     }
@@ -32,9 +32,9 @@ export class OrdersService {
   }
 
   getOrdersActiveById(idPattern: string): Order[] {
-    let result = [];
+    const result = [];
     for (let i = 0; i < this.allOrders.length; i++) {
-      if (this.allOrders[i].status == OrderStatus.Active && this.allOrders[i].id.indexOf(idPattern) >= 0) {
+      if (this.allOrders[i].status === OrderStatus.Active && this.allOrders[i].id.indexOf(idPattern) >= 0) {
         result.push(this.allOrders[i]);
       }
     }
@@ -42,9 +42,9 @@ export class OrdersService {
   }
 
   getOrdersCompleted(): Order[] {
-    let result = [];
+    const result = [];
     for (let i = 0; i < this.allOrders.length; i++) {
-      if (this.allOrders[i].status == OrderStatus.Complete) {
+      if (this.allOrders[i].status === OrderStatus.Complete) {
         result.push(this.allOrders[i]);
       }
     }
@@ -52,9 +52,9 @@ export class OrdersService {
   }
 
   getOrdersIncompleted(): Order[] {
-    let result = [];
+    const result = [];
     for (let i = 0; i < this.allOrders.length; i++) {
-      if (this.allOrders[i].status == OrderStatus.Incomplete) {
+      if (this.allOrders[i].status === OrderStatus.Incomplete) {
         result.push(this.allOrders[i]);
       }
     }
@@ -62,9 +62,9 @@ export class OrdersService {
   }
 
   getOrdersAvailable(): Order[] {
-    let result = [];
+    const result = [];
     for (let i = 0; i < this.allOrders.length; i++) {
-      if (this.allOrders[i].status == OrderStatus.Available) {
+      if (this.allOrders[i].status === OrderStatus.Available) {
         result.push(this.allOrders[i]);
       }
     }
@@ -73,7 +73,7 @@ export class OrdersService {
 
   getOrder(searchOrderId: string): Order {
     for (let i = 0; i < this.allOrders.length; i++) {
-      if (this.allOrders[i].id == searchOrderId) {
+      if (this.allOrders[i].id === searchOrderId) {
         return this.allOrders[i];
       }
     }
@@ -82,7 +82,7 @@ export class OrdersService {
 
   deleteOrder(orderId: string) {
     for (let i = 0; i < this.allOrders.length; i++) {
-      if (this.allOrders[i].id == orderId) {
+      if (this.allOrders[i].id === orderId) {
         this.allOrders.splice(i, 1);
         break;
       }
@@ -91,7 +91,7 @@ export class OrdersService {
 
   updateOrderStatus(orderId: string, newStatus: OrderStatus) {
     for (let i = 0; i < this.allOrders.length; i++) {
-      if (this.allOrders[i].id == orderId) {
+      if (this.allOrders[i].id === orderId) {
         this.allOrders[i].status = newStatus;
         break;
       }

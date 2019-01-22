@@ -24,7 +24,7 @@ export class AddOrderComponent implements OnInit {
 
     private toastMessage: string;
     private ordersAvailable = [];
-    private selectedOrder = null;
+    private selectedOrderId = null;
 
     constructor(private ordersService: OrdersService,
         private translate: TranslateService,
@@ -33,7 +33,7 @@ export class AddOrderComponent implements OnInit {
         // internationalization
         translate.addLangs(["en", "jp"]);
         translate.setDefaultLang("en");
-        let browserLang = translate.getBrowserLang();
+        const browserLang = translate.getBrowserLang();
         translate.use(browserLang.match(/en|jp/) ? browserLang : "en");
         //translate.use("jp");
     }
@@ -67,21 +67,21 @@ export class AddOrderComponent implements OnInit {
         if (this.ordersAvailable == null || this.ordersAvailable.length == 0) {
             return this.translate.instant("lblNoOrders");
         } else {
-            if (this.selectedOrder == null) {
+            if (this.selectedOrderId == null) {
                 return this.translate.instant("lblSelectOrder");
             } else {
-                return this.selectedOrder;
+                return this.selectedOrderId;
             }
         }
     }
 
     public onSelectionHandler(eventArgs) {
-        this.selectedOrder = eventArgs.newSelection.element.nativeElement.innerText.trim();
+        this.selectedOrderId = eventArgs.newSelection.element.nativeElement.innerText.trim();
     }
 
     public btnAddOrderHandler() {
-        this.ordersService.updateOrderStatus(this.selectedOrder, OrderStatus.Active);
-        this.selectedOrder = null;
+        this.ordersService.updateOrderStatus(this.selectedOrderId, OrderStatus.Active);
+        this.selectedOrderId = null;
         this.ordersAvailable = this.ordersService.getOrdersAvailable();
         this.toastMessage = this.translate.instant("lblOrderSuccessful");
         this.toastComp.show();

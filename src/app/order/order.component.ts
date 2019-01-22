@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnDestroy, OnInit } from "@angular/core";
 import { Location } from '@angular/common';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
@@ -15,7 +15,7 @@ import { TranslateService, LangChangeEvent } from "@ngx-translate/core";
   templateUrl: "./order.component.html",
   styleUrls: ["./order.component.css"]
 })
-export class OrderComponent implements OnInit {
+export class OrderComponent implements OnInit, OnDestroy {
 
   orderId: string;
   order: Order;
@@ -31,7 +31,7 @@ export class OrderComponent implements OnInit {
     // internationalization
     translate.addLangs(["en", "jp"]);
     translate.setDefaultLang("en");
-    let browserLang = translate.getBrowserLang();
+    const browserLang = translate.getBrowserLang();
     translate.use(browserLang.match(/en|jp/) ? browserLang : "en");
     //translate.use("jp");
   }
@@ -51,8 +51,8 @@ export class OrderComponent implements OnInit {
     if (this.order) {
       switch (this.order.status) {
         case OrderStatus.Active: return this.translate.instant("lblActive");
-        case OrderStatus.Complete: return this.translate.instant("lblIncompleteOrder");
-        case OrderStatus.Incomplete: return this.translate.instant("lblCompleteOrder");
+        case OrderStatus.Complete: return this.translate.instant("lblCompleteOrder");
+        case OrderStatus.Incomplete: return this.translate.instant("lblIncompleteOrder");
       }
     }
     return "Unknown Order";

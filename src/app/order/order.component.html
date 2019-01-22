@@ -24,7 +24,7 @@
           <span class="aisleBin">{{item.Bin}}</span>
           <div style="display: inline-block;">
             <button igxButton="icon" igxRipple igxRippleCentered="true" (click)="toggleListItem(item.ID)">
-              <igx-icon fontSet="material" [name]="convertExpandedStateToIcon(item.ID)"></igx-icon>
+              <igx-icon fontSet="material">{{convertExpandedStateToIcon(item.ID)}}</igx-icon>
             </button>
           </div>
         </div>

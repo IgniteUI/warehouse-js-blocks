@@ -36,7 +36,7 @@ export class OnboardingComponent implements OnInit {
   isUserDown: boolean = false;
   inSlideSwitchingAnimation: boolean = false;
   animationCounter: number = 0;
-  
+
   userDownInitialX: number;
   userDownInitialY: number;
   mouseDeltaX: number;
@@ -54,7 +54,7 @@ export class OnboardingComponent implements OnInit {
     // internationalization
     translate.addLangs(["en", "jp"]);
     translate.setDefaultLang("en");
-    let browserLang = translate.getBrowserLang();
+    const browserLang = translate.getBrowserLang();
     translate.use(browserLang.match(/en|jp/) ? browserLang : "en");
     //translate.use("jp");
     translate.onLangChange.subscribe((event: LangChangeEvent) => {
@@ -107,8 +107,12 @@ export class OnboardingComponent implements OnInit {
   }
 
   userMoveHandler(x: number, y: number) {
-    if (!this.isUserDown) return;
-    if (this.currentSlideState != 3) this.currentSlideState = 3;
+    if (!this.isUserDown) {
+      return;
+    }
+    if (this.currentSlideState !== 3) {
+      this.currentSlideState = 3;
+    }
 
     // calculate mouse movement since mouse down
     this.mouseDeltaX = x - this.userDownInitialX;
@@ -129,7 +133,7 @@ export class OnboardingComponent implements OnInit {
     this.currentSlideInfo.slideTextLeft = Math.round(50 + percentageMoved * this.currentSlideInfo.slideTextAcceleration) + "%";
 
     // calculate the opacity for all layers based on how far the mouse has been moved
-    let opacityValue = (1 - Math.abs(percentageMoved) / 100).toString();
+    const opacityValue = (1 - Math.abs(percentageMoved) / 100).toString();
     this.currentSlideInfo.image1Opacity = opacityValue;
     this.currentSlideInfo.image2Opacity = opacityValue;
     this.currentSlideInfo.image3Opacity = opacityValue;
@@ -152,11 +156,10 @@ export class OnboardingComponent implements OnInit {
   userUpHandler() {
     this.isUserDown = false;
 
-    let percentageMoved = Math.abs(this.mouseDeltaX) * 100 / this.getBrowserRenderWidth();
+    const percentageMoved = Math.abs(this.mouseDeltaX) * 100 / this.getBrowserRenderWidth();
 
     // checking if the slide switch treshold has been reached
-    if (percentageMoved > slideSwitchTreshold)
-    {
+    if (percentageMoved > slideSwitchTreshold) {
       // slide switch treshold reached - check pan/swipe direction
       if (this.mouseDeltaX < 0) {
         // left - next slide
@@ -193,7 +196,7 @@ export class OnboardingComponent implements OnInit {
   }
 
 
-  
+
   // used to switch to previous slide programmatically
   invokePrev() {
     if (this.inSlideSwitchingAnimation) return;
@@ -335,7 +338,7 @@ export class OnboardingComponent implements OnInit {
 
   // generates the slides' data
   generateSlidesData() {
-    let slide1 = new SlideInfo();
+    const slide1 = new SlideInfo();
     slide1.image1Path = "../../assets/images/onboarding/slide1_circle.png";
     slide1.image1Acceleration = 0.6;
     slide1.image2Path = "../../assets/images/onboarding/slide1_pluses.png";
@@ -349,7 +352,7 @@ export class OnboardingComponent implements OnInit {
     slide1.slideDotsImagePath = "../../assets/images/onboarding/onboarding_dots1.png";
     this.slides.push(slide1);
 
-    let slide2 = new SlideInfo();
+    const slide2 = new SlideInfo();
     slide2.image1Path = "../../assets/images/onboarding/slide2_circle.png";
     slide2.image1Acceleration = 0.6;
     slide2.image2Path = "../../assets/images/onboarding/slide2_pluses.png";
@@ -363,7 +366,7 @@ export class OnboardingComponent implements OnInit {
     slide2.slideDotsImagePath = "../../assets/images/onboarding/onboarding_dots2.png";
     this.slides.push(slide2);
 
-    let slide3 = new SlideInfo();
+    const slide3 = new SlideInfo();
     slide3.image1Path = "../../assets/images/onboarding/slide3_circle.png";
     slide3.image1Acceleration = 0.6;
     slide3.image2Path = "../../assets/images/onboarding/slide3_pluses.png";
@@ -377,7 +380,7 @@ export class OnboardingComponent implements OnInit {
     slide3.slideDotsImagePath = "../../assets/images/onboarding/onboarding_dots3.png";
     this.slides.push(slide3);
 
-    let slide4 = new SlideInfo();
+    const slide4 = new SlideInfo();
     slide4.image1Path = "../../assets/images/onboarding/slide4_circle.png";
     slide4.image1Acceleration = 0.6;
     slide4.image2Path = "../../assets/images/onboarding/slide4_pluses.png";
@@ -422,12 +425,12 @@ export class VisibleSlideInfo {
   image1Left: string;
   image1Opacity: string;
   image1Acceleration: number;
-  
+
   image2Path: string;
   image2Left: string;
   image2Opacity: string;
   image2Acceleration: number;
-  
+
   image3Path: string;
   image3Left: string;
   image3Opacity: string;
@@ -444,4 +447,4 @@ export class VisibleSlideInfo {
   slideTextAcceleration: number;
 
   slideDotsImagePath: string;
-} 
+}
