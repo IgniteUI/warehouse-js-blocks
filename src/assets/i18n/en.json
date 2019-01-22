@@ -20,6 +20,11 @@
     "lblSearchBoxDefaultText": "Search active orders",
     "lblCompleted": "Completed",
     "lblIncompleted": "Incompleted",
+    "lblQuickComplete": "Quick Complete",
+    "lblCannotComplete": "Cannot Complete",
+    "lblMovedToCompleted": "Order moved to completed",
+    "lblMovedToIncompleted": "Order moved to incompleted",
+    "btnUndo": "UNDO",
 
     "lblActive": "Active Order",
     "lblArchiveOrders": "Archive orders",

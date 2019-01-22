@@ -4,10 +4,11 @@ import { Router, ActivatedRoute, ParamMap } from "@angular/router";
 import { MessagesService } from "../messages-service/messages.service";
 import { MessageTarget } from "../messages-service/messageTarget";
 import { OrdersService } from "../orders-service/orders.service";
+import { OrderStatus } from "../orders-service/orderStatus";
 
 import { TranslateService, LangChangeEvent } from "@ngx-translate/core";
-import { IgxBottomNavComponent } from "igniteui-angular";
-import { IgxToastComponent } from "igniteui-angular";
+import { IgxBottomNavComponent, IgxListPanState, IgxSnackbarComponent, IgxToastComponent } from "igniteui-angular";
+import { Order } from "../orders-service/order";
 
 @Component({
   selector: "app-board",
@@ -18,12 +19,18 @@ export class BoardComponent implements OnInit, AfterViewInit {
 
   @ViewChild("toastComp") toastComp: IgxToastComponent;
   @ViewChild("mainTabBar") mainTabBar: IgxBottomNavComponent;
-  searchCriteriaValue: string = "";
+  @ViewChild("snackbar1") snackbar1: IgxSnackbarComponent;
+  searchCriteriaValue = "";
   ordersActive = [];
   ordersCompleted = [];
   ordersIncompleted = [];
   componentMessages: string[];
-  toastMessage: string = "";
+  toastMessage = "";
+  snackBarActionMessage = "";
+
+  // for undo operation
+  undoOrder: Order = null;
+  undoOrderIndex: number;
 
   constructor(private ordersService: OrdersService,
               private translate: TranslateService,
@@ -35,9 +42,9 @@ export class BoardComponent implements OnInit, AfterViewInit {
     // internationalization
     translate.addLangs(["en", "jp"]);
     translate.setDefaultLang("en");
-    let browserLang = translate.getBrowserLang();
+    const browserLang = translate.getBrowserLang();
     translate.use(browserLang.match(/en|jp/) ? browserLang : "en");
-    //translate.use("jp");
+    // translate.use("jp");
   }
 
   ngOnInit() {
@@ -51,11 +58,11 @@ export class BoardComponent implements OnInit, AfterViewInit {
 
     // obtain messages for this component
     this.componentMessages = this.messagesService.obtainMessages(MessageTarget.Board);
-    
+
     // show a toast message if there is such request
     for (let i = 0; i < this.componentMessages.length; i++) {
       if (this.componentMessages[i].startsWith("showToast:")) {
-        let msgStr = this.componentMessages[i].substr(10);
+        const msgStr = this.componentMessages[i].substr(10);
         this.toastMessage = msgStr;
         this.toastComp.show();
         this.componentMessages.splice(i, 1);
@@ -67,13 +74,13 @@ export class BoardComponent implements OnInit, AfterViewInit {
     // switch selected tab if there is such request
     for (let i = 0; i < this.componentMessages.length; i++) {
       if (this.componentMessages[i].startsWith("switchTab:")) {
-        let requestedTabStr = this.componentMessages[i].substr(10);
-        if (requestedTabStr == "Active") {
-          let aTab = this.mainTabBar.tabs.toArray()[0];
+        const requestedTabStr = this.componentMessages[i].substr(10);
+        if (requestedTabStr === "Active") {
+          const aTab = this.mainTabBar.tabs.toArray()[0];
           aTab.select();
         } else
-        if (requestedTabStr == "Archive") {
-          let aTab = this.mainTabBar.tabs.toArray()[1];
+        if (requestedTabStr === "Archive") {
+          const aTab = this.mainTabBar.tabs.toArray()[1];
           aTab.select();
         }
         this.cdr.detectChanges();
@@ -88,8 +95,8 @@ export class BoardComponent implements OnInit, AfterViewInit {
   }
 
   activeListItemClicked(evt) {
-    if (evt.item) {
-      let orderId = this.ordersActive[evt.item.index].id;
+    if (evt.item && evt.direction === IgxListPanState.NONE) {
+      const orderId = this.ordersActive[evt.item.index].id;
       this.router.navigate(['/order', orderId]);
     }
   }
@@ -119,20 +126,96 @@ export class BoardComponent implements OnInit, AfterViewInit {
   // used to resize the IgxLists when resizing the browser window
   @HostListener("window:resize", ["$event"])
   onResize(evt) {
-    let theActiveIgxList = document.getElementById("activeIgxList");
+    const theActiveIgxList = document.getElementById("activeIgxList");
     if (theActiveIgxList) {
-      let newHeight = (window.innerHeight - 226) + "px";
+      const newHeight = (window.innerHeight - 226) + "px";
       theActiveIgxList.style.height = newHeight;
     }
-    let theArchiveIgxList = document.getElementById("archiveIgxList");
+    const theArchiveIgxList = document.getElementById("archiveIgxList");
     if (theArchiveIgxList) {
-      let newHeight = (window.innerHeight - 139) + "px";
+      const newHeight = (window.innerHeight - 139) + "px";
       theArchiveIgxList.style.height = newHeight;
     }
   }
 
   addOrderClicked() {
     this.router.navigateByUrl("/addorder");
+  }
+
+  public onLeftPanHandler(args) {
+    args.keepItem = true;
+
+    // cloning order befor it is changed
+    this.undoOrder = this.ordersActive[args.item.index].clone();
+    this.undoOrderIndex = args.item.index;
+
+    // remove from active list
+    const extractedOrder = this.ordersActive.splice(args.item.index, 1)[0];
+
+    // update the order by setting all order's items as found
+    for (const orderItem of extractedOrder.items) {
+      if (!orderItem.Found) {
+        orderItem.Found = true;
+      }
+    }
+
+    // set order's state to complete
+    extractedOrder.status = OrderStatus.Complete;
+
+    // add order to completed list
+    this.ordersCompleted.push(extractedOrder);
+
+    // update order status in the data source service
+    this.ordersService.updateOrderStatus(extractedOrder.id, OrderStatus.Complete);
+
+    // show an information snackbar with UNDO option
+    this.snackBarActionMessage = this.translate.instant("lblMovedToCompleted");
+    this.snackbar1.show();
+  }
+
+  public onRightPanHandler(args) {
+    args.keepItem = true;
+
+    // cloning order befor it is changed
+    this.undoOrder = this.ordersActive[args.item.index].clone();
+    this.undoOrderIndex = args.item.index;
+
+    // remove from active list
+    const extractedOrder = this.ordersActive.splice(args.item.index, 1)[0];
+
+    // set order's state to complete
+    extractedOrder.status = OrderStatus.Incomplete;
+
+    // add order to incompleted list
+    this.ordersIncompleted.push(extractedOrder);
+
+    // update order status in the data source service
+    this.ordersService.updateOrderStatus(extractedOrder.id, OrderStatus.Incomplete);
+
+    // show an information snackbar with UNDO option
+    this.snackBarActionMessage = this.translate.instant("lblMovedToIncompleted");
+    this.snackbar1.show();
+  }
+
+  public performUndo() {
+    this.snackbar1.hide();
+    if (this.undoOrder != null) {
+      // search for order with this id in both local completed list and local incompleted list and remove it
+      if (this.ordersCompleted[this.ordersCompleted.length - 1].id === this.undoOrder.id) {
+        this.ordersCompleted.pop();
+      } else if (this.ordersIncompleted[this.ordersIncompleted.length - 1].id === this.undoOrder.id) {
+        this.ordersIncompleted.pop();
+      }
+
+      // insert back the removed order in the active list
+      this.ordersActive.splice(this.undoOrderIndex, 0, this.undoOrder);
+
+      // update order status in the data source service
+      this.ordersService.updateOrderStatus(this.undoOrder.id, OrderStatus.Active);
+
+      this.undoOrder = null;
+      this.undoOrderIndex = 0;
+    }
   }
 
 }

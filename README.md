@@ -6,13 +6,18 @@ A showcase application built using [Ignite UI for Angular](https://github.com/Ig
 
 | Component/Directive   |     | Used in (*screen*)                                      |
 | :-:                   | :-: | :-:                                                     |
+| igx-bottom-nav        |     | Active Orders, Archived Orders                          |
 | igx-checkbox          |     | Order                                                   |
-| igx-circular-progress |     | Active Orders                                           |
-| igx-list              |     | Active Orders, Archived Orders                          |
-| igx-navbar            |     | Active Orders, Archived Orders, Orders, Add Order, Scan |
-| igx-tabbar            |     | Active Orders, Archived Orders                          |
-| igxButton             |     | Active Orders, Archived Orders, Order, Add Order, Scan  |
-| igxInput              |     | Active Orders, Add Order                                |
+| igx-circular-bar      |     | Active Orders                                           |
+| igx-drop-down         |     | Add Order                                               |
+| igx-icon              |     | Active Orders, Orders                                   |
+| igx-list              |     | Active Orders, Archived Orders, Order                   |
+| igx-navbar            |     | Active Orders, Add Order, Order                         |
+| igx-snackbar          |     | Active Orders                                           |
+| igx-toast             |     | Active Orders, Add Order                                |
+| igxButton             |     | Active Orders, Add Order, Order                         |
+| igxInput              |     | Active Orders                                           |
+| igxRipple             |     | Order                                                   |
 
 ## Install
 To get started follow the respective package manager installation:
