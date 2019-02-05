@@ -74,7 +74,7 @@
 .listItemLeftPanningStyle {
     display: flex;
     flex-direction: row-reverse;
-    background-color:orange;
+    background-color:limegreen;
     color: white;
     width: 100%;
     padding-right: 10px;
@@ -84,7 +84,7 @@
 .listItemRightPanningStyle {
     display: flex;
     flex-direction: row;
-    background-color:limegreen;
+    background-color:red;
     color: white;
     width: 100%;
     padding-left: 10px;
