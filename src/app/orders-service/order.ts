@@ -26,6 +26,10 @@ export class Order {
     return this.progress;
   }
 
+  public invalidateProgress() {
+    this.progressValid = false;
+  }
+
   public clone(): Order {
     const result = new Order();
     result.id = this.id;
