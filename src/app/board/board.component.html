@@ -23,7 +23,7 @@
     </div>
 
     <!-- The active orders list -->
-    <igx-list (onItemClicked)="activeListItemClicked($event)" id="activeIgxList"
+    <igx-list (onItemClicked)="activeListItemClicked($event)" [style.height.px]="activeIgxListHeight"
       [allowLeftPanning]="true" [allowRightPanning]="true"
       (onLeftPan)="onLeftPanHandler($event)" (onRightPan)="onRightPanHandler($event)">
       <ng-template igxListItemLeftPanning>
@@ -62,7 +62,7 @@
     </igx-navbar>
 
     <!-- The archive orders list -->
-    <igx-list (onItemClicked)="archiveListItemClicked($event)" id="archiveIgxList">
+    <igx-list (onItemClicked)="archiveListItemClicked($event)" [style.height.px]="archiveIgxListHeight">
 
       <igx-list-item isHeader="true">{{ "lblCompleted" | translate }}</igx-list-item>  
       <igx-list-item *ngFor="let order of ordersCompleted">

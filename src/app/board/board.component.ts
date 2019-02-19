@@ -33,6 +33,8 @@ export class BoardComponent implements OnInit, AfterViewInit {
   componentMessages: string[];
   toastMessage = "";
   snackBarActionMessage = "";
+  activeIgxListHeight = 0;
+  archiveIgxListHeight = 0;
 
   // for undo operation
   undoOrder: Order = null;
@@ -132,16 +134,8 @@ export class BoardComponent implements OnInit, AfterViewInit {
   // used to resize the IgxLists when resizing the browser window
   @HostListener("window:resize", ["$event"])
   onResize(evt) {
-    const theActiveIgxList = document.getElementById("activeIgxList");
-    if (theActiveIgxList) {
-      const newHeight = (window.innerHeight - 226) + "px";
-      theActiveIgxList.style.height = newHeight;
-    }
-    const theArchiveIgxList = document.getElementById("archiveIgxList");
-    if (theArchiveIgxList) {
-      const newHeight = (window.innerHeight - 139) + "px";
-      theArchiveIgxList.style.height = newHeight;
-    }
+    this.activeIgxListHeight = window.innerHeight - 226;
+    this.archiveIgxListHeight = window.innerHeight - 139;
   }
 
   addOrderClicked() {
