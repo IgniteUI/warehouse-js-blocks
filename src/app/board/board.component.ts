@@ -17,9 +17,15 @@ import { Order } from "../orders-service/order";
 })
 export class BoardComponent implements OnInit, AfterViewInit {
 
-  @ViewChild("toastComp") toastComp: IgxToastComponent;
-  @ViewChild("mainTabBar") mainTabBar: IgxBottomNavComponent;
-  @ViewChild("snackbar1") snackbar1: IgxSnackbarComponent;
+  @ViewChild("toastComp")
+  toastComp: IgxToastComponent;
+
+  @ViewChild("mainTabBar")
+  mainTabBar: IgxBottomNavComponent;
+
+  @ViewChild("snackbar1")
+  snackbar1: IgxSnackbarComponent;
+
   searchCriteriaValue = "";
   ordersActive = [];
   ordersCompleted = [];

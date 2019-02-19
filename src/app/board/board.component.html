@@ -47,7 +47,7 @@
           <br />{{ "lblCreatedOn" | translate }} {{ order.date }}
         </div>
       </igx-list-item>
-      <igx-snackbar #snackbar1 actionText="{{ 'btnUndo' | translate }}" (onAction)="performUndo(snackbar1)">{{ snackBarActionMessage }}</igx-snackbar>
+      <igx-snackbar #snackbar1 actionText="{{ 'btnUndo' | translate }}" (onAction)="performUndo()">{{ snackBarActionMessage }}</igx-snackbar>
     </igx-list>
 
     <button igxButton="fab" igxRipple="#FBB13C" class="addOrderButton" (click)="addOrderClicked()">

@@ -22,9 +22,9 @@ export class AddOrderComponent implements OnInit {
     @ViewChild(IgxDropDownComponent)
     private igxDropDown: IgxDropDownComponent;
 
-    private toastMessage: string;
-    private ordersAvailable = [];
-    private selectedOrderId = null;
+    public toastMessage: string;
+    public ordersAvailable = [];
+    public selectedOrderId = null;
 
     constructor(private ordersService: OrdersService,
         private translate: TranslateService,
