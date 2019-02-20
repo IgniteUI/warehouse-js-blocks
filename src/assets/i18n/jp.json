@@ -20,6 +20,11 @@
     "lblSearchBoxDefaultText": "[jp] Search active orders",
     "lblCompleted": "[jp] Completed",
     "lblIncompleted": "[jp] Incompleted",
+    "lblQuickComplete": "[jp] Quick Complete",
+    "lblCannotComplete": "[jp] Cannot Complete",
+    "lblMovedToCompleted": "[jp] Order moved to completed",
+    "lblMovedToIncompleted": "[jp] Order moved to incompleted",
+    "btnUndo": "[jp] UNDO",
 
     "lblActive": "[jp] Active Order",
     "lblArchiveOrders": "[jp] Archive orders",

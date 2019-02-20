@@ -14,16 +14,24 @@
             placeholder="{{ 'lblSearchBoxDefaultText' | translate }}"
             [(ngModel)]="searchCriteriaValue" (ngModelChange)="searchBoxKeyDown($event)" />
           <igx-prefix>
-              <igx-icon>search</igx-icon>
+              <igx-icon fontSet="material">search</igx-icon>
           </igx-prefix>
           <igx-suffix *ngIf="searchBox.value.length > 0" (click)="clearSearchInputClicked()">
-              <igx-icon fontSet="material" name="clear"></igx-icon>
+              <igx-icon fontSet="material">clear</igx-icon>
           </igx-suffix>
       </igx-input-group>
     </div>
 
     <!-- The active orders list -->
-    <igx-list (onItemClicked)="activeListItemClicked($event)" id="activeIgxList">
+    <igx-list (onItemClicked)="activeListItemClicked($event)" [style.height.px]="activeIgxListHeight"
+      [allowLeftPanning]="true" [allowRightPanning]="true"
+      (onLeftPan)="onLeftPanHandler($event)" (onRightPan)="onRightPanHandler($event)">
+      <ng-template igxListItemLeftPanning>
+          <div class="listItemLeftPanningStyle">{{ "lblQuickComplete" | translate }}</div>
+      </ng-template>
+      <ng-template igxListItemRightPanning>
+          <div class="listItemRightPanningStyle">{{ "lblCannotComplete" | translate }}</div>
+      </ng-template>
       <ng-template igxEmptyList>
         <div class="emptyListContainer">
           <span class="emptyListHeader">{{ "emptyListTemplateHeader" | translate }}</span>
@@ -39,10 +47,11 @@
           <br />{{ "lblCreatedOn" | translate }} {{ order.date }}
         </div>
       </igx-list-item>
+      <igx-snackbar #snackbar1 actionText="{{ 'btnUndo' | translate }}" (onAction)="performUndo()">{{ snackBarActionMessage }}</igx-snackbar>
     </igx-list>
 
     <button igxButton="fab" igxRipple="#FBB13C" class="addOrderButton" (click)="addOrderClicked()">
-      <igx-icon fontSet="material" name="add_circle_outline" style="font-size:46px; width:46px; height:46px;"></igx-icon>
+      <igx-icon fontSet="material" style="font-size:46px; width:46px; height:46px;">add</igx-icon>
     </button>
 
   </igx-tab-panel>
@@ -53,7 +62,7 @@
     </igx-navbar>
 
     <!-- The archive orders list -->
-    <igx-list (onItemClicked)="archiveListItemClicked($event)" id="archiveIgxList">
+    <igx-list (onItemClicked)="archiveListItemClicked($event)" [style.height.px]="archiveIgxListHeight">
 
       <igx-list-item isHeader="true">{{ "lblCompleted" | translate }}</igx-list-item>  
       <igx-list-item *ngFor="let order of ordersCompleted">

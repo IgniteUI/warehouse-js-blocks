@@ -22,9 +22,21 @@ export class AddOrderComponent implements OnInit {
     @ViewChild(IgxDropDownComponent)
     private igxDropDown: IgxDropDownComponent;
 
-    private toastMessage: string;
-    private ordersAvailable = [];
-    private selectedOrderId = null;
+    public toastMessage: string;
+    public ordersAvailable = [];
+    public selectedOrderId = null;
+
+    private _positionSettings = {
+        horizontalStartPoint: HorizontalAlignment.Left,
+        verticalStartPoint: VerticalAlignment.Bottom
+    };
+
+    private _overlaySettings = {
+        closeOnOutsideClick: true,
+        modal: false,
+        positionStrategy: new ConnectedPositioningStrategy(this._positionSettings),
+        scrollStrategy: new CloseScrollStrategy()
+    };
 
     constructor(private ordersService: OrdersService,
         private translate: TranslateService,
@@ -46,25 +58,13 @@ export class AddOrderComponent implements OnInit {
         this.location.back();
     }
 
-    private _positionSettings = {
-        horizontalStartPoint: HorizontalAlignment.Left,
-        verticalStartPoint: VerticalAlignment.Bottom
-    };
-
-    private _overlaySettings = {
-        closeOnOutsideClick: true,
-        modal: false,
-        positionStrategy: new ConnectedPositioningStrategy(this._positionSettings),
-        scrollStrategy: new CloseScrollStrategy()
-    };
-
     public toggleDropDown(eventArgs) {
         this._overlaySettings.positionStrategy.settings.target = eventArgs.target;
         this.igxDropDown.toggle(this._overlaySettings);
     }
 
     get selectOrderButtonCaption(): string {
-        if (this.ordersAvailable == null || this.ordersAvailable.length == 0) {
+        if (this.ordersAvailable == null || this.ordersAvailable.length === 0) {
             return this.translate.instant("lblNoOrders");
         } else {
             if (this.selectedOrderId == null) {

@@ -12,7 +12,8 @@
 }
 
 .igx-list {
-    overflow: auto;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 .emptyListContainer {
@@ -66,6 +67,26 @@
 .addOrderButton {
     z-index: 3;
     position: absolute;
-    right: 50px;
-    bottom: 90px;
+    right: 70px;
+    bottom: 150px;
+}
+
+.listItemLeftPanningStyle {
+    display: flex;
+    flex-direction: row-reverse;
+    background-color:limegreen;
+    color: white;
+    width: 100%;
+    padding-right: 10px;
+    align-items: center;
+}
+
+.listItemRightPanningStyle {
+    display: flex;
+    flex-direction: row;
+    background-color:red;
+    color: white;
+    width: 100%;
+    padding-left: 10px;
+    align-items: center;
 }

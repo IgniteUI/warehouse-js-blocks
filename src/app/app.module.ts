@@ -17,6 +17,7 @@ import { IgxInputGroupModule } from "igniteui-angular";
 import { IgxListModule } from "igniteui-angular";
 import { IgxNavbarModule } from "igniteui-angular";
 import { IgxProgressBarModule } from "igniteui-angular";
+import { IgxSnackbarModule } from "igniteui-angular";
 import { IgxToastModule } from "igniteui-angular";
 
 import { AddOrderComponent } from "./addorder/addorder.component";
@@ -63,6 +64,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     IgxListModule,
     IgxNavbarModule,
     IgxProgressBarModule,
+    IgxSnackbarModule,
     IgxToastModule,
     RouterModule.forRoot(appRoutes, {enableTracing: false}),
     HttpClientModule,

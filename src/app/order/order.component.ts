@@ -37,12 +37,14 @@ export class OrderComponent implements OnInit, OnDestroy {
   }
 
   get itemsDisabled(): boolean {
-    return (!this.order || (this.order.status == OrderStatus.Complete || this.order.status == OrderStatus.Incomplete));
+    return (!this.order || (this.order.status === OrderStatus.Complete || this.order.status === OrderStatus.Incomplete));
   }
 
   get orderCompletionDisabled(): boolean {
     for (let i = 0; i < this.order.items.length; i++) {
-      if (!this.order.items[i]["Found"]) return true;
+      if (!this.order.items[i]["Found"]) {
+        return true;
+      }
     }
     return false;
   }
@@ -63,6 +65,9 @@ export class OrderComponent implements OnInit, OnDestroy {
       params => {
         this.orderId = params["orderId"];
         this.order = this.ordersService.getOrder(this.orderId);
+        if (this.order) {
+          this.order.invalidateProgress();
+        }
       }
     );
   }
@@ -73,7 +78,7 @@ export class OrderComponent implements OnInit, OnDestroy {
 
   backButtonClicked() {
     if (this.order) {
-      if (this.order.status == OrderStatus.Complete || this.order.status == OrderStatus.Incomplete) {
+      if (this.order.status === OrderStatus.Complete || this.order.status === OrderStatus.Incomplete) {
         this.messagesService.addMessage(MessageTarget.Board, "switchTab:Archive");
         this.router.navigate(['/board']);
         return;
@@ -84,11 +89,10 @@ export class OrderComponent implements OnInit, OnDestroy {
 
   toggleListItem(itemId) {
     for (let i = 0; i < this.order.items.length; i++) {
-      if (this.order.items[i]["ID"] == itemId) {
+      if (this.order.items[i]["ID"] === itemId) {
         if (this.order.items[i]["Expanded"] === undefined) {
           this.order.items[i]["Expanded"] = true;
-        }
-        else {
+        } else {
           this.order.items[i]["Expanded"] = !this.order.items[i]["Expanded"];
         }
         break;
@@ -98,7 +102,7 @@ export class OrderComponent implements OnInit, OnDestroy {
 
   convertExpandedStateToIcon(itemId) {
     for (let i = 0; i < this.order.items.length; i++) {
-      if (this.order.items[i]["ID"] == itemId) {
+      if (this.order.items[i]["ID"] === itemId) {
         return this.order.items[i]["Expanded"] === true ? 'keyboard_arrow_up' : 'keyboard_arrow_down';
       }
     }
