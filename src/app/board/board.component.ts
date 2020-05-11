@@ -6,7 +6,7 @@ import { MessageTarget } from "../messages-service/messageTarget";
 import { OrdersService } from "../orders-service/orders.service";
 import { OrderStatus } from "../orders-service/orderStatus";
 
-import { TranslateService, LangChangeEvent } from "@ngx-translate/core";
+import { TranslateService } from "@ngx-translate/core";
 import { IgxBottomNavComponent, IgxListPanState, IgxSnackbarComponent, IgxToastComponent } from "igniteui-angular";
 import { Order } from "../orders-service/order";
 
@@ -17,13 +17,13 @@ import { Order } from "../orders-service/order";
 })
 export class BoardComponent implements OnInit, AfterViewInit {
 
-  @ViewChild("toastComp")
+  @ViewChild("toastComp", { static: true })
   toastComp: IgxToastComponent;
 
-  @ViewChild("mainTabBar")
+  @ViewChild("mainTabBar", { static: true })
   mainTabBar: IgxBottomNavComponent;
 
-  @ViewChild("snackbar1")
+  @ViewChild("snackbar1", { static: true })
   snackbar1: IgxSnackbarComponent;
 
   searchCriteriaValue = "";

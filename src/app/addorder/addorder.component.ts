@@ -16,10 +16,10 @@ import { OrderStatus } from "../orders-service/orderStatus";
 })
 export class AddOrderComponent implements OnInit {
 
-    @ViewChild("toastComp")
+    @ViewChild("toastComp", { static: true })
     private toastComp: IgxToastComponent;
 
-    @ViewChild(IgxDropDownComponent)
+    @ViewChild(IgxDropDownComponent, { static: true })
     private igxDropDown: IgxDropDownComponent;
 
     public toastMessage: string;
